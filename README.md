@@ -35,6 +35,26 @@ el 4322.
   leer) la app se rearma con tu gusto y se pone una piel completa, Romantasy, Terror, Distopía,
   Calma, Espacio, Academia, Selva o Arcade.
 
+- **Cuentos completos gratis.** El almohadón de pluma y A la deriva de Quiroga, Los ojos
+  verdes y El monte de las ánimas de Bécquer, y El rey burgués de Darío. Dominio público, de
+  Project Gutenberg, una página por pantalla. Al terminarlos se gana la medalla y se sube en la
+  ruta. Bécquer va con la ortografía actualizada.
+- **Música en Deslizar.** Veinte canciones cortas en bucle, una por grupo de lectura, hechas
+  con `python musica/generar.py`. Cambian al pasar de un video a otro y se pueden silenciar.
+- **Logros, nivel y campana.** Medallas que caen al ganarse, puntos por lo que lees y comentas,
+  y avisos que llegan solos cada tanto.
+
+## La red, con Supabase
+
+El ranking, los comentarios y lo que pasa ahora mismo se comparten entre todos los teléfonos
+por Supabase, en tiempo real. El esquema está en `supabase/esquema.sql` y la conexión en
+`js/red-config.js`. Esa llave es la pública, la que Supabase hace para ir en la página, y lo
+que se puede hacer con ella lo limitan las reglas del esquema. Sin conexión la app sigue igual
+con su comunidad simulada.
+
+La cuenta es opcional. Quien quiera guardar su avance crea una con correo y contraseña desde
+Comunidad, y su racha, páginas, medallas y ruta se guardan en la nube.
+
 ## Como elige los libros
 
 Cada tendencia trae sus temas en orden de importancia y cada libro los suyos. El puntaje es
@@ -60,7 +80,13 @@ tendencias del país.
     js/app.js             las vistas
     js/portada.js         la portada dibujada y la foto encima
     js/textos.js          los fragmentos de dominio público
-    datos/libros.json     los 49 libros, con nivel
+    js/libres.js          los cuentos completos
+    js/musica.js          la música de Deslizar
+    js/red.js             Supabase, la red y la cuenta opcional
+    css/juego.css         campana, medallas, podio, fondo que se pinta
+    musica/generar.py     sintetiza las veinte canciones
+    supabase/esquema.sql  tablas y reglas de la base
+    datos/libros.json     los 54 libros, con nivel
     datos/tendencias.json las 16 tendencias
     img/portadas/         las portadas, de Open Library
     servidor/             el servidor de Node de la primera versión

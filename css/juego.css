@@ -1,0 +1,238 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   LO QUE HACE QUE DEN GANAS DE VOLVER
+
+   La campana con sus avisos, las medallas, el nivel, el podio, y el fondo
+   que se va pintando con cada gesto. Todo sale de los mismos tokens, asi que
+   cada piel lo viste sola.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* sin recortes de brillo */
+.pausa,.amigos-pub,.promo{overflow:visible}
+.lector-aro::before{content:'';position:absolute;inset:-16%;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,color-mix(in srgb,var(--vivo) 24%,transparent),color-mix(in srgb,var(--acento) 12%,transparent) 45%,transparent 68%);
+  animation:respira 3s ease-in-out infinite}
+@keyframes respira{50%{transform:scale(1.08);opacity:.65}}
+.lector-aro .lleno{filter:drop-shadow(0 0 8px rgba(89,214,255,.7))}
+.lector-aro.cumplido .lleno{filter:drop-shadow(0 0 10px rgba(255,177,61,.8))}
+
+/* ── el fondo que se pinta con cada gesto ──────────────────────────────── */
+.tinte{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:var(--fuerza,0);
+  background:
+    radial-gradient(70vmax 50vmax at 12% 8%,color-mix(in srgb,var(--t1,#8B6BFF) 46%,transparent),transparent 70%),
+    radial-gradient(60vmax 50vmax at 92% 88%,color-mix(in srgb,var(--t2,#2AE58C) 40%,transparent),transparent 70%),
+    radial-gradient(40vmax 30vmax at 70% 30%,color-mix(in srgb,var(--t1,#8B6BFF) 22%,transparent),transparent 70%);
+  transition:opacity 1.4s ease}
+.tinte::after{content:'';position:absolute;inset:0;background-image:var(--t-textura,none);background-size:var(--t-tam,auto);opacity:calc(var(--fuerza,0) * .9)}
+.onda-color{position:fixed;z-index:-1;pointer-events:none;width:120px;height:120px;margin:-60px 0 0 -60px;border-radius:50%;
+  background:radial-gradient(circle,color-mix(in srgb,var(--t1) 55%,transparent),color-mix(in srgb,var(--t2) 30%,transparent) 55%,transparent 70%);
+  animation:ondaColor 1.6s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes ondaColor{from{transform:scale(.2);opacity:1}to{transform:scale(18);opacity:0}}
+.pinta{position:fixed;z-index:85;left:50%;bottom:calc(var(--pestanas) + env(safe-area-inset-bottom) + 66px);transform:translateX(-50%);display:flex;align-items:center;gap:10px;
+  padding:7px 14px 7px 8px;border-radius:999px;background:color-mix(in srgb,var(--panel) 80%,transparent);backdrop-filter:blur(14px);
+  border:1.5px solid color-mix(in srgb,var(--t1) 60%,transparent);box-shadow:0 10px 30px color-mix(in srgb,var(--t1) 35%,transparent);
+  font-size:13px;font-weight:800;animation:subePinta .45s cubic-bezier(.2,1.3,.4,1);white-space:nowrap}
+@keyframes subePinta{from{opacity:0;transform:translate(-50%,24px) scale(.9)}}
+.pinta.sale{animation:bajaPinta .35s ease forwards}
+@keyframes bajaPinta{to{opacity:0;transform:translate(-50%,20px)}}
+.pinta i.gota{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--t1),var(--t2));box-shadow:0 0 12px color-mix(in srgb,var(--t1) 70%,transparent)}
+.pinta .pasos-p{display:flex;gap:4px}
+.pinta .pasos-p b{width:14px;height:6px;border-radius:3px;background:var(--linea-viva)}
+.pinta .pasos-p b.si{background:linear-gradient(90deg,var(--t1),var(--t2))}
+.pinta .pasos-p b.nuevo{animation:salta .5s cubic-bezier(.3,1.6,.5,1)}
+
+/* ── la campana ────────────────────────────────────────────────────────── */
+.globo.rojo{background:var(--corazon);color:#fff}
+.campana.suena .ico{animation:campanea .9s ease;transform-origin:50% 10%}
+@keyframes campanea{15%{transform:rotate(18deg)}30%{transform:rotate(-16deg)}45%{transform:rotate(12deg)}60%{transform:rotate(-8deg)}75%{transform:rotate(4deg)}}
+.avisos{position:fixed;inset:0;z-index:95;background:rgba(4,3,10,.45);backdrop-filter:blur(2px)}
+.avisos-caja{position:absolute;top:calc(var(--barra) + 8px);right:max(10px,calc((100vw - 975px) / 2 + 12px));width:min(390px,calc(100vw - 20px));
+  max-height:min(72vh,600px);overflow-y:auto;background:var(--panel);border:1px solid var(--linea-viva);border-radius:22px;
+  box-shadow:0 30px 70px rgba(0,0,0,.6);animation:bajaCaja .3s cubic-bezier(.2,1.2,.4,1)}
+@keyframes bajaCaja{from{opacity:0;transform:translateY(-14px) scale(.97)}}
+.avisos-cab{position:sticky;top:0;z-index:1;display:flex;align-items:center;justify-content:space-between;padding:14px 14px 10px 18px;background:var(--panel)}
+.avisos-cab b{font:900 22px/1 var(--num);text-transform:uppercase;letter-spacing:.02em}
+.avisos-cab button{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;color:var(--gris)}
+.avisos-cab .ico{width:18px;height:18px}
+#avisos-lista{list-style:none;margin:0;padding:0 8px 10px}
+#avisos-lista li{display:flex;align-items:center;gap:10px;padding:10px;border-radius:14px;cursor:pointer;font-size:13.5px;line-height:1.35;animation:llega .4s ease both}
+#avisos-lista li:hover{background:var(--alto)}
+#avisos-lista li.nuevo{background:color-mix(in srgb,var(--acento) 13%,transparent)}
+#avisos-lista .ava{width:36px;height:36px}
+.aviso-txt{flex:1;min-width:0}
+.aviso-txt b{font-weight:800}
+.aviso-txt small{display:block;font-size:11.5px;color:var(--gris);margin-top:2px}
+.avisos-vacio{justify-content:center;color:var(--gris)}
+
+/* ── medallas y la tarjeta que cae al ganar una ────────────────────────── */
+.medalla{--c:#8B6BFF;position:relative;width:46px;height:46px;flex:none;border-radius:50%;display:grid;place-items:center;color:#14121F;
+  background:radial-gradient(circle at 34% 28%,color-mix(in srgb,var(--c) 45%,#fff),var(--c) 52%,color-mix(in srgb,var(--c) 62%,#000));
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 35%,transparent),0 8px 20px color-mix(in srgb,var(--c) 40%,transparent)}
+.medalla::after{content:'';position:absolute;inset:0;border-radius:50%;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);background-size:250% 100%;animation:brilla 3.2s ease-in-out infinite}
+@keyframes brilla{0%,60%{background-position:120% 0}100%{background-position:-120% 0}}
+.medalla .ico{width:22px;height:22px;stroke-width:2.3;position:relative;z-index:1}
+.medalla.cerrada{background:var(--alto);box-shadow:inset 0 0 0 2px var(--linea-viva);color:var(--gris);opacity:.55}
+.medalla.cerrada::after{display:none}
+.medalla.grande{width:66px;height:66px}
+.medalla.grande .ico{width:32px;height:32px}
+.logro{--c:#8B6BFF;position:fixed;z-index:116;left:50%;top:calc(env(safe-area-inset-top) + 12px);transform:translateX(-50%);
+  width:min(420px,calc(100% - 20px));display:flex;align-items:center;gap:14px;padding:14px 18px 14px 14px;border-radius:24px;
+  background:linear-gradient(135deg,color-mix(in srgb,var(--c) 34%,#14121F),#14121F 75%);border:1.5px solid color-mix(in srgb,var(--c) 70%,transparent);
+  box-shadow:0 22px 60px color-mix(in srgb,var(--c) 38%,transparent),0 10px 30px rgba(0,0,0,.5);color:#F4F2FA;animation:caeLogro .7s cubic-bezier(.2,1.5,.4,1)}
+.logro.sale{animation:subeNoti .45s ease forwards}
+@keyframes caeLogro{from{opacity:0;transform:translate(-50%,-60px) scale(.85)}}
+.logro .medalla{animation:salta .7s cubic-bezier(.3,1.6,.5,1) .25s both}
+.logro-txt{display:flex;flex-direction:column;min-width:0}
+.logro-txt span{font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--c)}
+.logro-txt b{font:900 26px/1.05 var(--num);text-transform:uppercase}
+.logro-txt small{font-size:12.5px;color:#B8B3D0}
+
+/* ── nivel ─────────────────────────────────────────────────────────────── */
+.nivel{background:radial-gradient(420px 220px at 100% 0,rgba(139,107,255,.34),transparent 70%),radial-gradient(320px 200px at 0 100%,rgba(42,229,140,.18),transparent 70%),var(--panel)}
+.nivel-cab{display:flex;align-items:center;gap:14px}
+.insignia{flex:none;width:72px;height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#0A0912;
+  clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:linear-gradient(160deg,#B9A6FF,#8B6BFF 40%,#2AE58C);
+  animation:flotaLogo 3s ease-in-out infinite}
+.insignia small{font-size:9.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:-2px}
+.insignia b{font:900 36px/1 var(--num)}
+.nivel-txt{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.nivel-txt b{font:900 28px/1 var(--num);text-transform:uppercase;background:linear-gradient(90deg,var(--tinta),var(--acento));-webkit-background-clip:text;background-clip:text;color:transparent}
+.nivel-txt span{font-size:12.5px;color:var(--gris)}
+.nivel-barra{height:10px;border-radius:999px;background:var(--alto);overflow:hidden;margin-top:4px;border:1px solid var(--linea)}
+.nivel-barra i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#2AE58C,#59D6FF,#8B6BFF,#FF3D6E,#2AE58C);background-size:200% 100%;animation:corre2 3s linear infinite}
+@keyframes corre2{to{background-position:-200% 0}}
+.medallas{display:grid;grid-template-columns:repeat(5,1fr);gap:12px 4px;margin-top:16px}
+.med-item{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:10.5px;font-weight:700;line-height:1.15;color:var(--gris);text-align:center}
+.med-item.hecho span{color:var(--tinta)}
+
+/* ── podio ─────────────────────────────────────────────────────────────── */
+.ranking-b{background:radial-gradient(420px 200px at 50% 0,rgba(255,210,90,.16),transparent 70%),var(--panel)}
+.podio{display:grid;grid-template-columns:repeat(3,1fr);align-items:end;gap:8px;margin:30px 0 14px}
+.podio-col{--m:#C9D3E6;position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:0;animation:sube .6s cubic-bezier(.2,1.3,.4,1) both;animation-delay:var(--d)}
+.podio-col.p1{--m:#FFD25A}
+.podio-col.p3{--m:#E7A06A}
+.podio-ava .ava{width:52px;height:52px;font-size:20px;box-shadow:0 0 0 3px var(--m),0 0 24px color-mix(in srgb,var(--m) 55%,transparent)}
+.p1 .podio-ava .ava{width:66px;height:66px;font-size:26px}
+.corona{position:absolute;top:-26px;z-index:2;animation:flotaLogo 2.4s ease-in-out infinite}
+.corona .ico{width:30px;height:30px;fill:#FFD25A;stroke:#B07A00;stroke-width:1.4;filter:drop-shadow(0 3px 8px rgba(255,210,90,.6))}
+.podio-nom{font-size:13.5px;font-weight:800;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:4px}
+.podio-col.tu .podio-nom{color:var(--vivo)}
+.podio-pag{font-size:12px;color:var(--gris)}
+.pedestal{width:100%;margin-top:6px;border-radius:14px 14px 4px 4px;display:grid;place-items:center;font:900 32px/1 var(--num);color:#14121F;
+  background:linear-gradient(180deg,var(--m),color-mix(in srgb,var(--m) 50%,#000));box-shadow:inset 0 2px 0 rgba(255,255,255,.45)}
+.p1 .pedestal{height:96px;font-size:42px}
+.p2 .pedestal{height:70px}
+.p3 .pedestal{height:54px}
+.tabla li{background:color-mix(in srgb,var(--alto) 55%,transparent)}
+.tabla .tabla-barra{background:linear-gradient(90deg,hsl(var(--h,260) 85% 62% / .32),hsl(calc(var(--h,260) + 50) 85% 62% / .1))}
+.tabla li.real .tabla-nom small{color:var(--vivo);font-weight:700}
+.ranking-b .grande .ico{fill:none;stroke:currentColor;stroke-width:2}
+
+/* ── el resto con mas color ────────────────────────────────────────────── */
+.bloque > h3,.bloque-cab h3{display:flex;align-items:center;gap:9px}
+.bloque > h3::before,.bloque-cab h3::before{content:'';width:5px;height:18px;border-radius:3px;background:var(--g-tuyo)}
+.barras .col-prom i{animation-delay:var(--d,0ms)}
+.barras .col-prom:nth-child(2) i{background:linear-gradient(180deg,#FF8AB8,#FF3D6E);border:0}
+.barras .col-prom:nth-child(3) i{background:linear-gradient(180deg,#59D6FF,#2A6CFF);border:0}
+.hoy{border:1.5px solid transparent;background:linear-gradient(var(--panel),var(--panel)) padding-box,linear-gradient(135deg,var(--vivo),var(--acento),var(--corazon)) border-box}
+.pestanas button{position:relative}
+.pestanas button.activo::before{content:'';position:absolute;top:5px;width:30px;height:3px;border-radius:3px;background:var(--g-tuyo)}
+.racha-pill.prendida{box-shadow:0 0 16px rgba(255,138,60,.35)}
+
+/* el marco de luz que crece con cada gesto, para que el cambio se note aunque
+   las tarjetas tapen el fondo */
+.marco-luz{position:fixed;inset:0;z-index:38;pointer-events:none;opacity:var(--fuerza,0);transition:opacity 1.2s ease,box-shadow 1.2s ease;
+  box-shadow:inset 0 0 calc(30px + 90px * var(--fuerza,0)) color-mix(in srgb,var(--t1,#8B6BFF) 75%,transparent),
+             inset 0 0 calc(10px + 30px * var(--fuerza,0)) color-mix(in srgb,var(--t2,#2AE58C) 60%,transparent)}
+.onda-color{z-index:37;mix-blend-mode:screen}
+.barra{border-bottom-color:color-mix(in srgb,var(--t1,#8B6BFF) calc(var(--fuerza,0) * 100%),var(--linea))}
+@media (min-width:736px){.pinta{bottom:30px}}
+
+/* ── la cuenta ─────────────────────────────────────────────────────────── */
+.cuenta-velo{z-index:100}
+.cuenta-hoja{text-align:center;max-width:420px}
+.cuenta-logo{width:64px;height:64px;margin:6px auto 12px;border-radius:16px;filter:drop-shadow(0 12px 28px rgba(91,61,245,.55))}
+.cuenta-hoja h2{font:900 34px/1 var(--num);text-transform:uppercase;margin-bottom:8px}
+.cuenta-sub{margin:0 0 16px;font-size:14px;line-height:1.45;color:var(--gris)}
+.cuenta-form{display:flex;flex-direction:column;gap:10px}
+.cuenta-form input{height:50px;padding:0 16px;border-radius:14px;border:1.5px solid var(--linea-viva);background:var(--alto);color:var(--tinta);font-size:16px;outline:0}
+.cuenta-form input:focus{border-color:var(--acento)}
+.cuenta-error{margin:0;font-size:13px;font-weight:700;color:var(--corazon)}
+.cuenta-cambia{margin-top:14px;font-weight:800;color:var(--acento);font-size:14px}
+.cuenta-sin{display:block;margin:10px auto 0;font-size:13px;color:var(--gris)}
+.ent-cuenta{margin-top:2px;font-size:14px;font-weight:700;color:#B8B3D0;text-decoration:underline;text-underline-offset:4px}
+.boton-cuenta{margin-top:16px}
+
+/* ── fluidez ───────────────────────────────────────────────────────────────
+   Lo que no esta en pantalla no se dibuja, y las animaciones que no paran se
+   dejan solo donde dicen algo. En un telefono sencillo esto es la diferencia
+   entre deslizar suave y deslizar a tirones. */
+.pub{content-visibility:auto;contain-intrinsic-size:auto 760px}
+.reel{content-visibility:auto;contain-intrinsic-size:auto 100vh}
+.reel-fondo{filter:blur(22px) saturate(1.5) brightness(.6)}
+.reel-luz{animation:none}
+.reel-vistas,.reels-vivo,.reel-btns .flojo{backdrop-filter:none;background:rgba(0,0,0,.45)}
+.medalla::after{animation:none;display:none}
+.logro .medalla::after{display:block;animation:brilla 2.4s ease-in-out .4s 2}
+.insignia,.corona{animation:none}
+.nivel-barra i{animation:none}
+.chip{backdrop-filter:none}
+
+/* el panel de lo tuyo, chico mientras aprende */
+.tuyo.chico{padding:12px 14px}
+.tuyo.chico .tuyo-cab{margin-bottom:2px}
+.tuyo.chico .tuyo-porque{margin:0 0 9px;font-size:13px}
+.tuyo.chico .tuyo-linea{margin-bottom:0}
+@media (max-width:735px){
+  .etiquetas{display:none}
+  .pub-txt .porque{font-size:13px}
+}
+@media (prefers-reduced-motion:reduce){.onda-color,.marco-luz{display:none}}
+
+/* ── contadores que saltan ─────────────────────────────────────────────── */
+.cuenta-salta{display:inline-block;animation:saltaCuenta .5s cubic-bezier(.3,1.6,.5,1)}
+@keyframes saltaCuenta{0%{transform:scale(1)}40%{transform:scale(1.35);color:var(--corazon)}100%{transform:scale(1)}}
+.acc-coment span,.acc-corazon span{display:inline-block}
+
+/* ── la pausa con el abanico de libros ─────────────────────────────────── */
+.abanico{position:relative;height:190px;width:100%;margin:6px 0 4px;display:flex;justify-content:center;align-items:flex-end}
+.abanico-libro{position:absolute;bottom:10px;width:84px;aspect-ratio:2/3;border-radius:8px;background-size:cover;background-position:center;
+  box-shadow:0 14px 30px rgba(0,0,0,.6),0 0 0 2px rgba(255,255,255,.15);transform-origin:50% 120%;
+  transform:translateX(calc(var(--k) * 44px)) rotate(calc(var(--k) * 8deg));transition:transform .25s cubic-bezier(.2,1.3,.4,1)}
+.en-vista .abanico-libro{animation:abre .7s cubic-bezier(.2,1.3,.4,1) both;animation-delay:calc((var(--k) + 2) * 70ms)}
+@keyframes abre{from{transform:translateX(0) rotate(0) translateY(40px);opacity:0}}
+.abanico-libro:hover,.abanico-libro:focus-visible{transform:translateX(calc(var(--k) * 44px)) rotate(calc(var(--k) * 8deg)) translateY(-18px) scale(1.06);z-index:2}
+.pausa-reel .grande{font-size:15px}
+
+/* ── los cuentos completos ─────────────────────────────────────────────── */
+.chip.gratis{right:auto;left:12px;background:var(--vivo);color:#06281A;border-color:transparent}
+.libres-pub{padding:18px 16px;background:radial-gradient(500px 220px at 100% 0,rgba(42,229,140,.22),transparent 70%),var(--panel)}
+.libres-pub h3{font:900 28px/1 var(--num);text-transform:uppercase;margin:0 0 14px}
+.libre-mini .libre-min{display:block;font-size:11.5px;color:var(--vivo);font-weight:700}
+.lector-texto.libre{flex:1;font-size:17.5px;line-height:1.7}
+.lector-texto.entra{animation:hojaEntra .35s ease}
+@keyframes hojaEntra{from{opacity:0;transform:translateX(18px)}}
+.lector-nav{display:flex;align-items:center;justify-content:space-between;width:100%;gap:10px}
+.lector-nav .paso{width:48px;height:48px;font-size:28px}
+.lector-nav .paso:disabled{opacity:.3}
+.lector-pag{font-size:13.5px;font-weight:700;color:var(--gris)}
+.lector-aro.chico{width:84px}
+.lector-aro.chico .lector-tiempo{font-size:26px}
+.lector-aro.chico .lector-meta{display:none}
+.lector-cab .lector-aro.chico{flex:none;width:62px;margin-left:auto}
+.lector-cab .lector-aro.chico .lector-tiempo{font-size:20px;margin-top:0}
+.lector-cab:has(.lector-aro){padding-right:52px}
+.grande.acabar{background:linear-gradient(135deg,#2AE58C,#1FB36D);color:#06281A}
+
+/* ── la musica de deslizar ─────────────────────────────────────────────── */
+.reels-sonido{pointer-events:auto;display:flex;align-items:center;gap:6px;height:30px;padding:0 10px;border-radius:999px;background:rgba(0,0,0,.45);color:#fff}
+.reels-sonido .ico{width:18px;height:18px}
+.ecual{display:flex;align-items:flex-end;gap:2px;height:12px}
+.ecual b{width:3px;height:100%;border-radius:2px;background:var(--vivo);animation:ecual .8s ease-in-out infinite;transform-origin:bottom}
+.ecual b:nth-child(2){animation-delay:-.3s}
+.ecual b:nth-child(3){animation-delay:-.55s}
+.reels-sonido.mudo .ecual{display:none}
+@keyframes ecual{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
+.reel-tema{display:flex;align-items:center;gap:6px;margin-top:10px;font-size:12px;opacity:.85;white-space:nowrap;overflow:hidden}
+.reel-tema .ico{width:14px;height:14px;flex:none}
+.reel-tema span{overflow:hidden;text-overflow:ellipsis}
+.en-vista .reel-tema .ico{animation:flama 1.2s ease-in-out infinite}

@@ -101,6 +101,23 @@
     if (que === 'llama') { nota(392, 0, .3, .06, 'triangle'); nota(587, .12, .45, .06, 'triangle'); nota(784, .24, .6, .06, 'triangle'); }
   }
 
+  /* ── la red de verdad ─────────────────────────────────────────────────
+     Lo que hace esta persona se cuenta a los demas telefonos. Sin conexion,
+     estas llamadas no hacen nada. */
+  function contar(texto, libro) {
+    Red.contar(Comunidad.yo.alias || 'alguien', Comunidad.MI_COLOR, texto, libro);
+  }
+  function subirYo(libro) {
+    Red.soy({ alias: Comunidad.yo.alias || 'alguien', color: Comunidad.MI_COLOR, paginas: Comunidad.paginasSemana(), racha: Comunidad.racha(), libro: libro || null });
+  }
+  function haceCuanto(fecha) {
+    const m = Math.round((Date.now() - new Date(fecha).getTime()) / 60000);
+    return m < 1 ? 'ahora' : m < 60 ? m + ' min' : Math.round(m / 60) + ' h';
+  }
+  function deLaRed(f) {
+    return { alias: f.alias, color: f.color || '#7FD8FF', texto: f.texto, libro: f.libro ? Motor.libro(f.libro) : null };
+  }
+
   /* ── fiesta: libros y corazones que saltan ───────────────────────────── */
 
   const lienzo = $('#fiesta'), pincel = lienzo.getContext('2d');
@@ -147,9 +164,143 @@
 
   /* ── aviso de la red, arriba, como una notificacion ──────────────────── */
 
+  /* ── el fondo que se pinta con cada gesto ─────────────────────────────
+     Antes de que la pagina se arme, cada corazon o guardado suelta una onda
+     de color desde donde tocaste y el fondo se tine un paso mas hacia la piel
+     que te va tocando. Ya armada, cada gesto cambia el diseno del fondo, uno
+     por uno. */
+  const PALETA = {
+    romantasy: ['#FF4D8D', '#FFC66B'], terror: ['#E01F26', '#7A0A10'], distopia: ['#35E0FF', '#2A6CFF'],
+    arcade: ['#00E5FF', '#FF3DAE'], calma: ['#2F9E7A', '#7CC4A6'], espacio: ['#59D6FF', '#FF7A29'],
+    academia: ['#C6A45C', '#8FBF7A'], selva: ['#4FBF8B', '#E07A4A']
+  };
+  let toque = { x: innerWidth / 2, y: innerHeight / 2 };
+  addEventListener('pointerdown', ev => { toque = { x: ev.clientX, y: ev.clientY }; }, true);
+
+  function tinte(conOnda) {
+    const p = Gusto.perfil();
+    const raiz = document.documentElement;
+    if (!p.pielCerca || !PALETA[p.pielCerca]) { raiz.style.setProperty('--fuerza', 0); return; }
+    const [c1, c2] = PALETA[p.pielCerca];
+    raiz.style.setProperty('--t1', c1);
+    raiz.style.setProperty('--t2', c2);
+    raiz.style.setProperty('--fuerza', estado.armada ? 0 : Math.min(.9, .2 + p.fuertes / 5 * .7));
+    if (!conOnda) return;
+    const o = el('div', 'onda-color');
+    o.style.left = toque.x + 'px'; o.style.top = toque.y + 'px';
+    document.body.appendChild(o);
+    setTimeout(() => o.remove(), 1700);
+    if (estado.armada) {
+      variar((Number(raiz.dataset.variante) || 0) + 1);
+      vestirSegunPerfil();
+    }
+    pinta(p);
+  }
+  let pintaTimer = null;
+  function pinta(p) {
+    let caja = document.getElementById('pinta');
+    if (!caja) { caja = el('div', 'pinta'); caja.id = 'pinta'; document.body.appendChild(caja); }
+    caja.textContent = '';
+    caja.appendChild(el('i', 'gota'));
+    if (estado.armada) caja.append('Fondo nuevo en ' + (p.pielNombre !== 'La de todos' ? p.pielNombre : 'tu página'));
+    else {
+      caja.append('Tu página se pinta de ' + p.pielCercaNombre);
+      const pasos = el('span', 'pasos-p');
+      for (let k = 0; k < 5; k++) pasos.appendChild(el('b', (k < p.fuertes ? 'si' : '') + (k === p.fuertes - 1 ? ' nuevo' : '')));
+      caja.appendChild(pasos);
+    }
+    caja.hidden = false;
+    caja.classList.remove('sale'); void caja.offsetWidth;
+    clearTimeout(pintaTimer);
+    pintaTimer = setTimeout(() => { caja.classList.add('sale'); setTimeout(() => { caja.hidden = true; }, 350); }, 2200);
+  }
+
+  /* ── la campana ──────────────────────────────────────────────────────── */
+  const avisos = [];
+  let sinLeer = 0;
+  function guardarAviso(s) {
+    avisos.unshift(Object.assign({ cuando: Date.now() }, s));
+    if (avisos.length > 30) avisos.pop();
+    sinLeer++;
+    const g = $('#campana-num');
+    g.textContent = sinLeer > 9 ? '9+' : sinLeer; g.hidden = false;
+    const c = $('#campana'); c.classList.remove('suena'); void c.offsetWidth; c.classList.add('suena');
+    if (!$('#avisos').hidden) pintarAvisos();
+  }
+  function irAviso(s) {
+    if (s.ir) ir(s.ir); else if (s.libro) abrirFicha(s.libro.id);
+  }
+  function pintarAvisos() {
+    const ul = $('#avisos-lista');
+    ul.textContent = '';
+    if (!avisos.length) { ul.appendChild(el('li', 'avisos-vacio', 'Nada nuevo por ahora')); return; }
+    for (const a of avisos) {
+      const li = el('li', a.leido ? '' : 'nuevo');
+      if (a.alias === 'lectortie') li.appendChild(icono('logo', 'ava noti-logo'));
+      else li.appendChild(avatar(a.alias, a.color));
+      const t = el('span', 'aviso-txt'); t.append(el('b', '', a.alias), ' ' + a.texto, el('small', '', haceCuanto(a.cuando)));
+      li.appendChild(t);
+      if (a.libro) { const m = el('span', 'noti-tapa'); m.style.backgroundImage = 'url(img/portadas/' + a.libro.id + '.jpg)'; li.appendChild(m); }
+      li.addEventListener('click', () => { cerrarAvisos(); irAviso(a); });
+      ul.appendChild(li);
+    }
+  }
+  function abrirAvisos() {
+    pintarAvisos();
+    $('#avisos').hidden = false;
+    sinLeer = 0; $('#campana-num').hidden = true;
+    setTimeout(() => avisos.forEach(a => { a.leido = true; }), 1500);
+  }
+  function cerrarAvisos() { $('#avisos').hidden = true; }
+
+  /* Los avisos caen solos, cada quince a veinticinco segundos, mientras la app
+     esta a la vista. Si estas leyendo, se guardan sin interrumpir. */
+  function programarAvisos(espera) {
+    setTimeout(() => {
+      if ($('#entrada').hidden && !document.hidden) noti(Comunidad.aviso());
+      programarAvisos(38000 + Math.random() * 22000);
+    }, espera);
+  }
+
+  /* ── logros ───────────────────────────────────────────────────────────── */
+  function medalla(l, clase) {
+    const m = el('div', 'medalla ' + (clase || '') + (l.hecho === false ? ' cerrada' : ''));
+    m.style.setProperty('--c', l.color);
+    m.appendChild(icono(l.ico));
+    return m;
+  }
+  const colaLogros = [];
+  let mostrandoLogro = false;
+  function revisarLogros(espera) {
+    const nuevos = Comunidad.revisarLogros({ estante: estado.estante.size });
+    if (!nuevos.length) return;
+    colaLogros.push(...nuevos);
+    setTimeout(siguienteLogro, espera || 300);
+  }
+  function siguienteLogro() {
+    if (mostrandoLogro || !colaLogros.length) return;
+    mostrandoLogro = true;
+    const l = colaLogros.shift();
+    const caja = $('#logro');
+    caja.textContent = '';
+    const t = el('div', 'logro-txt');
+    t.append(el('span', '', 'Logro desbloqueado'), el('b', '', l.nombre), el('small', '', l.desc + ', +50 puntos'));
+    caja.append(medalla(l, 'grande'), t);
+    caja.style.setProperty('--c', l.color);
+    caja.hidden = false;
+    caja.classList.remove('sale'); void caja.offsetWidth;
+    sonar('logro'); vibrar([15, 30, 15]);
+    fiesta(innerWidth / 2, 90, 50);
+    contar('ganó la medalla ' + l.nombre);
+    pintarYo();
+    setTimeout(() => { caja.classList.add('sale'); setTimeout(() => { caja.hidden = true; mostrandoLogro = false; siguienteLogro(); }, 450); }, 3200);
+  }
+
   let notiTimer = null;
   function noti(s, alTocar) {
-    if (!$('#lector').hidden || !$('#entrada').hidden) return;
+    if (!$('#entrada').hidden) return;
+    guardarAviso(s);
+    if (!$('#lector').hidden) return;
     const n = $('#noti');
     n.textContent = '';
     if (s.alias === 'lectortie') n.appendChild(icono('logo', 'ava noti-logo'));
@@ -158,11 +309,11 @@
     const t = n.querySelector('.noti-txt');
     t.append(el('b', '', s.alias), ' ' + s.texto);
     if (s.libro) { const m = el('span', 'noti-tapa'); m.style.backgroundImage = 'url(img/portadas/' + s.libro.id + '.jpg)'; n.appendChild(m); }
-    n.onclick = () => { n.hidden = true; if (alTocar) alTocar(); else if (s.libro) abrirFicha(s.libro.id); };
+    n.onclick = () => { n.hidden = true; if (alTocar) alTocar(); else irAviso(s); };
     n.hidden = false;
     n.classList.remove('sale'); void n.offsetWidth;
     clearTimeout(notiTimer);
-    notiTimer = setTimeout(() => { n.classList.add('sale'); setTimeout(() => { n.hidden = true; }, 380); }, 4600);
+    notiTimer = setTimeout(() => { n.classList.add('sale'); setTimeout(() => { n.hidden = true; }, 380); }, 3800);
   }
 
   /* ── historias y lateral ─────────────────────────────────────────────── */
@@ -212,7 +363,8 @@
     $('#letra-yo').textContent = (yo.alias || 'L').charAt(0).toUpperCase();
     $('#nombre-yo').textContent = yo.alias || 'Tu lectura';
     const sem = Comunidad.paginasSemana();
-    $('#resumen-yo').textContent = (r ? r + (r === 1 ? ' día' : ' días') + ' de racha, ' : '') + sem + ' páginas esta semana';
+    const nv = Comunidad.nivel();
+    $('#resumen-yo').textContent = 'Nivel ' + nv.n + ', ' + nv.nombre + ', ' + nv.puntos + ' puntos' + (r ? ', racha de ' + r : '');
     const g = $('#contador');
     g.textContent = estado.estante.size;
     g.hidden = estado.estante.size === 0;
@@ -254,6 +406,7 @@
     if (!pubs.length) { caja.appendChild(el('p', 'cargando', 'Todavía no hay libros para esa tendencia')); return; }
     pubs.forEach((p, i) => {
       caja.appendChild(tarjeta(p));
+      if (!estado.filtro && i === 1) caja.appendChild(tarjetaLibres());
       if (!estado.filtro && i === 3) caja.appendChild(tarjetaPausa());
       if (!estado.filtro && i === 7) caja.appendChild(tarjetaPromo(pubs.length > 12 ? pubs[12].libro : pubs[0].libro));
       if (!estado.filtro && i === 12) caja.appendChild(tarjetaAmigos());
@@ -288,6 +441,7 @@
     const medio = el('div', 'pub-medio');
     Portada.pintar(medio, libro, 'L');
     medio.appendChild(el('span', 'chip', 'afinidad ' + pub.afinidad));
+    if (libro.libre) medio.appendChild(el('span', 'chip gratis', 'gratis, léelo completo'));
     const golpe = el('div', 'golpe'); golpe.appendChild(icono('corazon')); medio.appendChild(golpe);
 
     const acc = el('div', 'pub-acc');
@@ -360,6 +514,25 @@
     art.append(fila, b);
     return art;
   }
+  /* Cuentos completos para leer ya, sin comprar nada. La prueba de que la app
+     no solo recomienda, tambien te deja leer. */
+  function tarjetaLibres() {
+    const art = el('article', 'pub libres-pub');
+    animar(art);
+    art.append(el('p', 'pausa-ceja', 'Gratis, completos, aquí mismo'), el('h3', '', 'Léelos de una sentada'));
+    const tira = el('div', 'amigos-tira');
+    for (const l of Motor.libros().filter(x => x.libre)) {
+      const f = el('button', 'amigo-mini libre-mini'); f.type = 'button';
+      const tapa = el('div', 'amigo-tapa'); Portada.pintar(tapa, l, 'M');
+      const hecho = Comunidad.terminado(l.id);
+      f.append(tapa, el('b', '', l.titulo), el('span', 'libre-min', hecho ? 'leído' : Math.round(l.paginas * 1.6) + ' min'));
+      f.addEventListener('click', () => abrirLector(l.id));
+      tira.appendChild(f);
+    }
+    art.appendChild(tira);
+    return art;
+  }
+
   function tarjetaPromo(libro) {
     const art = el('article', 'pub promo');
     art.dataset.libro = libro.id;
@@ -432,9 +605,27 @@
 
   /* ── gustos, estante y compartir ─────────────────────────────────────── */
 
+  function salto(n) { if (!n) return; n.classList.remove('cuenta-salta'); void n.offsetWidth; n.classList.add('cuenta-salta'); }
+  /* Los numeros se mueven en cuanto tocas. Un corazon o un comentario que no
+     cambia nada en pantalla se siente como si no hubiera pasado. */
+  function contarDeNuevo(id) {
+    const megusta = cifra(Comunidad.corazones(id) + (estado.gusta.has(id) ? 1 : 0));
+    const coms = Comunidad.cuantosComentarios(id);
+    document.querySelectorAll('[data-libro="' + id + '"]').forEach(n => {
+      const b = n.querySelector('.pub-cuenta b');
+      if (b && b.textContent !== megusta + ' me gusta') { b.textContent = megusta + ' me gusta'; salto(b); }
+      const s = n.querySelector('.acc-corazon span');
+      if (s && s.textContent !== megusta) { s.textContent = megusta; salto(s); }
+      const c = n.querySelector('.acc-coment span');
+      if (c && c.textContent !== cifra(coms)) { c.textContent = cifra(coms); salto(c); }
+      const v = n.querySelector('.pub-com span');
+      if (v && v.textContent !== 'Ver los ' + coms + ' comentarios') { v.textContent = 'Ver los ' + coms + ' comentarios'; salto(v); }
+    });
+  }
   function marcarGusta(id, b, si) {
     if (si) estado.gusta.add(id); else estado.gusta.delete(id);
     guardarLista('lectortie.gusta', estado.gusta);
+    contarDeNuevo(id);
     document.querySelectorAll('[data-libro="' + id + '"] .acc-corazon').forEach(x => x.classList.toggle('querido', si));
     if (b) { b.classList.toggle('querido', si); if (si) { b.classList.remove('salta'); void b.offsetWidth; b.classList.add('salta'); } }
     if (si) { sonar('pop'); vibrar(12); }
@@ -451,6 +642,7 @@
     if (si) sonar('pop');
     senal(si ? 'guardar' : 'quitar', id, b);
     avisar(si ? 'Guardado en tu estante' : 'Fuera del estante');
+    if (si) revisarLogros(500);
     if (estado.vista === 'estante') pintarEstante();
   }
 
@@ -480,6 +672,7 @@
     cuerpo.textContent = '';
     velo.hidden = false;
     document.body.classList.add('con-velo');
+    Musica.bajar(true);
 
     const ficha = el('div', 'ficha');
     const arriba = el('div', 'ficha-arriba');
@@ -522,22 +715,30 @@
       avisar('Te lo guardan tres días en la biblioteca más cercana');
     });
     conseguir.append(comprar, prestado);
-    if (window.TEXTOS[l.id]) {
-      conseguir.prepend(opcion('libro', 'Leerlo aquí', 'Gratis, es de dominio público', 'Leer', () => { cerrarFicha(); abrirLector(l.id); }));
+    if (window.LIBRES && window.LIBRES[l.id]) {
+      conseguir.prepend(opcion('libro', 'Leerlo completo aquí', 'Gratis, de dominio público, ' + l.paginas + ' páginas de celular', 'Leer', () => { cerrarFicha(); abrirLector(l.id); }));
+    } else if (window.TEXTOS[l.id]) {
+      conseguir.prepend(opcion('libro', 'Leer el comienzo aquí', 'Gratis, es de dominio público', 'Leer', () => { cerrarFicha(); abrirLector(l.id); }));
     }
     ficha.appendChild(conseguir);
 
     /* Comentarios. Lo que dicen los demas, y tu respuesta que alguien contesta. */
     const rotC = el('h3', '', Comunidad.cuantosComentarios(l.id) + ' comentarios');
     const lista = el('div', 'comentarios');
+    let reales = [];
     const pintarComentarios = () => {
       lista.textContent = '';
-      for (const c of Comunidad.comentarios(l.id)) {
+      const todos = Comunidad.comentarios(l.id);
+      const mios = todos.filter(c => c.tu);
+      for (const c of todos.filter(c => !c.tu).concat(reales, mios)) {
         lista.appendChild(comentario(c));
         if (c.respuesta) { const r = comentario(Object.assign({ hace: 'ahora', likes: 0 }, c.respuesta)); r.classList.add('respuesta'); lista.appendChild(r); }
       }
     };
     pintarComentarios();
+    const real = f => ({ alias: f.alias, color: f.color || '#7FD8FF', texto: f.texto, hace: haceCuanto(f.creado), likes: 0 });
+    Red.comentarios(l.id).then(r => { if (r.length && estado.ficha && estado.ficha.id === l.id) { reales = r.map(real); pintarComentarios(); } });
+    estado.ficha = { id: l.id, agregar: f => { reales.push(real(f)); pintarComentarios(); sonar('tic'); rotC.textContent = (Comunidad.cuantosComentarios(l.id) + reales.length) + ' comentarios'; salto(rotC); } };
     const escribe = el('form', 'escribe');
     const campo = el('input'); campo.placeholder = 'Comenta algo, sin spoilers'; campo.maxLength = 140; campo.enterKeyHint = 'send';
     const manda = el('button', '', 'Publicar'); manda.type = 'submit';
@@ -547,6 +748,10 @@
       const texto = campo.value.trim();
       if (!texto) return;
       const c = Comunidad.comentar(l.id, texto);
+      rotC.textContent = Comunidad.cuantosComentarios(l.id) + ' comentarios'; salto(rotC);
+      contarDeNuevo(l.id);
+      Red.comentar(l.id, Comunidad.yo.alias || 'alguien', Comunidad.MI_COLOR, texto);
+      contar('comentó en ' + l.titulo, l.id);
       const resp = c.respuesta; delete c.respuesta;
       campo.value = '';
       pintarComentarios();
@@ -555,6 +760,7 @@
       const escribiendo = el('p', 'escribiendo', resp.alias + ' está escribiendo');
       lista.appendChild(escribiendo);
       setTimeout(() => { c.respuesta = resp; Comunidad.guardar(); escribiendo.remove(); pintarComentarios(); sonar('tic'); }, 2600);
+      revisarLogros(900);
     });
     ficha.append(rotC, lista, escribe);
 
@@ -585,14 +791,16 @@
     f.append(avatar(c.alias, c.color), t);
     return f;
   }
-  function cerrarFicha() { $('#velo').hidden = true; document.body.classList.remove('con-velo'); }
+  function cerrarFicha() { $('#velo').hidden = true; document.body.classList.remove('con-velo'); estado.ficha = null; Musica.bajar(false); }
 
   /* ── la sesion de lectura ────────────────────────────────────────────── */
 
   let reloj = null;
   function abrirLector(id) {
     const l = Motor.libro(id);
+    const nuevo = !Comunidad.yo.leyendo[id] && !Comunidad.terminado(id);
     Comunidad.empezar(id);
+    if (nuevo) { contar('empezó ' + l.titulo, id); subirYo(id); }
     senal('leer', id);
     const caja = $('#lector'), cuerpo = $('#lector-cuerpo');
     caja.hidden = false;
@@ -603,7 +811,9 @@
     caja.querySelector('.lector-fondo') && caja.querySelector('.lector-fondo').remove();
     caja.prepend(fondo);
 
-    const texto = window.TEXTOS[l.id];
+    Musica.parar();
+    const libre = window.LIBRES && window.LIBRES[l.id];
+    const texto = !libre && window.TEXTOS[l.id];
     const pagina = (Comunidad.yo.leyendo[l.id] || {}).pagina || 0;
     const cab = el('div', 'lector-cab');
     const tapa = el('div', 'lector-tapa'); Portada.pintar(tapa, l, 'M');
@@ -613,13 +823,58 @@
 
     const META = 300;
     const aro = el('div', 'lector-aro');
-    aro.innerHTML = '<svg viewBox="0 0 120 120"><circle class="pista" cx="60" cy="60" r="52"/><circle class="lleno" cx="60" cy="60" r="52" pathLength="1"/></svg>';
+    aro.innerHTML = '<svg viewBox="0 0 120 120"><defs><linearGradient id="gAro" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2AE58C"/><stop offset=".55" stop-color="#59D6FF"/><stop offset="1" stop-color="#8B6BFF"/></linearGradient></defs><circle class="pista" cx="60" cy="60" r="52"/><circle class="lleno" cx="60" cy="60" r="52" pathLength="1"/></svg>';
     const tiempo = el('b', 'lector-tiempo', '0:00');
     const meta = el('span', 'lector-meta', 'meta 5 minutos');
     aro.append(tiempo, meta);
 
     const centro = el('div', 'lector-centro');
-    if (texto) {
+    let fin;
+    if (libre) {
+      /* Un cuento completo, una pagina por pantalla. Se pasa deslizando de lado o
+         con las flechas, y en la ultima se termina el libro de verdad. */
+      const total = libre.paginas.length;
+      let i = Math.min(pagina, total - 1);
+      const desde = i;
+      const hoja = el('div', 'lector-texto libre');
+      const nav = el('div', 'lector-nav');
+      const atras = boton('', 'paso', () => mover(-1)); atras.textContent = '‹'; atras.setAttribute('aria-label', 'Página anterior');
+      const cuenta = el('span', 'lector-pag');
+      const adelante = boton('', 'paso', () => mover(1)); adelante.textContent = '›'; adelante.setAttribute('aria-label', 'Página siguiente');
+      nav.append(atras, cuenta, adelante);
+      const pinta = () => {
+        hoja.textContent = '';
+        if (i === 0) hoja.appendChild(el('p', 'lector-cap', l.autor + ', ' + l.anio));
+        libre.paginas[i].forEach(p => hoja.appendChild(el('p', '', p)));
+        if (i === total - 1) hoja.appendChild(el('p', 'lector-sigue', 'Fin. ' + libre.fuente + '.'));
+        hoja.scrollTop = 0;
+        hoja.classList.remove('entra'); void hoja.offsetWidth; hoja.classList.add('entra');
+        cuenta.textContent = 'Página ' + (i + 1) + ' de ' + total;
+        atras.disabled = i === 0;
+        adelante.hidden = i === total - 1;
+        fin.textContent = i === total - 1 ? 'Lo terminé' : 'Terminé por hoy';
+        fin.classList.toggle('acabar', i === total - 1);
+      };
+      const mover = d => { const n = Math.max(0, Math.min(total - 1, i + d)); if (n !== i) { i = n; sonar('tic'); pinta(); } };
+      let x0 = null;
+      hoja.addEventListener('touchstart', ev => { x0 = ev.touches[0].clientX; }, { passive: true });
+      hoja.addEventListener('touchend', ev => {
+        if (x0 === null) return;
+        const dx = ev.changedTouches[0].clientX - x0; x0 = null;
+        if (Math.abs(dx) > 50) mover(dx < 0 ? 1 : -1);
+      });
+      estado.teclasLector = ev => { if (ev.key === 'ArrowRight') mover(1); if (ev.key === 'ArrowLeft') mover(-1); };
+      aro.classList.add('chico');
+      cab.appendChild(aro);
+      t.lastChild.textContent = 'Cuento completo, ' + total + ' páginas, gratis';
+      centro.append(hoja, nav);
+      centro.classList.add('con-texto');
+      fin = boton('Terminé por hoy', 'grande', () => {
+        const leidas = Math.max(1, i + 1 - desde);
+        festejar(l, i === total - 1 ? Math.max(1, total - pagina) : leidas, Math.floor((Date.now() - inicio) / 1000));
+      });
+      pinta();
+    } else if (texto) {
       const hoja = el('div', 'lector-texto');
       hoja.appendChild(el('p', 'lector-cap', texto.capitulo));
       texto.parrafos.forEach(p => hoja.appendChild(el('p', '', p)));
@@ -629,7 +884,7 @@
     } else {
       centro.append(aro, el('p', 'lector-pide', 'Abre tu libro en la página ' + (pagina + 1) + '. Nosotros llevamos el tiempo.'));
     }
-    const fin = boton('Terminé por hoy', 'grande', () => cuantas(l, Math.floor((Date.now() - inicio) / 1000), !!texto));
+    if (!fin) fin = boton('Terminé por hoy', 'grande', () => cuantas(l, Math.floor((Date.now() - inicio) / 1000), !!texto));
     cuerpo.append(cab, centro, fin);
 
     const inicio = Date.now();
@@ -670,6 +925,10 @@
 
   function festejar(l, paginas, segundos) {
     const r = Comunidad.anotarLectura(l.id, paginas, segundos / 60);
+    subirYo(l.id);
+    contar(r.acabo ? 'terminó ' + l.titulo
+      : r.despues.racha > r.antes.racha ? 'prendió su racha con ' + l.titulo
+      : 'leyó ' + paginas + ' páginas de ' + l.titulo, l.id);
     const cuerpo = $('#lector-cuerpo');
     cuerpo.textContent = '';
     const caja = el('div', 'festejo');
@@ -699,6 +958,7 @@
     cuerpo.appendChild(caja);
 
     sonar(r.acabo ? 'logro' : 'llama'); vibrar([20, 40, 20]);
+    revisarLogros(1900);
     fiesta(innerWidth / 2, innerHeight * .32, r.acabo ? 140 : 80);
     setTimeout(() => {
       const b = llama.querySelector('b');
@@ -709,10 +969,12 @@
   }
   function cerrarLector() {
     clearInterval(reloj);
+    estado.teclasLector = null;
     $('#lector').hidden = true;
     document.body.classList.remove('con-lector');
     pintarYo();
     if (estado.vista === 'feed') pintarHoy();
+    if (estado.vista === 'deslizar') { const v = document.querySelector('#reels-pista .reel.en-vista'); if (v) Musica.tocar(cancion(v)); }
     if (estado.vista === 'ruta') pintarRuta();
     if (estado.vista === 'comunidad') pintarComunidad();
     if (estado.vista === 'estante') pintarEstante();
@@ -788,25 +1050,67 @@
     semana.append(llama, txt);
     caja.appendChild(semana);
 
-    const rk = el('section', 'bloque');
+    /* Tu nivel y tus medallas. */
+    const nv = Comunidad.nivel();
+    const niv = el('section', 'bloque nivel');
+    const nCab = el('div', 'nivel-cab');
+    const insignia = el('div', 'insignia'); insignia.append(el('small', '', 'nivel'), el('b', '', nv.n));
+    const nTxt = el('div', 'nivel-txt');
+    const barraN = el('div', 'nivel-barra'); const iN = el('i'); iN.style.width = Math.max(4, nv.avance * 100) + '%'; barraN.appendChild(iN);
+    nTxt.append(el('b', '', nv.nombre), el('span', '', nv.puntos + ' puntos, te faltan ' + nv.faltan + ' para ' + nv.siguiente), barraN);
+    nCab.append(insignia, nTxt);
+    niv.appendChild(nCab);
+    const meds = el('div', 'medallas');
+    for (const l of Comunidad.logros()) {
+      const m = el('button', 'med-item' + (l.hecho ? ' hecho' : '')); m.type = 'button';
+      m.append(medalla(l), el('span', '', l.nombre));
+      m.addEventListener('click', () => avisar(l.hecho ? l.nombre + ', ganada' : l.desc));
+      meds.appendChild(m);
+    }
+    niv.appendChild(meds);
+    const bc = boton('', 'flojo ancho boton-cuenta', () => abrirCuenta());
+    niv.appendChild(bc);
+    caja.appendChild(niv);
+    pintarCuentaBotones();
+
+    /* El ranking con podio. */
+    const rk = el('section', 'bloque ranking-b');
     const rkCab = el('div', 'bloque-cab'); rkCab.append(el('h3', '', 'Ranking de la semana'), el('span', '', 'páginas'));
     rk.appendChild(rkCab);
-    const filas = el('ol', 'tabla');
     const t = Comunidad.tabla();
+    const podio = el('div', 'podio');
+    [1, 0, 2].forEach(i => {
+      const f = t[i]; if (!f) return;
+      const col = el('div', 'podio-col p' + (i + 1) + (f.tu ? ' tu' : ''));
+      col.style.setProperty('--d', (i === 0 ? 3 : i === 1 ? 1 : 2) * 140 + 'ms');
+      if (i === 0) { const c = el('span', 'corona'); c.appendChild(icono('corona')); col.appendChild(c); }
+      const av = el('div', 'podio-ava'); av.appendChild(avatar(f.alias, f.color));
+      col.append(av, el('b', 'podio-nom', f.tu ? 'tú' : f.alias), el('span', 'podio-pag', f.paginas + ' págs'), el('div', 'pedestal', i + 1));
+      podio.appendChild(col);
+    });
+    rk.appendChild(podio);
+    const filas = el('ol', 'tabla');
     const tope = Math.max(1, t[0].paginas);
     const yoEn = t.findIndex(f => f.tu);
     t.forEach((f, i) => {
-      if (i >= 7 && !f.tu) return;
-      if (f.tu && i >= 7) filas.appendChild(el('li', 'tabla-salto', '...'));
+      if (i < 3) return;
+      if (i >= 9 && !f.tu) return;
+      if (f.tu && i >= 9) filas.appendChild(el('li', 'tabla-salto', '...'));
       const li = el('li', f.tu ? 'tu' : '');
-      li.style.setProperty('--d', i * 60 + 'ms');
+      li.style.setProperty('--d', (i - 3) * 60 + 'ms');
+      li.style.setProperty('--h', (i * 37) % 360);
       const barra = el('i', 'tabla-barra'); barra.style.width = Math.max(4, f.paginas / tope * 100) + '%';
-      const nom = el('span', 'tabla-nom'); nom.append(el('b', '', f.tu ? (f.alias + ', tú') : f.alias), el('small', '', f.tu ? 'Lee para subir' : (f.libro ? f.libro.titulo : f.ciudad)));
+      const nom = el('span', 'tabla-nom'); nom.append(el('b', '', f.tu ? (f.alias + ', tú') : f.alias), el('small', '', f.tu ? (yoEn > 0 ? 'te faltan ' + (t[yoEn - 1].paginas - f.paginas + 1) + ' para subir' : 'vas primero') : f.real ? 'en vivo ahora' : (f.libro ? f.libro.titulo : f.ciudad)));
       li.append(el('b', 'tabla-pos', i + 1), avatar(f.alias, f.color), nom, el('span', 'tabla-pag', f.paginas), barra);
+      if (f.real) li.classList.add('real');
       filas.appendChild(li);
     });
     rk.appendChild(filas);
-    if (yoEn > 0) rk.appendChild(boton('Leer y subir', 'grande', () => abrirLector((Comunidad.leyendo()[0] || { libro: Comunidad.ruta().pasos[Math.max(0, Comunidad.ruta().actual)].libro }).libro.id)));
+    if (yoEn > 0) {
+      const sube = boton('Leer y subir al puesto ' + yoEn, 'grande', () => abrirLector((Comunidad.leyendo()[0] || { libro: Comunidad.ruta().pasos[Math.max(0, Comunidad.ruta().actual)].libro }).libro.id));
+      sube.prepend(icono('trofeo'));
+      rk.appendChild(sube);
+    }
     caja.appendChild(rk);
 
     const prom = el('section', 'bloque');
@@ -817,7 +1121,7 @@
     const techo = Math.max(1, ...ps.map(p => p.valor));
     for (const p of ps) {
       const b = el('div', 'col-prom' + (p.tu ? ' tu' : '') + (p.pais ? ' pais' : ''));
-      const col = el('i'); col.style.setProperty('--h', Math.max(.04, p.valor / techo));
+      const col = el('i'); col.style.setProperty('--h', Math.max(.04, p.valor / techo)); col.style.setProperty('--d', ps.indexOf(p) * 120 + 'ms');
       b.append(el('b', '', p.valor), col, el('span', '', p.nombre));
       barras.appendChild(b);
     }
@@ -850,7 +1154,7 @@
         const si = Comunidad.alternarClub(c.id);
         b.textContent = si ? 'Dentro' : 'Unirme'; b.classList.toggle('dentro', si);
         miembros.textContent = (c.miembros + (si ? 1 : 0)) + ' lectores';
-        if (si) { sonar('pop'); avisar('Te uniste a ' + c.nombre); }
+        if (si) { sonar('pop'); avisar('Te uniste a ' + c.nombre); contar('se unió al club ' + c.nombre, c.lee); revisarLogros(600); }
       });
       const miembros = el('span', '', (c.miembros + (c.dentro ? 1 : 0)) + ' lectores');
       k.append(tapa, el('b', '', c.nombre), el('span', 'club-lee', 'Leen ' + c.libro.titulo), miembros, b);
@@ -940,15 +1244,17 @@
   /* ── deslizar ────────────────────────────────────────────────────────── */
 
   let reelsUsados = new Set(), reelsCuenta = 0, reelsVistos = 0;
+  const ultimosReels = [];
   function llenarReels() {
     const pista = $('#reels-pista');
     let pubs = publicacionesReels();
     if (!pubs.length) { reelsUsados.clear(); pubs = publicacionesReels(); }
     for (const p of pubs) {
       reelsUsados.add(p.libro.id);
+      ultimosReels.push(p.libro);
       pista.appendChild(reel(p));
       reelsCuenta++;
-      if (reelsCuenta % 6 === 0) pista.appendChild(reelPausa());
+      if (reelsCuenta % 5 === 0) pista.appendChild(reelPausa(ultimosReels.slice(-5)));
       if (reelsCuenta % 9 === 0) pista.appendChild(reel(Object.assign({}, p, { promo: true, libro: Motor.libros()[Math.floor(Math.random() * Motor.libros().length)] })));
     }
   }
@@ -965,8 +1271,18 @@
       if (id && !e.target._visto) { e.target._visto = true; reelsVistos++; senal('ver', id, null, e.target.dataset.tendencia); }
       const pista = $('#reels-pista');
       if (e.target === pista.lastElementChild || e.target === pista.children[pista.children.length - 3]) llenarReels();
+      if (estado.vista === 'deslizar' && $('#lector').hidden) Musica.tocar(cancion(e.target));
     }
   }, { threshold: .6 }) : null;
+
+  function cancion(r) {
+    if (r.classList.contains('pausa-reel')) return 'pausa';
+    if (r.classList.contains('promo')) return 'promo';
+    const t = r.dataset.tendencia;
+    if (t && t !== 'tuyo') return t;
+    const l = Motor.libro(r.dataset.libro);
+    return l && (l.temas || []).includes('clasico') ? 'clasicos' : 'tuyo';
+  }
 
   function reel(p) {
     const l = p.libro;
@@ -1003,7 +1319,7 @@
     const cor = ladoBtn('corazon', cifra(Comunidad.corazones(l.id)), 'acc-corazon');
     if (estado.gusta.has(l.id)) cor.classList.add('querido');
     cor.addEventListener('click', () => marcarGusta(l.id, cor, !estado.gusta.has(l.id)));
-    const com = ladoBtn('comentar', cifra(Comunidad.cuantosComentarios(l.id)));
+    const com = ladoBtn('comentar', cifra(Comunidad.cuantosComentarios(l.id)), 'acc-coment');
     com.addEventListener('click', () => abrirFicha(l.id, p.tendencia.id, true));
     const mar = ladoBtn('marca', 'Guardar', 'acc-marca');
     if (estado.estante.has(l.id)) mar.classList.add('marcado');
@@ -1024,6 +1340,10 @@
       ultimo = ahora;
     });
 
+    const tema = el('div', 'reel-tema');
+    tema.append(icono('nota'), el('span', '', 'Sonido original, '));
+    tema.lastChild.appendChild(el('b', '', Musica.nombre(p.promo ? 'promo' : p.tendencia.id)));
+    pie.appendChild(tema);
     r.append(fondo, luz, clip, tapa, golpe, gancho, pie, lado);
     if (ojoReel) ojoReel.observe(r);
     return r;
@@ -1033,18 +1353,29 @@
     b.append(icono(ico), el('span', '', texto));
     return b;
   }
-  function reelPausa() {
+  /* Cada cinco deslizones, una pausa. Te ensena en abanico los cinco libros
+     que acabas de pasar y te pregunta cual se te quedo. Tocas uno y lees cinco
+     minutos de ese. Es el movimiento del pitch, deslizar que termina en leer. */
+  function reelPausa(libros) {
     const r = el('article', 'reel pausa-reel');
     r.dataset.red = 'tuyo';
     const rr = Comunidad.ruta();
     const paso = rr.pasos[Math.max(0, rr.actual)];
+    const lista = (libros && libros.length ? libros : [paso.libro]).slice(-5);
     const c = el('div', 'pausa-reel-caja');
-    const mano = el('div', 'mano-libro');
-    mano.append(icono('deslizar'), el('i', 'flecha', ''), icono('libro'));
-    c.append(mano, el('p', 'pausa-ceja', 'Llevas ' + Math.max(6, reelsVistos) + ' deslizones'),
-      el('h2', '', 'Convierte este movimiento en este otro'),
-      el('p', 'pausa-sub', '5 minutos de ' + paso.libro.titulo + ' y prendes tu racha'));
-    const b = boton('Leer 5 minutos', 'grande', () => abrirLector(paso.libro.id));
+    c.append(el('p', 'pausa-ceja', 'Hora de leer'), el('h2', '', '¿Cuál se te quedó?'),
+      el('p', 'pausa-sub', 'Estos ' + lista.length + ' pasaron por tu pantalla. Toca uno y léelo 5 minutos.'));
+    const abanico = el('div', 'abanico');
+    lista.forEach((l, k) => {
+      const t = el('button', 'abanico-libro'); t.type = 'button';
+      t.style.setProperty('--k', k - (lista.length - 1) / 2);
+      t.style.backgroundImage = 'url(img/portadas/' + l.id + '.jpg)';
+      t.setAttribute('aria-label', 'Leer ' + l.titulo);
+      t.addEventListener('click', () => { sonar('pop'); abrirLector(l.id); });
+      abanico.appendChild(t);
+    });
+    c.appendChild(abanico);
+    const b = boton('Seguir mi ruta, ' + paso.libro.titulo, 'grande', () => abrirLector(paso.libro.id));
     b.prepend(icono('play'));
     c.append(b, el('span', 'pausa-sigue', 'o sigue deslizando'));
     r.appendChild(c);
@@ -1062,6 +1393,7 @@
   function senal(que, libro, b, desde, texto) {
     const t = deDonde(b, desde);
     Gusto.registrar(que, { libro: libro || undefined, tendencia: t && t !== 'tuyo' ? t : undefined, texto: texto || undefined });
+    if (que === 'corazon' || que === 'guardar') Gusto.empujar().then(() => tinte(true));
   }
 
   let ojo = null;
@@ -1087,19 +1419,31 @@
     return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
   }
 
+  /* El panel se rehace solo cuando algo cambio. Antes se armaba entero cada
+     segundo y forzaba al navegador a recalcular estilos, que en un telefono
+     sencillo se sentia como tirones al deslizar. Cada segundo solo corre el reloj. */
+  let firmaTuyo = '';
   function pintarTuyo() {
     const caja = $('#tuyo');
     const perfil = Gusto.perfil();
-    vestirSegunPerfil();
     if (!perfil || estado.vista !== 'feed' || estado.filtro) { caja.hidden = true; return; }
-    caja.hidden = false;
     const mia = estado.armada && perfil.listo;
+    if (mia) {
+      $('#tuyo-reloj').textContent = 'se rearma en ' + relojTxt(Gusto.restante());
+      $('#tuyo-avance').style.width = (100 - Gusto.restante() / Gusto.CICLO_MS * 100).toFixed(1) + '%';
+    }
+    const firma = [mia, perfil.listo, perfil.fuertes, perfil.piel, perfil.porque, perfil.temas.map(t => t.tema).join()].join('|');
+    if (firma === firmaTuyo && !caja.hidden) return;
+    firmaTuyo = firma;
+    vestirSegunPerfil();
+    caja.hidden = false;
     caja.classList.toggle('puesta', mia);
+    caja.classList.toggle('chico', !mia);
     caja.querySelector('.tuyo-botones').hidden = !mia;
     const temas = $('#tuyo-temas');
     temas.textContent = '';
-    for (const t of perfil.temas.slice(0, 5)) temas.appendChild(el('span', '', t.tema));
-    temas.hidden = !perfil.temas.length;
+    for (const t of perfil.temas.slice(0, 3)) temas.appendChild(el('span', '', t.tema));
+    temas.hidden = !mia || !perfil.temas.length;
     const vestida = perfil.piel && perfil.piel !== 'noche';
     const avance = $('#tuyo-avance');
     if (mia) {
@@ -1113,11 +1457,9 @@
       $('#tuyo-reloj').textContent = 'armando';
       avance.style.width = '100%';
     } else {
-      $('#tuyo-titulo').textContent = 'Aprendiendo de lo que haces';
+      $('#tuyo-titulo').textContent = 'Tu página cambia contigo';
       const f = perfil.faltan;
-      $('#tuyo-porque').textContent = f
-        ? 'Abre, guarda o dale corazón a ' + f + (f === 1 ? ' libro más' : ' libros más') + ' y la página cambia contigo.'
-        : 'Ya casi.';
+      $('#tuyo-porque').textContent = f ? 'Dale corazón o guarda ' + f + (f === 1 ? ' libro más' : ' libros más') : 'Ya casi';
       $('#tuyo-reloj').textContent = perfil.fuertes + ' de 5';
       avance.style.width = Math.min(100, perfil.fuertes / 5 * 100) + '%';
     }
@@ -1125,6 +1467,7 @@
 
   function vestir(nombre) {
     const piel = nombre && nombre !== 'noche' ? nombre : '';
+    if ((document.documentElement.dataset.piel || '') === piel) return;
     if (piel) document.documentElement.dataset.piel = piel;
     else delete document.documentElement.dataset.piel;
     try { if (piel) localStorage.setItem('lectortie.piel', piel); else localStorage.removeItem('lectortie.piel'); } catch (e) { /* modo privado */ }
@@ -1156,6 +1499,7 @@
     setTimeout(() => {
       variar(Gusto.vuelta());
       vestirSegunPerfil();
+      tinte(false);
       scrollTo({ top: 0 });
       cargarFeed();
     }, 420);
@@ -1173,6 +1517,7 @@
     Gusto.marcarArmada(false);
     vestir(null);
     delete document.documentElement.dataset.variante;
+    document.documentElement.style.setProperty('--fuerza', 0);
     estado.vistos.clear();
     Gusto.olvidar().then(() => { cargarFeed(); avisar('Olvidado, vuelve a empezar'); });
   }
@@ -1188,6 +1533,11 @@
     $('#hoy').hidden = vista !== 'feed' || estado.filtro || !Comunidad.yo.ruta.length;
     document.body.classList.toggle('buscando', vista === 'buscar');
     document.body.classList.toggle('en-reels', vista === 'deslizar');
+    if (vista === 'deslizar') {
+      Musica.asegurar();
+      const enVista = document.querySelector('#reels-pista .reel.en-vista');
+      if (enVista) Musica.tocar(cancion(enVista));
+    } else Musica.parar(true);
     $('#reels').hidden = vista !== 'deslizar';
     pintarTuyo();
     document.querySelectorAll('[data-ir]').forEach(b => {
@@ -1223,6 +1573,70 @@
     pista.hidden = true; sug.hidden = true;
     senal('buscar', null, null, null, texto);
     for (const l of libros) caja.appendChild(mini(l));
+  }
+
+  /* ── la cuenta, opcional ─────────────────────────────────────────────── */
+  function abrirCuenta(modo) {
+    const caja = $('#cuenta'), cuerpo = $('#cuenta-cuerpo');
+    cuerpo.textContent = '';
+    caja.hidden = false;
+    document.body.classList.add('con-velo');
+    const c = Red.cuenta();
+    const logo = icono('logo', 'cuenta-logo');
+    if (c) {
+      cuerpo.append(logo, el('h2', '', 'Tu avance está a salvo'),
+        el('p', 'cuenta-sub', 'Entraste como ' + c.correo + '. Tu racha, páginas, medallas y ruta se guardan solas.'));
+      const salirB = boton('Salir de la cuenta', 'flojo ancho', async () => {
+        await Red.salir(); cerrarCuenta(); avisar('Saliste, todo sigue en este teléfono'); pintarCuentaBotones();
+      });
+      cuerpo.appendChild(salirB);
+      return;
+    }
+    let crear = modo !== 'entrar';
+    const tit = el('h2'), sub = el('p', 'cuenta-sub');
+    const f = el('form', 'cuenta-form');
+    const correo = el('input'); correo.type = 'email'; correo.placeholder = 'tu correo'; correo.autocomplete = 'email'; correo.required = true;
+    const clave = el('input'); clave.type = 'password'; clave.placeholder = 'contraseña, mínimo 6'; clave.minLength = 6; clave.required = true;
+    const error = el('p', 'cuenta-error'); error.hidden = true;
+    const ir2 = el('button', 'grande'); ir2.type = 'submit';
+    const cambiarB = boton('', 'cuenta-cambia', () => { crear = !crear; pinta(); });
+    const sin = boton('Seguir sin cuenta', 'cuenta-sin', cerrarCuenta);
+    function pinta() {
+      tit.textContent = crear ? 'Guarda tu avance' : 'Entra a tu cuenta';
+      sub.textContent = crear ? 'Es opcional. Con cuenta tu racha, páginas y medallas te siguen a cualquier teléfono.' : 'Tu racha y tu ruta vuelven tal como las dejaste.';
+      ir2.textContent = crear ? 'Crear cuenta' : 'Entrar';
+      clave.autocomplete = crear ? 'new-password' : 'current-password';
+      cambiarB.textContent = crear ? 'Ya tengo cuenta' : 'Crear una cuenta nueva';
+      error.hidden = true;
+    }
+    pinta();
+    f.append(correo, clave, error, ir2);
+    f.addEventListener('submit', async ev => {
+      ev.preventDefault();
+      ir2.disabled = true; ir2.textContent = 'Un momento';
+      const r = crear ? await Red.crearCuenta(correo.value.trim(), clave.value) : await Red.entrar(correo.value.trim(), clave.value);
+      ir2.disabled = false;
+      if (r.error) { error.textContent = r.error; error.hidden = false; pinta(); error.hidden = false; error.textContent = r.error; return; }
+      sonar('logro'); fiesta(innerWidth / 2, innerHeight * .4, 70);
+      if (r.cambio) { avisar('Bienvenido de vuelta, cargando tu avance'); setTimeout(() => location.reload(), 900); return; }
+      cerrarCuenta();
+      avisar(crear ? 'Cuenta creada, tu avance ya se guarda solo' : 'Entraste, tu avance ya se guarda solo');
+      if (!$('#entrada').hidden) { /* sigue la entrada normal */ }
+      pintarCuentaBotones();
+    });
+    cuerpo.append(logo, tit, sub, f, cambiarB, sin);
+    setTimeout(() => correo.focus(), 250);
+  }
+  function cerrarCuenta() { $('#cuenta').hidden = true; if ($('#velo').hidden) document.body.classList.remove('con-velo'); }
+  /* El boton de la cuenta aparece solo si la base respondio. Sin base, la app
+     no ofrece algo que no puede cumplir. */
+  function pintarCuentaBotones() {
+    const hay = Red.lista();
+    $('#ent-cuenta').hidden = !hay;
+    document.querySelectorAll('.boton-cuenta').forEach(b => {
+      b.hidden = !hay;
+      b.textContent = Red.cuenta() ? 'Tu cuenta, avance guardado' : 'Guardar mi avance con una cuenta';
+    });
   }
 
   /* ── la entrada ──────────────────────────────────────────────────────── */
@@ -1300,6 +1714,8 @@
         caja.appendChild(t);
         setTimeout(() => sonar('tic'), 250 + i * 220);
       });
+      subirYo(ruta[0]);
+      contar('llegó a lectortie y empieza con ' + libros[0].titulo, libros[0].id);
       const txt = $('#ent-armando-txt');
       setTimeout(() => { txt.textContent = 'Empiezas con ' + libros[0].titulo; }, 1300);
       setTimeout(() => { txt.textContent = 'Y en un par de meses, ' + libros[libros.length - 1].titulo; }, 2500);
@@ -1332,6 +1748,7 @@
     $('#lector-cerrar').addEventListener('click', cerrarLector);
     $('#velo').addEventListener('click', ev => { if (ev.target === $('#velo')) cerrarFicha(); });
     document.addEventListener('keydown', ev => {
+      if (!$('#lector').hidden && estado.teclasLector) estado.teclasLector(ev);
       if (ev.key === 'Escape') { if (!$('#velo').hidden) cerrarFicha(); else if (!$('#lector').hidden) cerrarLector(); }
       if (estado.vista === 'deslizar' && $('#velo').hidden && $('#lector').hidden && ['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', ' '].includes(ev.key)) {
         ev.preventDefault();
@@ -1340,6 +1757,16 @@
       }
     });
     $('#tuyo-olvidar').addEventListener('click', olvidarTodo);
+    $('#campana').addEventListener('click', () => $('#avisos').hidden ? abrirAvisos() : cerrarAvisos());
+    const sonido = $('#reels-sonido');
+    const pintaSonido = () => { sonido.classList.toggle('mudo', !Musica.prendida()); sonido.querySelector('use').setAttribute('href', Musica.prendida() ? '#i-sonido' : '#i-mudo'); };
+    pintaSonido();
+    sonido.addEventListener('click', () => { Musica.asegurar(); Musica.alternar(); pintaSonido(); const v = document.querySelector('#reels-pista .reel.en-vista'); if (v && Musica.prendida()) Musica.tocar(cancion(v)); });
+    $('#cuenta-cerrar').addEventListener('click', cerrarCuenta);
+    $('#cuenta').addEventListener('click', ev => { if (ev.target === $('#cuenta')) cerrarCuenta(); });
+    $('#ent-cuenta').addEventListener('click', () => abrirCuenta('entrar'));
+    $('#avisos-cerrar').addEventListener('click', cerrarAvisos);
+    $('#avisos').addEventListener('click', ev => { if (ev.target === $('#avisos')) cerrarAvisos(); });
     $('#buscador').addEventListener('submit', ev => { ev.preventDefault(); $('#q').blur(); });
     $('#q').addEventListener('input', ev => {
       const v = ev.target.value;
@@ -1372,6 +1799,7 @@
 
     Gusto.marcarArmada(estado.armada);
     Gusto.empezar(() => pintarTuyo(), rearmar);
+    tinte(false);
     setInterval(pintarTuyo, 1000);
 
     /* La red se mueve sola, un poco cada tanto. */
@@ -1383,15 +1811,27 @@
       const vc = document.querySelector('.vivo-cuenta'); if (vc) vc.lastChild.textContent = Comunidad.leyendoAhora() + ' leyendo';
     }, 7000);
     for (let k = 0; k < 5; k++) sumarSuceso($('#suceden-lado'), Comunidad.suceso(), false);
+
+    /* La red de verdad: lo ultimo que paso y lo que vaya pasando, con aviso. */
+    Red.arrancar().then(ok => {
+      pintarCuentaBotones();
+      if (!ok) return;
+      if (Comunidad.yo.alias) subirYo((Comunidad.leyendo()[0] || {}).libro && Comunidad.leyendo()[0].libro.id);
+      Red.sucesos(6).then(filas => filas.reverse().forEach(f => sumarSuceso($('#suceden-lado'), deLaRed(f), false)));
+      Red.al('suceso', f => {
+        const s = deLaRed(f);
+        sumarSuceso($('#suceden-lado'), s, true);
+        sumarSuceso(document.getElementById('suceden-com'), s, true);
+        noti(s);
+      });
+      Red.al('comentario', f => { if (estado.ficha && estado.ficha.id === f.libro) estado.ficha.agregar(f); });
+    });
     $('#reels-vivo').textContent = Comunidad.leyendoAhora();
     setInterval(() => { estado.tendencias = Motor.tendencias(); pintarRanking(); }, 60000);
 
-    let pausaNoti = 0;
-    setInterval(() => {
-      if (!$('#entrada').hidden || ++pausaNoti % 2) return;
-      const s = Comunidad.suceso();
-      noti(s);
-    }, 26000);
+    /* La campana arranca con avisos, y despues caen solos. */
+    for (let k = 0; k < 3; k++) guardarAviso(Comunidad.aviso());
+    programarAvisos(entro ? 14000 : 20000);
   }
 
   arrancar();

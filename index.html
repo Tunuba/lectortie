@@ -21,8 +21,11 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Figtree:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="css/estilos.css">
 <link rel="stylesheet" href="css/vivo.css">
+<link rel="stylesheet" href="css/juego.css">
 </head>
 <body>
+<div class="tinte" id="tinte" aria-hidden="true"></div>
+<div class="marco-luz" aria-hidden="true"></div>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
@@ -42,6 +45,11 @@
     <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
     <symbol id="i-candado" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></symbol>
     <symbol id="i-campana" viewBox="0 0 24 24"><path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></symbol>
+    <symbol id="i-corona" viewBox="0 0 24 24"><path d="M3.5 8l4.2 3.6L12 5l4.3 6.6L20.5 8l-1.6 10.5H5.1z"/><path d="M5.5 21h13"/></symbol>
+    <symbol id="i-trofeo" viewBox="0 0 24 24"><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4v1.5A3.5 3.5 0 0 0 7.5 11M17 6h3v1.5a3.5 3.5 0 0 1-3.5 3.5M12 14v4M8 21h8M9.5 18h5"/></symbol>
+    <symbol id="i-nota" viewBox="0 0 24 24"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></symbol>
+    <symbol id="i-sonido" viewBox="0 0 24 24"><path d="M4 9.5h4L13 5v14l-5-4.5H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></symbol>
+    <symbol id="i-mudo" viewBox="0 0 24 24"><path d="M4 9.5h4L13 5v14l-5-4.5H4z"/><path d="M17 9.5l5 5M22 9.5l-5 5"/></symbol>
     <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l10-6.5z"/></symbol>
     <symbol id="i-biblio" viewBox="0 0 24 24"><path d="M3 20.5h18M4.5 20.5V10M9.5 20.5V10M14.5 20.5V10M19.5 20.5V10M2.5 10 12 4l9.5 6z"/></symbol>
     <symbol id="i-tiktok" viewBox="0 0 24 24"><path d="M15 3.5c.6 2.4 2.1 3.8 4.5 4v3c-1.7 0-3.2-.5-4.5-1.4v6.3c0 3.4-2.6 5.6-5.6 5.6A5.5 5.5 0 0 1 4 15.5C4 12.4 6.5 10 9.6 10c.4 0 .8 0 1.2.1v3.2a2.5 2.5 0 1 0 1.7 2.4V3.5z"/></symbol>
@@ -61,6 +69,7 @@
     <p class="ent-lema">Leer también puede ser adictivo</p>
     <button class="ent-boton" data-sigue="1" type="button">Empezar</button>
     <p class="ent-nota"><b id="ent-leyendo">0</b> personas leyendo ahora</p>
+    <button class="ent-cuenta" type="button" id="ent-cuenta" hidden>Ya tengo cuenta, entrar</button>
   </section>
   <section class="ent-paso" data-paso="1" hidden>
     <p class="ent-ceja">Paso 1 de 2</p>
@@ -100,12 +109,13 @@
 
     <nav class="atajos">
       <button class="racha-pill" id="racha-pill" data-ir="comunidad" aria-label="Tu racha"><svg class="ico"><use href="#i-llama"/></svg><b id="racha-num">0</b></button>
+      <button class="ico-btn campana" id="campana" type="button" aria-label="Avisos"><svg class="ico"><use href="#i-campana"/></svg><span class="globo rojo" id="campana-num" hidden>0</span></button>
       <button class="ico-btn solo-movil" data-ir="buscar" aria-label="Buscar"><svg class="ico"><use href="#i-lupa"/></svg></button>
       <button class="ico-btn solo-pc activo" data-ir="feed" aria-label="Inicio"><svg class="ico"><use href="#i-casa"/></svg></button>
       <button class="ico-btn solo-pc" data-ir="deslizar" aria-label="Deslizar"><svg class="ico"><use href="#i-deslizar"/></svg></button>
       <button class="ico-btn solo-pc" data-ir="ruta" aria-label="Tu ruta"><svg class="ico"><use href="#i-ruta"/></svg></button>
       <button class="ico-btn solo-pc" data-ir="comunidad" aria-label="Comunidad"><svg class="ico"><use href="#i-gente"/></svg></button>
-      <button class="ico-btn" data-ir="estante" aria-label="Mi estante">
+      <button class="ico-btn solo-pc" data-ir="estante" aria-label="Mi estante">
         <svg class="ico"><use href="#i-marca"/></svg>
         <span class="globo" id="contador" hidden>0</span>
       </button>
@@ -187,6 +197,7 @@
   <div class="reels-cab">
     <b>Para ti</b>
     <span class="reels-vivo"><i class="en-vivo"></i><span id="reels-vivo">0</span> leyendo</span>
+    <button class="reels-sonido" id="reels-sonido" type="button" aria-label="Música"><svg class="ico"><use href="#i-sonido"/></svg><i class="ecual"><b></b><b></b><b></b></i></button>
   </div>
   <div class="reels-pista" id="reels-pista"></div>
 </section>
@@ -212,14 +223,37 @@
   <div class="lector-cuerpo" id="lector-cuerpo"></div>
 </div>
 
+<!-- Los avisos de la campana. Caen solos y aqui quedan todos. -->
+<div class="avisos" id="avisos" hidden>
+  <div class="avisos-caja">
+    <div class="avisos-cab"><b>Avisos</b><button type="button" id="avisos-cerrar" aria-label="Cerrar"><svg class="ico"><use href="#i-cerrar"/></svg></button></div>
+    <ul id="avisos-lista"></ul>
+  </div>
+</div>
+
+<div class="logro" id="logro" hidden></div>
+
+<!-- La cuenta. Opcional, para guardar el avance en la nube. -->
+<div class="velo cuenta-velo" id="cuenta" hidden>
+  <div class="hoja cuenta-hoja" role="dialog" aria-modal="true" aria-label="Tu cuenta">
+    <button class="cerrar" id="cuenta-cerrar" aria-label="Cerrar"><svg class="ico"><use href="#i-cerrar"/></svg></button>
+    <div id="cuenta-cuerpo"></div>
+  </div>
+</div>
+
 <canvas class="fiesta" id="fiesta" aria-hidden="true"></canvas>
 <div class="noti" id="noti" hidden></div>
 <div class="aviso" id="aviso" hidden></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="js/red-config.js"></script>
+<script src="js/red.js"></script>
 <script src="js/motor.js"></script>
 <script src="js/comunidad.js"></script>
 <script src="js/portada.js"></script>
 <script src="js/textos.js"></script>
+<script src="js/libres.js"></script>
+<script src="js/musica.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>

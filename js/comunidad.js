@@ -62,8 +62,10 @@ window.Comunidad = (function () {
 
   /* ── lo tuyo ───────────────────────────────────────────────────────── */
 
+  const MI_COLOR = '#2AE58C';
+
   function vacio() {
-    return { alias: '', nivelInicio: 1, elegidas: [], ruta: [], leyendo: {}, terminados: [], registro: [], clubes: [], comentarios: {} };
+    return { alias: '', nivelInicio: 1, elegidas: [], ruta: [], leyendo: {}, terminados: [], registro: [], clubes: [], comentarios: {}, logros: {} };
   }
   let yo = leer();
   function leer() {
@@ -153,7 +155,9 @@ window.Comunidad = (function () {
   function armarRuta(pesos) {
     const libros = Motor.libros();
     const techo = Math.max(1, ...Object.values(pesos || {}));
-    const nota = l => (l.temas || []).reduce((s, t) => s + (pesos[t] || 0), 0) / techo + (EMPUJE[l.id] || 0);
+    /* Los cuentos que se leen completos aqui mismo tienen un empujon: quien
+       empieza la ruta puede terminar su primer libro hoy, sin salir de la app. */
+    const nota = l => (l.temas || []).reduce((s, t) => s + (pesos[t] || 0), 0) / techo + (EMPUJE[l.id] || 0) + (l.libre ? .3 : 0);
     const ruta = [];
     for (let n = 1; n <= 4; n++) {
       const del = libros.filter(l => l.nivel === n && l.id !== CIMA).sort((a, b) => nota(b) - nota(a) || a.paginas - b.paginas);
@@ -183,10 +187,14 @@ window.Comunidad = (function () {
   function paginasDe(p) {
     const semana = dia(lunes());
     const ritmo = .55 + S(semana + p.a) * .9;
-    return Math.round(p.base * .4 * ritmo * (0.12 + avanceSemana() * 0.88)) + (vivos[p.a] || 0);
+    return Math.round(p.base * .4 * ritmo * (0.12 + avanceSemana() * 0.88) + S(p.a + 'o') * 9) + (vivos[p.a] || 0);
   }
   function tabla() {
     const filas = PERSONAS.map((p, i) => ({ alias: p.a, color: p.c, ciudad: p.ciudad, paginas: paginasDe(p), amigo: i < AMIGOS, libro: Motor.libro(p.libro), tu: false }));
+    /* La gente de verdad que esta usando la app esta semana entra a la misma tabla. */
+    if (window.Red) for (const x of Red.lectores()) {
+      filas.push({ alias: x.alias, color: x.color || '#7FD8FF', ciudad: 'en lectortie', paginas: x.paginas || 0, amigo: false, libro: Motor.libro(x.libro), real: true });
+    }
     filas.push({ alias: yo.alias || 'tú', color: '#2AE58C', ciudad: 'Ciudad de Guatemala', paginas: paginasSemana(), tu: true, amigo: true });
     return filas.sort((a, b) => b.paginas - a.paginas || (a.tu ? -1 : 1));
   }
@@ -217,7 +225,7 @@ window.Comunidad = (function () {
   function lectoresDe(id) { return 40 + Math.round(S(id + 'lec') * 860); }
   function leyendoAhora() {
     const base = 120 + Math.round(S(Motor.hoy()) * 160);
-    return base + Math.round(Math.sin(Date.now() / 90000) * 18 + S(String(Math.floor(Date.now() / 20000))) * 14);
+    return base + (window.Red ? Red.activos() : 0) + Math.round(Math.sin(Date.now() / 90000) * 18 + S(String(Math.floor(Date.now() / 20000))) * 14);
   }
   function corazones(id) { return 180 + Math.round(S(id + 'cor') * 9400); }
 
@@ -269,14 +277,73 @@ window.Comunidad = (function () {
     return { alias: p.a, color: p.c, texto: 'subió al nivel ' + (2 + Math.floor(Math.random() * 3)) + ' de su ruta', libro };
   }
 
+  /* ── logros, puntos y nivel ────────────────────────────────────────────
+     Medallas que se ganan leyendo, comentando y entrando a clubes. Cada una
+     tiene su color. Los puntos suben con todo lo que haces y marcan el nivel. */
+  const LOGROS = [
+    { id: 'primera', nombre: 'Primera página', desc: 'Anota tu primera sesión', ico: 'libro', color: '#2AE58C', ok: (y, x) => y.registro.length >= 1 },
+    { id: 'racha3', nombre: 'Tres al hilo', desc: 'Racha de 3 días', ico: 'llama', color: '#FF8A3C', ok: () => racha() >= 3 },
+    { id: 'racha7', nombre: 'Semana en llamas', desc: 'Racha de 7 días', ico: 'llama', color: '#FF3D6E', ok: () => racha() >= 7 },
+    { id: 'p50', nombre: '50 páginas', desc: 'Suma 50 páginas', ico: 'libro', color: '#59D6FF', ok: () => totalPaginas() >= 50 },
+    { id: 'p200', nombre: '200 páginas', desc: 'Suma 200 páginas', ico: 'libro', color: '#8B6BFF', ok: () => totalPaginas() >= 200 },
+    { id: 'fin', nombre: 'Lo terminé', desc: 'Termina tu primer libro', ico: 'check', color: '#FFC66B', ok: y => y.terminados.length >= 1 },
+    { id: 'opina', nombre: 'Primera opinión', desc: 'Comenta un libro', ico: 'comentar', color: '#FF8AB8', ok: y => Object.keys(y.comentarios).length >= 1 },
+    { id: 'club', nombre: 'En la banda', desc: 'Únete a un club', ico: 'gente', color: '#7CE3B0', ok: y => y.clubes.length >= 1 },
+    { id: 'podio', nombre: 'Podio', desc: 'Entra al top 3 de tus amigos', ico: 'corona', color: '#FFD25A', ok: y => y.registro.length > 0 && puesto() <= 3 },
+    { id: 'colec', nombre: 'Coleccionista', desc: 'Guarda 5 libros', ico: 'marca', color: '#B9A6FF', ok: (y, x) => (x && x.estante || 0) >= 5 }
+  ];
+  function totalPaginas() { return yo.registro.reduce((s, r) => s + r.paginas, 0); }
+  function logros() { return LOGROS.map(l => Object.assign({}, l, { hecho: !!yo.logros[l.id] })); }
+  /* Revisa y devuelve solo los que se acaban de ganar, para festejarlos. */
+  function revisarLogros(extra) {
+    const nuevos = [];
+    for (const l of LOGROS) if (!yo.logros[l.id] && l.ok(yo, extra || {})) { yo.logros[l.id] = Date.now(); nuevos.push(l); }
+    if (nuevos.length) guardar();
+    return nuevos;
+  }
+  const NIVELES = [[0, 'Curioso'], [150, 'Hojeador'], [400, 'Lector'], [900, 'Devora páginas'], [1800, 'Bibliófilo'], [3500, 'Leyenda']];
+  function puntos() {
+    const coms = Object.values(yo.comentarios).reduce((s, l) => s + l.length, 0);
+    return totalPaginas() * 10 + coms * 15 + yo.terminados.length * 100 + Object.keys(yo.logros).length * 50 + yo.clubes.length * 20;
+  }
+  function nivel() {
+    const p = puntos();
+    let i = 0;
+    while (i < NIVELES.length - 1 && p >= NIVELES[i + 1][0]) i++;
+    const desde = NIVELES[i][0], hasta = i < NIVELES.length - 1 ? NIVELES[i + 1][0] : desde + 2000;
+    return { n: i + 1, nombre: NIVELES[i][1], puntos: p, avance: Math.min(1, (p - desde) / (hasta - desde)), faltan: Math.max(0, hasta - p), siguiente: (NIVELES[i + 1] || [0, 'Leyenda'])[1] };
+  }
+
+  /* Avisos para la campana, hechos con lo que de verdad tienes: tu ruta, tus
+     comentarios, tu puesto y tu racha. Si no hay con que, sale algo de la red. */
+  function aviso() {
+    const r = ruta();
+    const paso = r.pasos[Math.max(0, r.actual)];
+    const p = PERSONAS[Math.floor(Math.random() * PERSONAS.length)];
+    const opciones = [];
+    if (paso) opciones.push({ alias: p.a, color: p.c, texto: 'empezó ' + paso.libro.titulo + ', ¿lo leen juntos?', libro: paso.libro });
+    const mios = Object.keys(yo.comentarios);
+    if (mios.length) { const l = Motor.libro(mios[Math.floor(Math.random() * mios.length)]); opciones.push({ alias: p.a, color: p.c, texto: 'le dio corazón a tu comentario en ' + l.titulo, libro: l }); }
+    const t = tabla(), i = t.findIndex(f => f.tu);
+    if (i > 0) { const a = t[i - 1]; opciones.push({ alias: a.alias, color: a.color, texto: 'te lleva ' + Math.max(1, a.paginas - t[i].paginas) + ' páginas en el ranking, alcánzalo', ir: 'comunidad' }); }
+    if (!leyoHoy()) opciones.push({ alias: 'lectortie', color: '#5B3DF5', texto: 'tu racha te está esperando, 5 minutos y la prendes', libro: paso && paso.libro });
+    const tr = Motor.tendencias()[Math.floor(Math.random() * 4)];
+    if (tr) { const pb = Motor.porTendencia(tr, { limite: 1 })[0]; if (pb) opciones.push({ alias: 'lectortie', color: '#5B3DF5', texto: tr.titulo + ' está subiendo en ' + Motor.RED[tr.fuente] + ', y tiene libro, ' + pb.libro.titulo, libro: pb.libro }); }
+    const c = CLUBES[Math.floor(Math.random() * CLUBES.length)];
+    opciones.push({ alias: p.a, color: p.c, texto: 'invitó a ' + c.nombre + ' a leer ' + Motor.libro(c.lee).titulo, libro: Motor.libro(c.lee) });
+    const k = Math.floor(Math.random() * (opciones.length + 1));
+    return k < opciones.length ? opciones[k] : suceso();
+  }
+
   /* Un precio de referencia para el boton de conseguirlo. Sale de las paginas
      y se redondea a cinco, como en cualquier libreria. */
   function precio(libro) { return Math.round((55 + libro.paginas * .11) / 5) * 5; }
 
   return {
-    get yo() { return yo; }, guardar, borrar,
+    get yo() { return yo; }, guardar, borrar, MI_COLOR,
     paginasSemana, racha, leyoHoy, semanaDias, empezar, leyendo, terminado, anotarLectura, terminar,
     armarRuta, ruta, tabla, puesto, amigos, promedios, lectoresDe, leyendoAhora, corazones,
-    comentarios, comentar, cuantosComentarios, clubes, alternarClub, suceso, precio, PERSONAS
+    comentarios, comentar, cuantosComentarios, clubes, alternarClub, suceso, precio, PERSONAS,
+    logros, revisarLogros, puntos, nivel, aviso, totalPaginas
   };
 })();

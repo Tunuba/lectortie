@@ -1,0 +1,122 @@
+{
+ "romantasy": {
+  "nombre": "Alas al amanecer",
+  "bpm": 112,
+  "ini": 2.1429,
+  "fin": 10.7143
+ },
+ "mitologia": {
+  "nombre": "Tambores del Olimpo",
+  "bpm": 96,
+  "ini": 2.5,
+  "fin": 12.5
+ },
+ "terror-latino": {
+  "nombre": "Latido en la casona",
+  "bpm": 92,
+  "ini": 2.6087,
+  "fin": 13.0435
+ },
+ "distopia-ia": {
+  "nombre": "Algoritmo",
+  "bpm": 104,
+  "ini": 2.3077,
+  "fin": 11.5385
+ },
+ "salud-mental": {
+  "nombre": "Respira",
+  "bpm": 78,
+  "ini": 3.0769,
+  "fin": 15.3846
+ },
+ "espacio": {
+  "nombre": "Órbita baja",
+  "bpm": 100,
+  "ini": 2.4,
+  "fin": 12.0
+ },
+ "nostalgia-gamer": {
+  "nombre": "Nivel 1 1",
+  "bpm": 140,
+  "ini": 1.7143,
+  "fin": 8.5714
+ },
+ "dark-academia": {
+  "nombre": "Biblioteca de medianoche",
+  "bpm": 88,
+  "ini": 2.7273,
+  "fin": 13.6364
+ },
+ "realismo-magico": {
+  "nombre": "Mariposas amarillas",
+  "bpm": 100,
+  "ini": 2.4,
+  "fin": 12.0
+ },
+ "atracos": {
+  "nombre": "El último golpe",
+  "bpm": 120,
+  "ini": 2.0,
+  "fin": 10.0
+ },
+ "monstruos": {
+  "nombre": "Vals del castillo",
+  "bpm": 100,
+  "ini": 2.4,
+  "fin": 12.0
+ },
+ "venganza": {
+  "nombre": "Carta sin firma",
+  "bpm": 116,
+  "ini": 2.069,
+  "fin": 10.3448
+ },
+ "una-tarde": {
+  "nombre": "Una tarde",
+  "bpm": 96,
+  "ini": 2.5,
+  "fin": 12.5
+ },
+ "llorar": {
+  "nombre": "Okay okay",
+  "bpm": 74,
+  "ini": 3.2432,
+  "fin": 16.2162
+ },
+ "juicios": {
+  "nombre": "Sala tres",
+  "bpm": 100,
+  "ini": 2.4,
+  "fin": 12.0
+ },
+ "secundaria": {
+  "nombre": "Recreo",
+  "bpm": 128,
+  "ini": 1.875,
+  "fin": 9.375
+ },
+ "tuyo": {
+  "nombre": "Para ti",
+  "bpm": 118,
+  "ini": 2.0339,
+  "fin": 10.1695
+ },
+ "pausa": {
+  "nombre": "Hora de leer",
+  "bpm": 70,
+  "ini": 3.4286,
+  "fin": 17.1429
+ },
+ "promo": {
+  "nombre": "Recién salido",
+  "bpm": 122,
+  "ini": 1.9672,
+  "fin": 9.8361
+ },
+ "clasicos": {
+  "nombre": "Minueto de bolsillo",
+  "bpm": 112,
+  "ini": 2.1429,
+  "fin": 10.7143
+ }
+}

@@ -878,5 +878,100 @@
     ],
     "consulta": "The Fault in Our Stars John Green",
     "nivel": 3
+  },
+  {
+    "id": "almohadon-pluma",
+    "titulo": "El almohadón de pluma",
+    "autor": "Horacio Quiroga",
+    "anio": 1907,
+    "edad": "13+",
+    "tono": 350,
+    "gancho": "Una recién casada se apaga día tras día y nadie sabe por qué. La respuesta está en su almohada.",
+    "temas": [
+      "terror",
+      "cuentos",
+      "corto",
+      "latinoamerica"
+    ],
+    "paginas": 7,
+    "nivel": 1,
+    "libre": true,
+    "consulta": "El almohadón de pluma Horacio Quiroga"
+  },
+  {
+    "id": "a-la-deriva",
+    "titulo": "A la deriva",
+    "autor": "Horacio Quiroga",
+    "anio": 1912,
+    "edad": "12+",
+    "tono": 110,
+    "gancho": "Lo muerde una víbora en la selva y se sube a su canoa. El río es su única esperanza.",
+    "temas": [
+      "supervivencia",
+      "cuentos",
+      "corto",
+      "latinoamerica"
+    ],
+    "paginas": 6,
+    "nivel": 1,
+    "libre": true,
+    "consulta": "A la deriva Horacio Quiroga"
+  },
+  {
+    "id": "ojos-verdes",
+    "titulo": "Los ojos verdes",
+    "autor": "Gustavo Adolfo Bécquer",
+    "anio": 1861,
+    "edad": "12+",
+    "tono": 150,
+    "gancho": "Un cazador se enamora de unos ojos verdes que lo esperan en el fondo de una fuente.",
+    "temas": [
+      "romance",
+      "fantasia",
+      "corto",
+      "clasico"
+    ],
+    "paginas": 14,
+    "nivel": 1,
+    "libre": true,
+    "consulta": "Los ojos verdes Gustavo Adolfo Bécquer"
+  },
+  {
+    "id": "monte-animas",
+    "titulo": "El monte de las ánimas",
+    "autor": "Gustavo Adolfo Bécquer",
+    "anio": 1861,
+    "edad": "13+",
+    "tono": 20,
+    "gancho": "La noche de difuntos ella le pide que vuelva al monte maldito por una banda azul.",
+    "temas": [
+      "terror",
+      "gotico",
+      "corto",
+      "clasico"
+    ],
+    "paginas": 14,
+    "nivel": 1,
+    "libre": true,
+    "consulta": "El monte de las ánimas Gustavo Adolfo Bécquer"
+  },
+  {
+    "id": "rey-burgues",
+    "titulo": "El rey burgués",
+    "autor": "Rubén Darío",
+    "anio": 1888,
+    "edad": "11+",
+    "tono": 45,
+    "gancho": "Un rey que lo compra todo se compra también un poeta, y lo pone a darle vueltas a un organillo.",
+    "temas": [
+      "sentido",
+      "cuentos",
+      "corto",
+      "latinoamerica"
+    ],
+    "paginas": 7,
+    "nivel": 1,
+    "libre": true,
+    "consulta": "El rey burgués Rubén Darío"
   }
 ]

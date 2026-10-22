@@ -178,7 +178,7 @@ window.Motor = (function () {
     const partes = llano(texto).split(/\s+/).filter(Boolean);
     if (!partes.length) return [];
     return LIBROS.filter(l => {
-      const heno = llano(l.titulo + ' ' + l.autor + ' ' + (l.temas || []).join(' ') + ' ' + (l.temas || []).map(tema).join(' '));
+      const heno = llano(l.titulo + ' ' + l.autor + ' ' + (l.temas || []).join(' ') + ' ' + (l.temas || []).map(tema).join(' ') + (l.libre ? ' gratis libre completo dominio publico' : ''));
       return partes.every(p => heno.includes(p));
     }).slice(0, 30);
   }
@@ -300,8 +300,8 @@ window.Gusto = (function () {
       const suma = p.temas.reduce((s, t) => s + (g.temas[t] || 0), 0);
       if (!mejor || suma > mejor.suma) mejor = { id, nombre: p.nombre, suma };
     }
-    if (!mejor || mejor.suma < PARA_VESTIR) return { id: 'noche', nombre: 'La de todos' };
-    return mejor;
+    if (!mejor || mejor.suma < PARA_VESTIR) return { id: 'noche', nombre: 'La de todos', cerca: mejor && mejor.suma > 0 ? mejor : null };
+    return Object.assign({ cerca: mejor }, mejor);
   }
   function ordenado(m) { return Object.entries(m).filter(([, v]) => v > 0).sort((a, b) => b[1] - a[1]); }
   function listo() {
@@ -327,6 +327,9 @@ window.Gusto = (function () {
     const v = piel();
     return {
       listo: listo(), piel: v.id, pielNombre: v.nombre,
+      /* La piel a la que va, aunque todavia no alcance. El fondo se tine hacia
+         ella un paso con cada gesto, para que el cambio se vea venir. */
+      pielCerca: v.cerca ? v.cerca.id : null, pielCercaNombre: v.cerca ? v.cerca.nombre : '',
       variante: (g.vueltas || 0) % VARIANTES, vueltas: g.vueltas || 0,
       senales: g.senales, fuertes: g.fuertes, faltan: Math.max(0, SUFICIENTES - g.fuertes),
       paciencia: Math.round(PACIENCIA_MS / 1000),
