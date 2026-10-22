@@ -1,0 +1,882 @@
+[
+  {
+    "id": "alas-de-sangre",
+    "titulo": "Alas de sangre",
+    "autor": "Rebecca Yarros",
+    "anio": 2023,
+    "paginas": 704,
+    "edad": "16+",
+    "tono": 352,
+    "gancho": "La mandan al cuerpo de jinetes de dragones y la mitad de su clase no llega a diciembre.",
+    "temas": [
+      "romantasy",
+      "fantasia",
+      "romance",
+      "dragones",
+      "supervivencia"
+    ],
+    "consulta": "Fourth Wing Rebecca Yarros",
+    "nivel": 3
+  },
+  {
+    "id": "corte-rosas-espinas",
+    "titulo": "Una corte de rosas y espinas",
+    "autor": "Sarah J. Maas",
+    "anio": 2015,
+    "paginas": 448,
+    "edad": "16+",
+    "tono": 318,
+    "gancho": "Mata un lobo en el bosque y termina pagando la deuda dentro de la corte de las hadas.",
+    "temas": [
+      "romantasy",
+      "fantasia",
+      "hadas",
+      "romance"
+    ],
+    "consulta": "A Court of Thorns and Roses",
+    "nivel": 4
+  },
+  {
+    "id": "principe-cruel",
+    "titulo": "El príncipe cruel",
+    "autor": "Holly Black",
+    "anio": 2018,
+    "paginas": 392,
+    "edad": "15+",
+    "tono": 268,
+    "gancho": "Es humana en una corte que la desprecia, así que decide volverse indispensable.",
+    "temas": [
+      "romantasy",
+      "hadas",
+      "intriga",
+      "fantasia"
+    ],
+    "consulta": "The Cruel Prince Holly Black",
+    "nivel": 3
+  },
+  {
+    "id": "cancion-de-aquiles",
+    "titulo": "La canción de Aquiles",
+    "autor": "Madeline Miller",
+    "anio": 2011,
+    "paginas": 384,
+    "edad": "15+",
+    "tono": 28,
+    "gancho": "Sabemos cómo termina desde la primera página y aun así duele.",
+    "temas": [
+      "mitologia",
+      "romance",
+      "tragedia",
+      "clasico"
+    ],
+    "consulta": "The Song of Achilles",
+    "nivel": 4
+  },
+  {
+    "id": "circe",
+    "titulo": "Circe",
+    "autor": "Madeline Miller",
+    "anio": 2018,
+    "paginas": 400,
+    "edad": "15+",
+    "tono": 44,
+    "gancho": "La desterraron a una isla y ahí aprendió sola todo lo que la volvió peligrosa.",
+    "temas": [
+      "mitologia",
+      "magia",
+      "clasico",
+      "superacion"
+    ],
+    "consulta": "Circe Madeline Miller",
+    "nivel": 4
+  },
+  {
+    "id": "percy-jackson",
+    "titulo": "Percy Jackson y el ladrón del rayo",
+    "autor": "Rick Riordan",
+    "anio": 2005,
+    "paginas": 400,
+    "edad": "11+",
+    "tono": 200,
+    "gancho": "Descubre que su papá es un dios griego y que le acaban de echar la culpa de un robo.",
+    "temas": [
+      "mitologia",
+      "aventura",
+      "amistad",
+      "fantasia"
+    ],
+    "consulta": "Percy Jackson The Lightning Thief",
+    "nivel": 2
+  },
+  {
+    "id": "nuestra-parte-de-noche",
+    "titulo": "Nuestra parte de noche",
+    "autor": "Mariana Enríquez",
+    "anio": 2019,
+    "paginas": 672,
+    "edad": "18+",
+    "tono": 348,
+    "gancho": "Un padre cruza Argentina en carro tratando de salvar a su hijo de la familia de la madre.",
+    "temas": [
+      "terror",
+      "latinoamerica",
+      "familia",
+      "gotico"
+    ],
+    "consulta": "Nuestra parte de noche Mariana Enriquez",
+    "nivel": 5
+  },
+  {
+    "id": "cosas-perdimos-fuego",
+    "titulo": "Las cosas que perdimos en el fuego",
+    "autor": "Mariana Enríquez",
+    "anio": 2016,
+    "paginas": 200,
+    "edad": "16+",
+    "tono": 12,
+    "gancho": "Doce cuentos cortos que pasan en barrios reales y por eso asustan más.",
+    "temas": [
+      "terror",
+      "cuentos",
+      "latinoamerica"
+    ],
+    "consulta": "Las cosas que perdimos en el fuego",
+    "nivel": 2
+  },
+  {
+    "id": "mexican-gothic",
+    "titulo": "Gótico",
+    "autor": "Silvia Moreno-Garcia",
+    "anio": 2020,
+    "paginas": 320,
+    "edad": "16+",
+    "tono": 152,
+    "gancho": "Va a rescatar a su prima a una casona en la montaña y la casa no quiere que se vayan.",
+    "temas": [
+      "terror",
+      "gotico",
+      "latinoamerica",
+      "misterio"
+    ],
+    "consulta": "Mexican Gothic",
+    "nivel": 3
+  },
+  {
+    "id": "1984",
+    "titulo": "1984",
+    "autor": "George Orwell",
+    "anio": 1949,
+    "paginas": 328,
+    "edad": "15+",
+    "tono": 210,
+    "gancho": "Escribió en un diario lo que pensaba de verdad y con eso ya bastaba.",
+    "temas": [
+      "distopia",
+      "vigilancia",
+      "clasico",
+      "tecnologia"
+    ],
+    "consulta": "1984 George Orwell",
+    "nivel": 4
+  },
+  {
+    "id": "un-mundo-feliz",
+    "titulo": "Un mundo feliz",
+    "autor": "Aldous Huxley",
+    "anio": 1932,
+    "paginas": 288,
+    "edad": "15+",
+    "tono": 174,
+    "gancho": "Nadie sufre, nadie se aburre y nadie decide nada.",
+    "temas": [
+      "distopia",
+      "clasico",
+      "tecnologia"
+    ],
+    "consulta": "Brave New World Huxley",
+    "nivel": 3
+  },
+  {
+    "id": "klara-y-el-sol",
+    "titulo": "Klara y el Sol",
+    "autor": "Kazuo Ishiguro",
+    "anio": 2021,
+    "paginas": 320,
+    "edad": "14+",
+    "tono": 46,
+    "gancho": "Una máquina de compañía mira por la vitrina y trata de entender qué es querer a alguien.",
+    "temas": [
+      "inteligencia artificial",
+      "ciencia ficcion",
+      "amistad",
+      "tecnologia"
+    ],
+    "consulta": "Klara and the Sun Ishiguro",
+    "nivel": 3
+  },
+  {
+    "id": "nunca-me-abandones",
+    "titulo": "Nunca me abandones",
+    "autor": "Kazuo Ishiguro",
+    "anio": 2005,
+    "paginas": 288,
+    "edad": "16+",
+    "tono": 190,
+    "gancho": "Un internado perfecto donde nadie pregunta para qué los están criando.",
+    "temas": [
+      "ciencia ficcion",
+      "distopia",
+      "amistad",
+      "tragedia"
+    ],
+    "consulta": "Never Let Me Go Ishiguro",
+    "nivel": 4
+  },
+  {
+    "id": "juegos-del-hambre",
+    "titulo": "Los juegos del hambre",
+    "autor": "Suzanne Collins",
+    "anio": 2008,
+    "paginas": 384,
+    "edad": "13+",
+    "tono": 24,
+    "gancho": "Se ofrece en lugar de su hermana y el país entero lo ve como programa de televisión.",
+    "temas": [
+      "distopia",
+      "supervivencia",
+      "aventura",
+      "vigilancia"
+    ],
+    "consulta": "The Hunger Games Suzanne Collins",
+    "nivel": 2
+  },
+  {
+    "id": "divergente",
+    "titulo": "Divergente",
+    "autor": "Veronica Roth",
+    "anio": 2011,
+    "paginas": 496,
+    "edad": "13+",
+    "tono": 6,
+    "gancho": "A los dieciséis eliges facción para siempre y ella no encaja en ninguna.",
+    "temas": [
+      "distopia",
+      "aventura",
+      "superacion"
+    ],
+    "consulta": "Divergent Veronica Roth",
+    "nivel": 3
+  },
+  {
+    "id": "sombra-y-hueso",
+    "titulo": "Sombra y hueso",
+    "autor": "Leigh Bardugo",
+    "anio": 2012,
+    "paginas": 368,
+    "edad": "14+",
+    "tono": 240,
+    "gancho": "Una soldado del montón resulta ser lo único que puede partir la oscuridad del país.",
+    "temas": [
+      "fantasia",
+      "magia",
+      "romance",
+      "romantasy"
+    ],
+    "consulta": "Shadow and Bone Leigh Bardugo",
+    "nivel": 3
+  },
+  {
+    "id": "seis-de-cuervos",
+    "titulo": "Seis de cuervos",
+    "autor": "Leigh Bardugo",
+    "anio": 2015,
+    "paginas": 480,
+    "edad": "15+",
+    "tono": 262,
+    "gancho": "Seis criminales, un solo golpe imposible y ninguna razón para confiar entre ellos.",
+    "temas": [
+      "atraco",
+      "fantasia",
+      "intriga",
+      "amistad"
+    ],
+    "consulta": "Six of Crows Leigh Bardugo",
+    "nivel": 4
+  },
+  {
+    "id": "el-marciano",
+    "titulo": "El marciano",
+    "autor": "Andy Weir",
+    "anio": 2011,
+    "paginas": 384,
+    "edad": "14+",
+    "tono": 20,
+    "gancho": "Lo dejaron solo en Marte y decide resolverlo problema por problema, con humor.",
+    "temas": [
+      "espacio",
+      "supervivencia",
+      "ciencia",
+      "ciencia ficcion"
+    ],
+    "consulta": "The Martian Andy Weir",
+    "nivel": 3
+  },
+  {
+    "id": "proyecto-hail-mary",
+    "titulo": "Proyecto Hail Mary",
+    "autor": "Andy Weir",
+    "anio": 2021,
+    "paginas": 496,
+    "edad": "14+",
+    "tono": 186,
+    "gancho": "Despierta en una nave sin memoria y con la última misión de la humanidad encima.",
+    "temas": [
+      "espacio",
+      "ciencia",
+      "ciencia ficcion",
+      "amistad"
+    ],
+    "consulta": "Project Hail Mary Andy Weir",
+    "nivel": 4
+  },
+  {
+    "id": "dune",
+    "titulo": "Dune",
+    "autor": "Frank Herbert",
+    "anio": 1965,
+    "paginas": 704,
+    "edad": "15+",
+    "tono": 36,
+    "gancho": "Un planeta de arena, la sustancia más cara del universo y una familia recién llegada.",
+    "temas": [
+      "ciencia ficcion",
+      "espacio",
+      "intriga",
+      "clasico"
+    ],
+    "consulta": "Dune Frank Herbert",
+    "nivel": 5
+  },
+  {
+    "id": "ready-player-one",
+    "titulo": "Ready Player One",
+    "autor": "Ernest Cline",
+    "anio": 2011,
+    "paginas": 400,
+    "edad": "13+",
+    "tono": 286,
+    "gancho": "El mundo real se cayó a pedazos y la herencia más grande está escondida en un videojuego.",
+    "temas": [
+      "videojuegos",
+      "ochentas",
+      "aventura",
+      "tecnologia",
+      "distopia"
+    ],
+    "consulta": "Ready Player One Ernest Cline",
+    "nivel": 3
+  },
+  {
+    "id": "biblioteca-medianoche",
+    "titulo": "La biblioteca de la medianoche",
+    "autor": "Matt Haig",
+    "anio": 2020,
+    "paginas": 320,
+    "edad": "14+",
+    "tono": 168,
+    "gancho": "Entre la vida y la muerte hay una biblioteca con todas las vidas que pudo tener.",
+    "temas": [
+      "salud mental",
+      "sentido",
+      "fantasia",
+      "superacion"
+    ],
+    "consulta": "The Midnight Library Matt Haig",
+    "nivel": 3
+  },
+  {
+    "id": "hombre-busca-sentido",
+    "titulo": "El hombre en busca de sentido",
+    "autor": "Viktor Frankl",
+    "anio": 1946,
+    "paginas": 168,
+    "edad": "15+",
+    "tono": 210,
+    "gancho": "Un psiquiatra cuenta cómo sobrevivió y qué fue lo único que no le pudieron quitar.",
+    "temas": [
+      "sentido",
+      "salud mental",
+      "superacion",
+      "clasico"
+    ],
+    "consulta": "El hombre en busca de sentido Frankl",
+    "nivel": 3
+  },
+  {
+    "id": "habitos-atomicos",
+    "titulo": "Hábitos atómicos",
+    "autor": "James Clear",
+    "anio": 2018,
+    "paginas": 320,
+    "edad": "14+",
+    "tono": 130,
+    "gancho": "No cambia la meta, cambia el sistema. Uno por ciento diario y ya.",
+    "temas": [
+      "habitos",
+      "superacion",
+      "salud mental"
+    ],
+    "consulta": "Atomic Habits James Clear",
+    "nivel": 2
+  },
+  {
+    "id": "sapiens",
+    "titulo": "Sapiens",
+    "autor": "Yuval Noah Harari",
+    "anio": 2011,
+    "paginas": 496,
+    "edad": "15+",
+    "tono": 40,
+    "gancho": "Cómo una especie sin garras ni colmillos terminó mandando en el planeta.",
+    "temas": [
+      "historia",
+      "ciencia",
+      "tecnologia",
+      "sentido"
+    ],
+    "consulta": "Sapiens Yuval Noah Harari",
+    "nivel": 4
+  },
+  {
+    "id": "cien-anios",
+    "titulo": "Cien años de soledad",
+    "autor": "Gabriel García Márquez",
+    "anio": 1967,
+    "paginas": 471,
+    "edad": "16+",
+    "tono": 32,
+    "gancho": "Siete generaciones en un pueblo donde llueve cuatro años seguidos.",
+    "temas": [
+      "realismo magico",
+      "familia",
+      "latinoamerica",
+      "clasico"
+    ],
+    "consulta": "Cien anos de soledad Garcia Marquez",
+    "nivel": 4
+  },
+  {
+    "id": "pedro-paramo",
+    "titulo": "Pedro Páramo",
+    "autor": "Juan Rulfo",
+    "anio": 1955,
+    "paginas": 128,
+    "edad": "16+",
+    "tono": 18,
+    "gancho": "Va a buscar a su padre a un pueblo donde todos los que le hablan ya están muertos.",
+    "temas": [
+      "realismo magico",
+      "latinoamerica",
+      "terror",
+      "clasico"
+    ],
+    "consulta": "Pedro Paramo Juan Rulfo",
+    "nivel": 3
+  },
+  {
+    "id": "casa-espiritus",
+    "titulo": "La casa de los espíritus",
+    "autor": "Isabel Allende",
+    "anio": 1982,
+    "paginas": 464,
+    "edad": "16+",
+    "tono": 340,
+    "gancho": "Tres generaciones de mujeres, una casa enorme y un país que se rompe alrededor.",
+    "temas": [
+      "realismo magico",
+      "familia",
+      "latinoamerica",
+      "romance"
+    ],
+    "consulta": "La casa de los espiritus Isabel Allende",
+    "nivel": 4
+  },
+  {
+    "id": "kafka-en-la-orilla",
+    "titulo": "Kafka en la orilla",
+    "autor": "Haruki Murakami",
+    "anio": 2002,
+    "paginas": 656,
+    "edad": "17+",
+    "tono": 226,
+    "gancho": "Un adolescente se escapa de casa y un viejo que habla con gatos va por el mismo camino.",
+    "temas": [
+      "realismo magico",
+      "misterio",
+      "sentido",
+      "aventura"
+    ],
+    "consulta": "Kafka on the Shore Murakami",
+    "nivel": 5
+  },
+  {
+    "id": "tokio-blues",
+    "titulo": "Tokio blues",
+    "autor": "Haruki Murakami",
+    "anio": 1987,
+    "paginas": 384,
+    "edad": "17+",
+    "tono": 144,
+    "gancho": "Una canción en un avión le devuelve de golpe todo lo que perdió a los veinte.",
+    "temas": [
+      "romance",
+      "salud mental",
+      "sentido",
+      "tragedia"
+    ],
+    "consulta": "Norwegian Wood Murakami",
+    "nivel": 4
+  },
+  {
+    "id": "siete-maridos",
+    "titulo": "Los siete maridos de Evelyn Hugo",
+    "autor": "Taylor Jenkins Reid",
+    "anio": 2017,
+    "paginas": 400,
+    "edad": "16+",
+    "tono": 356,
+    "gancho": "La estrella más grande de Hollywood elige a una periodista desconocida para contarlo todo.",
+    "temas": [
+      "romance",
+      "intriga",
+      "tragedia",
+      "superacion"
+    ],
+    "consulta": "The Seven Husbands of Evelyn Hugo",
+    "nivel": 3
+  },
+  {
+    "id": "romper-el-circulo",
+    "titulo": "Romper el círculo",
+    "autor": "Colleen Hoover",
+    "anio": 2016,
+    "paginas": 384,
+    "edad": "17+",
+    "tono": 330,
+    "gancho": "La historia de amor se convierte en otra cosa y ella tiene que decidir sola.",
+    "temas": [
+      "romance",
+      "salud mental",
+      "superacion",
+      "tragedia"
+    ],
+    "consulta": "It Ends with Us Colleen Hoover",
+    "nivel": 3
+  },
+  {
+    "id": "el-secreto",
+    "titulo": "El secreto",
+    "autor": "Donna Tartt",
+    "anio": 1992,
+    "paginas": 576,
+    "edad": "17+",
+    "tono": 96,
+    "gancho": "Cinco alumnos de griego antiguo hacen algo irreversible y el resto del libro es vivir con eso.",
+    "temas": [
+      "academia",
+      "misterio",
+      "amistad",
+      "clasico"
+    ],
+    "consulta": "The Secret History Donna Tartt",
+    "nivel": 4
+  },
+  {
+    "id": "historia-interminable",
+    "titulo": "La historia interminable",
+    "autor": "Michael Ende",
+    "anio": 1979,
+    "paginas": 448,
+    "edad": "11+",
+    "tono": 152,
+    "gancho": "Se roba un libro del colegio y a media lectura el libro empieza a hablarle a él.",
+    "temas": [
+      "fantasia",
+      "aventura",
+      "amistad",
+      "clasico"
+    ],
+    "consulta": "The Neverending Story Michael Ende",
+    "nivel": 3
+  },
+  {
+    "id": "momo",
+    "titulo": "Momo",
+    "autor": "Michael Ende",
+    "anio": 1973,
+    "paginas": 240,
+    "edad": "10+",
+    "tono": 116,
+    "gancho": "Unos hombres grises convencen al pueblo de ahorrar tiempo y nadie vuelve a tener nada de tiempo.",
+    "temas": [
+      "fantasia",
+      "sentido",
+      "habitos",
+      "clasico"
+    ],
+    "consulta": "Momo Michael Ende",
+    "nivel": 2
+  },
+  {
+    "id": "harry-potter-1",
+    "titulo": "Harry Potter y la piedra filosofal",
+    "autor": "J. K. Rowling",
+    "anio": 1997,
+    "paginas": 264,
+    "edad": "10+",
+    "tono": 276,
+    "gancho": "Once años durmiendo bajo las gradas y una carta que no dejan de mandarle.",
+    "temas": [
+      "fantasia",
+      "magia",
+      "academia",
+      "amistad"
+    ],
+    "consulta": "Harry Potter Philosopher Stone",
+    "nivel": 2
+  },
+  {
+    "id": "el-patito-feo",
+    "titulo": "El patito feo",
+    "autor": "Hans Christian Andersen",
+    "anio": 1843,
+    "paginas": 32,
+    "edad": "8+",
+    "tono": 48,
+    "gancho": "Todo el corral se burlaba de él, hasta el día en que se vio reflejado en el agua.",
+    "temas": [
+      "cuentos",
+      "superacion",
+      "corto",
+      "clasico"
+    ],
+    "consulta": "The Ugly Duckling Andersen",
+    "nivel": 1
+  },
+  {
+    "id": "el-principito",
+    "titulo": "El principito",
+    "autor": "Antoine de Saint-Exupéry",
+    "anio": 1943,
+    "paginas": 96,
+    "edad": "10+",
+    "tono": 205,
+    "gancho": "Un piloto cae en el desierto y un niño de otro planeta le pide que le dibuje un cordero.",
+    "temas": [
+      "sentido",
+      "amistad",
+      "corto",
+      "clasico"
+    ],
+    "consulta": "Le Petit Prince Saint-Exupery",
+    "nivel": 1
+  },
+  {
+    "id": "el-viejo-y-el-mar",
+    "titulo": "El viejo y el mar",
+    "autor": "Ernest Hemingway",
+    "anio": 1952,
+    "paginas": 128,
+    "edad": "13+",
+    "tono": 192,
+    "gancho": "Ochenta y cuatro días sin pescar nada, y de pronto un pez enorme que no lo suelta.",
+    "temas": [
+      "superacion",
+      "supervivencia",
+      "corto",
+      "clasico"
+    ],
+    "consulta": "The Old Man and the Sea Hemingway",
+    "nivel": 2
+  },
+  {
+    "id": "conde-montecristo",
+    "titulo": "El conde de Montecristo",
+    "autor": "Alejandro Dumas",
+    "anio": 1844,
+    "paginas": 1276,
+    "edad": "15+",
+    "tono": 272,
+    "gancho": "Lo encierran catorce años por una carta falsa. Sale rico y con una lista de nombres.",
+    "temas": [
+      "venganza",
+      "aventura",
+      "intriga",
+      "clasico"
+    ],
+    "consulta": "The Count of Monte Cristo Dumas",
+    "nivel": 5
+  },
+  {
+    "id": "matar-ruisenor",
+    "titulo": "Matar a un ruiseñor",
+    "autor": "Harper Lee",
+    "anio": 1960,
+    "paginas": 384,
+    "edad": "13+",
+    "tono": 96,
+    "gancho": "Su papá defiende a un hombre que todo el pueblo ya decidió culpar.",
+    "temas": [
+      "justicia",
+      "familia",
+      "clasico",
+      "amistad"
+    ],
+    "consulta": "To Kill a Mockingbird Harper Lee",
+    "nivel": 3
+  },
+  {
+    "id": "rebelion-granja",
+    "titulo": "Rebelión en la granja",
+    "autor": "George Orwell",
+    "anio": 1945,
+    "paginas": 144,
+    "edad": "12+",
+    "tono": 24,
+    "gancho": "Los animales echan al granjero. Al poco tiempo, unos son más iguales que otros.",
+    "temas": [
+      "distopia",
+      "justicia",
+      "corto",
+      "clasico"
+    ],
+    "consulta": "Animal Farm Orwell",
+    "nivel": 2
+  },
+  {
+    "id": "la-metamorfosis",
+    "titulo": "La metamorfosis",
+    "autor": "Franz Kafka",
+    "anio": 1915,
+    "paginas": 96,
+    "edad": "14+",
+    "tono": 140,
+    "gancho": "Gregorio despierta convertido en un bicho y lo que más le preocupa es llegar tarde al trabajo.",
+    "temas": [
+      "corto",
+      "familia",
+      "clasico",
+      "terror"
+    ],
+    "consulta": "Die Verwandlung Kafka Metamorphosis",
+    "nivel": 1
+  },
+  {
+    "id": "coraline",
+    "titulo": "Coraline",
+    "autor": "Neil Gaiman",
+    "anio": 2002,
+    "paginas": 160,
+    "edad": "10+",
+    "tono": 300,
+    "gancho": "Detrás de una puerta tapiada hay otra casa, otra mamá y botones en lugar de ojos.",
+    "temas": [
+      "terror",
+      "fantasia",
+      "corto",
+      "misterio"
+    ],
+    "consulta": "Coraline Neil Gaiman",
+    "nivel": 1
+  },
+  {
+    "id": "diario-greg",
+    "titulo": "Diario de Greg",
+    "autor": "Jeff Kinney",
+    "anio": 2007,
+    "paginas": 224,
+    "edad": "9+",
+    "tono": 210,
+    "gancho": "Greg quiere ser popular en la secundaria y todo le sale al revés, con dibujos.",
+    "temas": [
+      "humor",
+      "amistad",
+      "corto",
+      "academia"
+    ],
+    "consulta": "Diary of a Wimpy Kid Jeff Kinney",
+    "nivel": 1
+  },
+  {
+    "id": "wonder",
+    "titulo": "Wonder",
+    "autor": "R. J. Palacio",
+    "anio": 2012,
+    "paginas": 416,
+    "edad": "10+",
+    "tono": 30,
+    "gancho": "Auggie entra por primera vez a la escuela y todos miran su cara antes que a él.",
+    "temas": [
+      "amistad",
+      "superacion",
+      "familia",
+      "humor"
+    ],
+    "consulta": "Wonder R. J. Palacio",
+    "nivel": 2
+  },
+  {
+    "id": "frankenstein",
+    "titulo": "Frankenstein",
+    "autor": "Mary Shelley",
+    "anio": 1818,
+    "paginas": 280,
+    "edad": "14+",
+    "tono": 160,
+    "gancho": "Un estudiante arma un cuerpo con pedazos de muertos, le da vida y huye de lo que hizo.",
+    "temas": [
+      "terror",
+      "ciencia",
+      "gotico",
+      "clasico"
+    ],
+    "consulta": "Frankenstein Mary Shelley",
+    "nivel": 3
+  },
+  {
+    "id": "dracula",
+    "titulo": "Drácula",
+    "autor": "Bram Stoker",
+    "anio": 1897,
+    "paginas": 480,
+    "edad": "14+",
+    "tono": 2,
+    "gancho": "Un abogado viaja a Transilvania a venderle una casa a un conde que nunca sale de día.",
+    "temas": [
+      "terror",
+      "gotico",
+      "misterio",
+      "clasico"
+    ],
+    "consulta": "Dracula Bram Stoker",
+    "nivel": 4
+  },
+  {
+    "id": "bajo-misma-estrella",
+    "titulo": "Bajo la misma estrella",
+    "autor": "John Green",
+    "anio": 2012,
+    "paginas": 313,
+    "edad": "14+",
+    "tono": 200,
+    "gancho": "Se conocen en un grupo de apoyo y deciden que el tiempo que les queda vale por todo.",
+    "temas": [
+      "romance",
+      "tragedia",
+      "salud mental",
+      "amistad"
+    ],
+    "consulta": "The Fault in Our Stars John Green",
+    "nivel": 3
+  }
+]

@@ -1,0 +1,868 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   LECTORTIE
+
+   LA DECISION DE FONDO: ESTO PASA DE NOCHE
+   El feed va sobre tinta casi negra, no sobre blanco. Una portada de libro es
+   una imagen impresa con mucho color y sobre blanco se apaga; sobre oscuro
+   revienta y la pagina se convierte en una vitrina. De paso, es la hora a la
+   que un chavo de quince abre el telefono.
+
+   EL COLOR SIGNIFICA, NO DECORA
+   Cada red trae su degradado y ese degradado se usa SIEMPRE para lo mismo:
+   el aro de la tendencia, el avatar de quien publica y la barra de Sube
+   ahora. Naranja a rojo es YouTube, cian a rosa es TikTok, ambar a violeta
+   es Instagram, verde a violeta es lo tuyo. Con eso se sabe de donde viene
+   cada tarjeta sin leer una palabra.
+
+   LA PIEL: LA PAGINA ENTERA CAMBIA CONTIGO
+   Cuando LECTORTIE ya sabe que te gusta, no cambia solo los libros: cambia
+   de piel. Fondo, panel, acento, tipografia, esquinas y sombras salen de un
+   solo bloque de tokens, asi que cambiar `data-piel` en el html vuelve otra
+   pagina sin tocar una sola regla de estructura. Las pieles estan abajo del
+   todo. Quien lea romantasy no ve la misma app que quien lea terror, y esa
+   es la idea entera del proyecto puesta en pantalla.
+
+   LO QUE SE COPIA DE UNA RED SOCIAL, A PROPOSITO
+   columna de 470 con lateral fijo de 320, barra superior que no se va,
+   historias redondas arriba, tarjeta con cabecera, imagen alta y fila de
+   acciones, y pestanas abajo en el telefono. Es gramatica conocida: si se
+   cambia, la app se siente rara aunque el contenido sea el mismo. La piel
+   pinta, la estructura no se toca.
+
+   Tipografias del sistema a proposito. No hay fuentes que descargar: esto
+   tiene que abrir igual de rapido en el wifi de un salon.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+:root{
+  /* ── color ── */
+  --noche:#0A0912;
+  --panel:#141221;
+  --alto:#1C1930;
+  --tinta:#F4F2FA;
+  --gris:#9A95B4;
+  --linea:rgba(255,255,255,.085);
+  --linea-viva:rgba(255,255,255,.16);
+  --acento:#8B6BFF;
+  --sobre-acento:#fff;
+  --vivo:#2AE58C;
+  --corazon:#FF3D6E;
+
+  --barra-fondo:rgba(10,9,18,.82);
+  --velo-fondo:rgba(4,3,10,.7);
+  --chip-fondo:rgba(10,9,18,.62);
+  --chip-tinta:#fff;
+
+  /* Las dos luces del fondo. Cada piel trae las suyas. */
+  --arte:
+    radial-gradient(760px 420px at 12% -6%, rgba(139,107,255,.16), transparent 68%),
+    radial-gradient(680px 420px at 92% 4%, rgba(254,44,85,.10), transparent 66%);
+
+  /* ── forma ── */
+  --r-tarjeta:18px;
+  --r-panel:16px;
+  --r-boton:11px;
+  --r-mini:12px;
+  --r-hoja:20px;
+  --r-aro:50%;
+  --sombra-tarjeta:none;
+  --sombra-hoja:0 30px 80px rgba(0,0,0,.6);
+
+  /* ── letra ── */
+  --fuente:'Figtree','Segoe UI',system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+  --fuente-tit:var(--fuente);
+  --peso-tit:700;
+  --ls-tit:-.02em;
+  --tt-tit:none;      /* alguna piel escribe sus titulos en mayusculas */
+  --sombra-boton:none;
+  --textura:none;     /* el motivo que cada piel repite por todo el fondo */
+  --textura-tam:auto;
+  --textura-opacidad:1;
+  --grosor:1px;       /* el grosor del borde de tarjetas y paneles */
+  --forma:4/5;        /* la proporcion de la portada en el feed */
+
+  /* ── redes ── */
+  --g-todas:linear-gradient(135deg,#8B6BFF,#D861FF);
+  --g-youtube:linear-gradient(135deg,#FF9A3D,#FF2020);
+  --g-tiktok:linear-gradient(135deg,#25F4EE,#FE2C55);
+  --g-instagram:linear-gradient(135deg,#FFC93C,#FF3D6E 55%,#8A4BF0);
+  --g-tuyo:linear-gradient(135deg,#2AE58C,#8B6BFF);
+  --aro:var(--g-todas);
+
+  --barra:60px;
+}
+
+/* El degradado de cada red, en un solo sitio. Todo lo que lleve data-red lo
+   hereda, asi que anadir una red manana es anadir una linea aqui. */
+[data-red="youtube"]{--aro:var(--g-youtube)}
+[data-red="tiktok"]{--aro:var(--g-tiktok)}
+[data-red="instagram"]{--aro:var(--g-instagram)}
+[data-red="tuyo"]{--aro:var(--g-tuyo)}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+
+/* HACE FALTA Y NO ES DEFENSIVO. La regla del navegador para [hidden] es
+   display:none, pero la nuestra de .velo{display:flex} tiene mas peso y gana:
+   medido, la ficha vacia salia encima del feed al abrir la pagina y el filtro
+   aparecia sin texto. Todo lo que se apaga con hidden lleva display propio,
+   asi que esta linea es la que hace que apagarlo funcione. */
+[hidden]{display:none !important}
+
+body{
+  font:15px/1.5 var(--fuente);
+  color:var(--tinta);
+  background:var(--noche);
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:env(safe-area-inset-bottom);
+  /* Al cambiar de piel, el fondo no salta: cruza. */
+  transition:background-color .5s ease,color .5s ease;
+}
+
+/* El unico adorno del fondo: luces muy tenues detras de todo, para que la
+   tinta no sea un plano muerto. No se mueven ni se notan; se echan de menos
+   cuando se quitan. */
+body::before{
+  content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:var(--arte);
+  transition:background .5s ease;
+}
+
+/* LA TEXTURA. Cada piel repite su propio motivo por todo el fondo: petalos,
+   salpicaduras, estrellas, pixeles. Va en una capa aparte de las luces para
+   poder darle su propia opacidad, y todos los motivos son SVG escritos aqui
+   mismo, sin un solo archivo de imagen que descargar. */
+body::after{
+  content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:var(--textura);
+  background-size:var(--textura-tam);
+  background-repeat:repeat;
+  opacity:var(--textura-opacidad);
+  transition:opacity .5s ease;
+}
+
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+input{font:inherit}
+h2,h3{margin:0;font-family:var(--fuente-tit);text-transform:var(--tt-tit)}
+::selection{background:var(--acento);color:var(--sobre-acento)}
+:focus-visible{outline:2px solid var(--acento);outline-offset:2px;border-radius:8px}
+
+.ico{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;
+     stroke-linecap:round;stroke-linejoin:round;display:block}
+
+/* ── barra superior ─────────────────────────────────────────────────────── */
+.barra{
+  position:fixed;inset:0 0 auto 0;height:var(--barra);z-index:40;
+  background:var(--barra-fondo);
+  backdrop-filter:saturate(1.6) blur(14px);
+  border-bottom:1px solid var(--linea);
+}
+.barra-caja{
+  max-width:975px;height:100%;margin:0 auto;padding:0 16px;
+  display:flex;align-items:center;gap:16px;
+}
+.marca{
+  font-family:var(--fuente-tit);text-transform:var(--tt-tit);
+  font-size:24px;font-weight:800;letter-spacing:-.045em;
+  color:var(--tinta);text-decoration:none;flex:none;
+}
+/* La marca parte en dos y la segunda mitad lleva el degradado. Es el unico
+   texto de la pagina con color de relleno. */
+.marca span{
+  background:var(--g-tuyo);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+
+.buscador{flex:1;max-width:280px;position:relative;display:flex;align-items:center}
+.buscador .ico{position:absolute;left:12px;width:17px;height:17px;color:var(--gris);stroke-width:2}
+.buscador input{
+  width:100%;height:38px;padding:0 12px 0 36px;
+  background:var(--alto);border:1px solid transparent;border-radius:var(--r-boton);
+  color:var(--tinta);outline:0;transition:border-color .15s,background .15s;
+}
+.buscador input::placeholder{color:var(--gris)}
+.buscador input:focus{background:var(--panel);border-color:var(--linea-viva)}
+
+.atajos{margin-left:auto;display:flex;align-items:center;gap:4px}
+.ico-btn{position:relative;width:40px;height:40px;display:grid;place-items:center;
+         border-radius:var(--r-boton);color:var(--tinta);transition:background .15s}
+.ico-btn:hover{background:var(--alto)}
+.ico-btn.activo .ico{stroke-width:2.5}
+.globo{
+  position:absolute;top:3px;right:3px;min-width:18px;height:18px;padding:0 5px;
+  display:grid;place-items:center;border-radius:999px;
+  background:var(--acento);color:var(--sobre-acento);font-size:11px;font-weight:700;line-height:1;
+  border:2px solid var(--noche);
+}
+
+/* ── lienzo ─────────────────────────────────────────────────────────────── */
+.lienzo{
+  max-width:975px;margin:0 auto;padding:calc(var(--barra) + 24px) 16px 90px;
+  display:flex;gap:32px;align-items:flex-start;
+}
+.columna{flex:1;min-width:0;max-width:470px;margin:0 auto}
+.vista{min-height:40vh}
+
+/* ── historias, que aqui son tendencias ─────────────────────────────────── */
+.historias{
+  display:flex;gap:14px;overflow-x:auto;padding:2px 2px 18px;
+  margin-bottom:18px;border-bottom:1px solid var(--linea);
+  scrollbar-width:none;
+}
+.historias::-webkit-scrollbar{display:none}
+.historia{flex:none;width:72px;text-align:center;color:var(--tinta)}
+.aro{
+  width:66px;height:66px;margin:0 auto 7px;border-radius:var(--r-aro);
+  padding:2.5px;background:var(--aro);
+  transition:transform .14s ease,filter .2s ease,border-radius .5s ease;
+}
+.historia:hover .aro{filter:brightness(1.12)}
+.historia:active .aro{transform:scale(.93)}
+.historia.apagada .aro{background:var(--linea-viva)}
+.historia.puesta .aro{padding:3.5px}
+.disco{width:100%;height:100%;border-radius:inherit;background:var(--noche);padding:2.5px}
+.glifo{
+  width:100%;height:100%;border-radius:inherit;display:grid;place-items:center;
+  background:var(--alto);color:var(--tinta);
+}
+.glifo .ico{width:26px;height:26px}
+.historia b{
+  display:block;font-size:11.5px;font-weight:500;line-height:1.25;color:var(--gris);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.historia.puesta b{font-weight:700;color:var(--tinta)}
+
+/* ── filtro puesto ──────────────────────────────────────────────────────── */
+.filtro{
+  display:flex;align-items:center;gap:8px;margin:-4px 0 18px;
+  padding:9px 10px 9px 15px;border:1px solid var(--linea);border-radius:999px;
+  background:var(--panel);font-size:13.5px;
+}
+.filtro span{flex:1;color:var(--gris)}
+.filtro span b{color:var(--tinta)}
+.filtro button{display:grid;place-items:center;color:var(--gris)}
+.filtro button:hover{color:var(--tinta)}
+.filtro .ico{width:16px;height:16px}
+
+/* ── lo tuyo ────────────────────────────────────────────────────────────────
+   El panel que cuenta que esta aprendiendo la pagina. Es lo unico de toda la
+   interfaz con borde de color, porque es la pieza nueva y la que hay que poder
+   senalar en una demo. Cuando la pagina ya es tuya, el borde se enciende. */
+.tuyo{
+  position:relative;margin:0 0 20px;padding:16px 17px 15px;
+  border:var(--grosor) solid var(--linea);border-radius:var(--r-panel);
+  background:var(--panel);
+}
+.tuyo.puesta{
+  border:1.5px solid transparent;
+  background:
+    linear-gradient(var(--panel),var(--panel)) padding-box,
+    var(--g-tuyo) border-box;
+}
+.tuyo-cab{display:flex;align-items:baseline;gap:10px;margin-bottom:6px}
+.tuyo h2{font-size:16.5px;font-weight:var(--peso-tit);letter-spacing:var(--ls-tit)}
+.tuyo-reloj{margin-left:auto;font-size:12px;color:var(--gris);font-variant-numeric:tabular-nums}
+.tuyo-porque{margin:0 0 12px;font-size:13.5px;line-height:1.5;color:var(--gris)}
+.tuyo.puesta .tuyo-porque{color:var(--tinta)}
+.tuyo-temas{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:13px}
+.tuyo-temas span{
+  padding:5px 11px;border-radius:999px;font-size:12px;font-weight:600;
+  background:var(--alto);color:var(--tinta);border:1px solid var(--linea);
+}
+.tuyo-temas span:first-child{background:var(--g-tuyo);color:var(--noche);border-color:transparent}
+.tuyo-linea{height:3px;border-radius:999px;background:var(--linea-viva);overflow:hidden;margin-bottom:13px}
+.tuyo-linea i{display:block;height:100%;border-radius:999px;background:var(--g-tuyo);
+              width:0;transition:width .6s ease}
+.tuyo-botones{display:flex;gap:8px;flex-wrap:wrap}
+.tuyo-botones button{
+  padding:9px 15px;border-radius:var(--r-boton);font-size:13px;font-weight:650;
+  background:none;color:var(--gris);border:max(1px,var(--grosor)) solid var(--linea);
+  box-shadow:var(--sombra-boton);
+  transition:color .15s,border-color .15s;
+}
+.tuyo-botones button:hover{color:var(--tinta);border-color:var(--linea-viva)}
+
+/* ── publicacion ────────────────────────────────────────────────────────── */
+.pub{
+  position:relative;
+  border:var(--grosor) solid var(--linea);border-radius:var(--r-tarjeta);background:var(--panel);
+  box-shadow:var(--sombra-tarjeta);
+  margin-bottom:22px;overflow:hidden;
+}
+.pub-cab{display:flex;align-items:center;gap:11px;padding:12px 14px}
+.avatar{width:38px;height:38px;flex:none;border-radius:var(--r-aro);padding:2px;background:var(--aro)}
+.avatar div{
+  width:100%;height:100%;border-radius:inherit;background:var(--panel);
+  display:grid;place-items:center;
+}
+.avatar .ico{width:18px;height:18px}
+.pub-quien{min-width:0;line-height:1.3}
+.pub-quien b{display:block;font-size:14px;font-weight:650}
+.pub-quien span{display:block;font-size:12px;color:var(--gris)}
+
+.pub-medio{position:relative;aspect-ratio:var(--forma);background:var(--alto);cursor:pointer;container-type:inline-size}
+.chip{
+  position:absolute;top:12px;right:12px;z-index:2;
+  padding:6px 11px;border-radius:999px;font-size:12px;font-weight:700;
+  background:var(--chip-fondo);color:var(--chip-tinta);
+  backdrop-filter:blur(8px);border:1px solid var(--linea-viva);
+}
+.golpe{
+  position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;
+  color:#fff;opacity:0;
+}
+.golpe .ico{width:96px;height:96px;fill:#fff;stroke:none;
+            filter:drop-shadow(0 2px 16px rgba(0,0,0,.5))}
+.golpe.late{animation:late .8s ease}
+@keyframes late{
+  0%{opacity:0;transform:scale(.4)} 15%{opacity:1;transform:scale(1.1)}
+  30%{transform:scale(.96)} 45%{transform:scale(1)} 100%{opacity:0;transform:scale(1)}
+}
+
+.pub-acc{display:flex;align-items:center;gap:6px;padding:10px 10px 4px}
+.acc{width:38px;height:38px;display:grid;place-items:center;border-radius:var(--r-boton);
+     color:var(--tinta);transition:background .15s,transform .1s}
+.acc:hover{background:var(--alto)}
+.acc:active{transform:scale(.9)}
+.acc.derecha{margin-left:auto}
+.acc.marcado .ico{fill:currentColor}
+.acc.querido{color:var(--corazon)}
+.acc.querido .ico{fill:currentColor}
+
+.pub-txt{padding:2px 15px 16px}
+.pub-txt h3{font-size:17px;font-weight:var(--peso-tit);letter-spacing:var(--ls-tit);
+            text-transform:var(--tt-tit)}
+.pub-txt .autor{color:var(--gris);font-size:13px;margin-bottom:8px}
+.pub-txt p{margin:0 0 9px}
+.pub-txt .porque{font-size:13.5px;color:var(--gris)}
+.pub-txt .porque b{color:var(--tinta);font-weight:600}
+.etiquetas{display:flex;flex-wrap:wrap;gap:7px}
+.etiqueta{font-size:12.5px;color:var(--acento);font-weight:600}
+.mas{display:block;margin-top:12px;font-size:13px;color:var(--gris);text-align:left}
+.mas:hover{color:var(--tinta)}
+
+/* En la pagina tuya, la tarjeta lleva un filo del color de lo tuyo a la
+   izquierda. Es la marca de que esa no salio del ranking, salio de ti. */
+.pub[data-tuyo]::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;z-index:3;
+  background:var(--g-tuyo);
+}
+
+/* ── portada dibujada ───────────────────────────────────────────────────── */
+.portada{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  justify-content:center;gap:10px;padding:12% 13%;text-align:left;
+  color:#fff;overflow:hidden;
+}
+.portada::after{
+  content:'';position:absolute;left:13%;top:0;width:1px;height:100%;
+  background:rgba(255,255,255,.22);
+}
+/* EL TEXTO SE MIDE CONTRA EL RECUADRO, NO CONTRA LA VENTANA. Con vw, el titulo
+   de una miniatura de 104 px salia a 27 px, se desbordaba y se montaba encima
+   del anio. Las unidades cq miran el ancho del contenedor, que es lo unico que
+   importa aqui: la misma portada se ve bien grande en el feed y chiquita en el
+   estante sin escribir dos veces el diseno. Los contenedores se declaran en
+   .pub-medio, .mini .caja y .ficha-tapa. */
+.portada b{
+  font-size:clamp(11px,8.6cqw,28px);line-height:1.12;font-weight:700;
+  letter-spacing:-.02em;text-wrap:balance;
+}
+.portada i{
+  font-style:normal;font-size:clamp(7px,3.2cqw,12.5px);opacity:.82;
+  letter-spacing:.08em;text-transform:uppercase;
+}
+.portada em{
+  position:absolute;left:13%;bottom:9%;font-style:normal;
+  font-size:clamp(6px,2.8cqw,11px);letter-spacing:.16em;opacity:.6;
+}
+/* LA FOTO VA ENTERA, NO RECORTADA. Las portadas de libro son mas o menos 2:3
+   y la tarjeta es 4:5, asi que con object-fit:cover se comia el titulo por
+   arriba y el sello por abajo. Va contain, y el hueco lo llena la misma foto
+   desenfocada detras. */
+.portada .fondo{
+  position:absolute;left:-8%;top:-8%;width:116%;height:116%;object-fit:cover;
+  filter:blur(28px) saturate(1.35);opacity:0;transition:opacity .45s ease;
+}
+.portada .foto{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
+  opacity:0;transition:opacity .45s ease;
+}
+.portada img.puesta{opacity:1}
+.portada .fondo.puesta{opacity:.85}
+
+/* Con foto encima, el dibujo estorba: se apaga el texto y la linea. */
+.portada > i,.portada > b,.portada > em{transition:opacity .3s ease}
+.portada.con-foto > i,.portada.con-foto > b,.portada.con-foto > em{opacity:0}
+.portada::after{transition:opacity .3s ease}
+.portada.con-foto::after{opacity:0}
+
+/* ── rejilla de resultados y estante ────────────────────────────────────── */
+.titulo-vista{font-family:var(--fuente-tit);font-size:22px;font-weight:var(--peso-tit);
+              letter-spacing:var(--ls-tit);text-transform:var(--tt-tit);margin-bottom:4px}
+.pista{color:var(--gris);font-size:14px;margin:6px 0 18px}
+.rejilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(138px,1fr));gap:18px}
+
+/* Los temas que estan sonando, para que la pantalla de buscar no sea un vacio.
+   Salen de las mismas tendencias, asi que no hay una lista que mantener. */
+.sugerencias{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.sugerencias button{
+  padding:8px 15px;border:max(1px,var(--grosor)) solid var(--linea);border-radius:var(--r-boton);
+  font-size:13.5px;color:var(--tinta);background:var(--panel);transition:.15s;
+}
+.sugerencias button:hover{background:var(--alto);border-color:var(--linea-viva)}
+.mini{text-align:left}
+.mini .caja{position:relative;aspect-ratio:var(--forma);border-radius:var(--r-mini);overflow:hidden;
+            container-type:inline-size;border:1px solid var(--linea);cursor:pointer;
+            transition:transform .15s ease}
+.mini .caja:hover{transform:translateY(-3px)}
+.mini b{display:block;margin-top:9px;font-size:13.5px;font-weight:600;line-height:1.3}
+.mini span{display:block;font-size:12px;color:var(--gris)}
+
+/* ── lateral ────────────────────────────────────────────────────────────── */
+.lateral{width:320px;flex:none}
+.lateral-fijo{position:sticky;top:calc(var(--barra) + 24px)}
+.tarjeta-yo{display:flex;align-items:center;gap:13px;margin-bottom:28px}
+.aro-yo{width:54px;height:54px;border-radius:var(--r-aro);padding:2.5px;background:var(--g-tuyo);flex:none}
+.letra-yo{
+  width:100%;height:100%;border-radius:inherit;background:var(--panel);color:var(--tinta);
+  display:grid;place-items:center;font-weight:800;font-size:20px;
+}
+.tarjeta-yo strong{display:block;font-size:14px}
+.tarjeta-yo span{display:block;font-size:13px;color:var(--gris)}
+
+.rotulo{font-size:13px;font-weight:650;color:var(--gris);margin-bottom:12px}
+.ranking{list-style:none;margin:0;padding:0}
+.ranking li{margin-bottom:14px}
+.ranking button{display:block;width:100%;text-align:left}
+.ranking .fila{display:flex;align-items:baseline;gap:8px;margin-bottom:6px}
+.ranking .fila b{font-size:13.5px;font-weight:600;transition:color .15s}
+.ranking .fila em{font-style:normal;font-size:12px;color:var(--gris);margin-left:auto}
+.ranking button:hover .fila b{color:var(--acento)}
+.barrita{height:3px;border-radius:999px;background:var(--linea-viva);overflow:hidden}
+.barrita i{display:block;height:100%;border-radius:999px;background:var(--aro)}
+
+.nota{margin-top:28px;font-size:12px;line-height:1.55;color:var(--gris)}
+.nota .punto{display:inline-block;width:7px;height:7px;border-radius:50%;
+             background:var(--gris);margin-right:6px;vertical-align:middle}
+.nota .punto.si{background:var(--vivo);box-shadow:0 0 0 3px rgba(42,229,140,.18)}
+
+/* ── ficha ──────────────────────────────────────────────────────────────── */
+.velo{
+  position:fixed;inset:0;z-index:60;background:var(--velo-fondo);
+  backdrop-filter:blur(3px);
+  display:flex;align-items:center;justify-content:center;padding:20px;
+}
+.hoja{
+  position:relative;width:100%;max-width:440px;max-height:86vh;overflow:auto;
+  background:var(--panel);border:1px solid var(--linea-viva);
+  border-radius:var(--r-hoja);padding:24px;
+  box-shadow:var(--sombra-hoja);
+  animation:entra .22s ease;
+}
+@keyframes entra{from{opacity:0;transform:translateY(14px)}}
+.cerrar{position:absolute;top:13px;right:13px;width:34px;height:34px;
+        display:grid;place-items:center;border-radius:var(--r-boton);color:var(--gris)}
+.cerrar:hover{background:var(--alto);color:var(--tinta)}
+.ficha-tapa{aspect-ratio:var(--forma);max-width:190px;position:relative;border-radius:var(--r-mini);
+            container-type:inline-size;overflow:hidden;margin-bottom:18px}
+.ficha h2{font-size:22px;font-weight:var(--peso-tit);letter-spacing:var(--ls-tit);line-height:1.2}
+.ficha .autor{color:var(--gris);margin:3px 0 14px}
+.ficha .gancho{font-size:15px;margin:0 0 16px;line-height:1.55}
+.datos{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.dato{padding:6px 12px;border:1px solid var(--linea);border-radius:999px;
+      font-size:12.5px;color:var(--gris);background:var(--alto)}
+.hoja h3{font-size:13px;font-weight:650;color:var(--gris);margin:0 0 12px}
+.tira{display:flex;gap:12px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.tira::-webkit-scrollbar{display:none}
+.tira .mini{flex:none;width:104px}
+.guardar{
+  width:100%;height:46px;margin-bottom:22px;border-radius:var(--r-boton);
+  background:var(--acento);color:var(--sobre-acento);font-weight:650;
+  box-shadow:var(--sombra-boton);
+  font-family:var(--fuente-tit);text-transform:var(--tt-tit);
+  transition:filter .15s,transform .1s;
+}
+.guardar:hover{filter:brightness(1.1)}
+.guardar:active{transform:scale(.99)}
+.guardar.puesto{background:var(--alto);color:var(--tinta);border:1px solid var(--linea-viva)}
+
+/* ── pestanas del telefono y avisos ─────────────────────────────────────── */
+.pestanas{
+  display:none;position:fixed;inset:auto 0 0 0;z-index:40;height:52px;
+  background:var(--barra-fondo);backdrop-filter:blur(14px);
+  border-top:1px solid var(--linea);
+  padding-bottom:env(safe-area-inset-bottom);
+}
+.pestanas button{flex:1;display:grid;place-items:center;color:var(--gris)}
+.pestanas button.activo{color:var(--tinta)}
+.pestanas button.activo .ico{stroke-width:2.5}
+
+.aviso{
+  position:fixed;left:50%;bottom:74px;z-index:70;transform:translateX(-50%);
+  padding:11px 19px;border-radius:999px;
+  background:var(--alto);color:var(--tinta);border:1px solid var(--linea-viva);
+  box-shadow:0 12px 32px rgba(0,0,0,.5);
+  font-size:13.5px;animation:entra .18s ease;
+}
+
+.cargando{padding:60px 0;text-align:center;color:var(--gris);font-size:14px}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   LAS PIELES
+
+   Cada una es solo tokens. Ni una regla de estructura aqui abajo: si alguna
+   piel necesitara mover algo de sitio, seria senal de que el token que falta
+   hay que crearlo arriba, no de que esta piel es especial.
+
+   La piel la elige el servidor con lo que aprendio y llega en data-piel. La
+   pagina de todos no tiene piel: hasta que no sabe nada de ti, no presume.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ROMANTASY. Vino, rosa y oro. Todo redondo, nada tiene esquinas: es la piel
+   mas dulce y se nota antes de leer una palabra. */
+[data-piel="romantasy"]{
+  --textura:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cg fill='%23FFC66B' opacity='.11'%3E%3Cellipse cx='24' cy='30' rx='10' ry='5' transform='rotate(-28 24 30)'/%3E%3Cellipse cx='104' cy='72' rx='8' ry='4' transform='rotate(34 104 72)'/%3E%3Cellipse cx='60' cy='112' rx='9' ry='4.6' transform='rotate(-8 60 112)'/%3E%3C/g%3E%3Cg fill='%23FF4D8D' opacity='.12'%3E%3Cpath d='M78 20c3-5 11-4 11 3 0 6-8 10-11 13-3-3-11-7-11-13 0-7 8-8 11-3z'/%3E%3Cpath d='M18 84c2-4 8-3 8 2 0 4-6 7-8 9-2-2-8-5-8-9 0-5 6-6 8-2z'/%3E%3C/g%3E%3C/svg%3E");
+  --textura-tam:140px 140px;
+  --noche:#150610;
+  --panel:#240D1B;
+  --alto:#331327;
+  --tinta:#FFEAF3;
+  --gris:#C99BB2;
+  --linea:rgba(255,199,224,.12);
+  --linea-viva:rgba(255,199,224,.24);
+  --acento:#FF4D8D;
+  --vivo:#FFC66B;
+  --corazon:#FF4D8D;
+  --barra-fondo:rgba(21,6,16,.84);
+  --velo-fondo:rgba(12,2,8,.74);
+  --chip-fondo:rgba(21,6,16,.6);
+  --arte:
+    radial-gradient(720px 420px at 80% -8%, rgba(255,77,141,.24), transparent 66%),
+    radial-gradient(620px 400px at 6% 10%, rgba(255,198,107,.14), transparent 64%);
+  --g-tuyo:linear-gradient(135deg,#FFC66B,#FF4D8D);
+  --r-tarjeta:26px; --r-panel:24px; --r-boton:999px; --r-mini:18px; --r-hoja:28px;
+  --sombra-tarjeta:0 18px 40px rgba(255,77,141,.10);
+  --fuente-tit:Georgia,'Times New Roman',serif;
+  --peso-tit:600; --ls-tit:-.01em;
+  --forma:2/3;   /* portada de novela, mas alta y mas estrecha */
+}
+
+/* TERROR. Negro de verdad y un rojo seco. Esquinas duras y sombra dura: aqui
+   nada es amable, y esa es la gracia. */
+[data-piel="terror"]{
+  --textura:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='190' height='190'%3E%3Cg fill='%23E01F26' opacity='.10'%3E%3Ccircle cx='30' cy='40' r='7'/%3E%3Ccircle cx='45' cy='53' r='2.6'/%3E%3Ccircle cx='21' cy='57' r='1.8'/%3E%3Ccircle cx='134' cy='26' r='4.2'/%3E%3Ccircle cx='147' cy='38' r='1.7'/%3E%3Ccircle cx='100' cy='126' r='9'/%3E%3Ccircle cx='118' cy='142' r='3'/%3E%3Ccircle cx='62' cy='158' r='2.4'/%3E%3Cpath d='M30 47c2 9 1 15 0 20-1-5-2-11 0-20z'/%3E%3Cpath d='M100 135c2 11 1 18 0 23-1-5-2-12 0-23z'/%3E%3Cpath d='M134 30c1.5 7 .8 11 0 15-.8-4-1.5-8 0-15z'/%3E%3C/g%3E%3C/svg%3E");
+  --textura-tam:190px 190px;
+  --noche:#080607;
+  --panel:#120D0E;
+  --alto:#1C1415;
+  --tinta:#EDE4E4;
+  --gris:#8C7B7C;
+  --linea:rgba(255,255,255,.07);
+  --linea-viva:rgba(224,31,38,.4);
+  --acento:#E01F26;
+  --vivo:#E0A21F;
+  --corazon:#E01F26;
+  --barra-fondo:rgba(8,6,7,.9);
+  --velo-fondo:rgba(0,0,0,.82);
+  --chip-fondo:rgba(8,6,7,.72);
+  --arte:radial-gradient(900px 520px at 50% -14%, rgba(224,31,38,.16), transparent 62%);
+  --g-tuyo:linear-gradient(135deg,#E01F26,#4A0A0C);
+  --r-tarjeta:3px; --r-panel:3px; --r-boton:3px; --r-mini:2px; --r-hoja:4px; --r-aro:8px;
+  --sombra-tarjeta:0 2px 0 rgba(224,31,38,.22);
+  --peso-tit:800; --ls-tit:-.03em; --tt-tit:uppercase;
+  --grosor:2px;
+}
+
+/* DISTOPIA. Acero, cian y cero curvas. La pantalla de una maquina que te
+   vigila no tiene esquinas redondeadas. */
+[data-piel="distopia"]{
+  --textura:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Cg stroke='%2335E0FF' opacity='.16' stroke-width='1'%3E%3Cpath d='M32 26v12M26 32h12'/%3E%3C/g%3E%3Cg fill='none' stroke='%2335E0FF' opacity='.07'%3E%3Crect x='.5' y='.5' width='63' height='63'/%3E%3C/g%3E%3C/svg%3E");
+  --textura-tam:64px 64px;
+  --noche:#060B0F;
+  --panel:#0D151C;
+  --alto:#142029;
+  --tinta:#DFF3FA;
+  --gris:#7E97A5;
+  --linea:rgba(53,224,255,.14);
+  --linea-viva:rgba(53,224,255,.3);
+  --acento:#35E0FF;
+  --sobre-acento:#04141B;
+  --vivo:#35E0FF;
+  --corazon:#FF5C7A;
+  --barra-fondo:rgba(6,11,15,.88);
+  --velo-fondo:rgba(2,6,9,.78);
+  --chip-fondo:rgba(6,11,15,.7);
+  --arte:
+    linear-gradient(rgba(53,224,255,.045) 1px, transparent 1px) 0 0/100% 4px,
+    radial-gradient(700px 420px at 88% -6%, rgba(53,224,255,.16), transparent 64%);
+  --g-tuyo:linear-gradient(135deg,#35E0FF,#2A6CFF);
+  --r-tarjeta:0px; --r-panel:0px; --r-boton:0px; --r-mini:0px; --r-hoja:0px; --r-aro:4px;
+  --sombra-tarjeta:none;
+  --peso-tit:700; --ls-tit:.02em;
+  --forma:1/1;   /* la maquina lo recorta todo al mismo cuadro */
+}
+
+/* CALMA. La unica piel clara. Quien lee de salud mental y habitos no quiere
+   una app a oscuras, y el contraste con las demas es justo lo que hace
+   evidente que la pagina cambio entera. */
+[data-piel="calma"]{
+  --textura:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='90'%3E%3Cg fill='none' stroke='%232F9E7A' opacity='.16' stroke-width='1.4'%3E%3Cpath d='M0 42c22-18 44-18 66 0s44 18 66 0 38-18 38 0'/%3E%3Cpath d='M0 70c22-18 44-18 66 0s44 18 66 0 38-18 38 0'/%3E%3C/g%3E%3C/svg%3E");
+  --textura-tam:170px 90px;
+  --noche:#EDF2EF;
+  --panel:#FFFFFF;
+  --alto:#E3EBE7;
+  --tinta:#14211C;
+  --gris:#566860;
+  --linea:rgba(20,33,28,.1);
+  --linea-viva:rgba(20,33,28,.2);
+  --acento:#2F9E7A;
+  --sobre-acento:#FFFFFF;
+  --vivo:#2F9E7A;
+  --corazon:#E0605F;
+  --barra-fondo:rgba(237,242,239,.86);
+  --velo-fondo:rgba(20,33,28,.35);
+  --chip-fondo:rgba(255,255,255,.86);
+  --chip-tinta:#14211C;
+  --arte:
+    radial-gradient(700px 420px at 14% -6%, rgba(47,158,122,.16), transparent 66%),
+    radial-gradient(620px 380px at 92% 6%, rgba(120,170,255,.12), transparent 64%);
+  --g-tuyo:linear-gradient(135deg,#2F9E7A,#7CC4A6);
+  --r-tarjeta:22px; --r-panel:20px; --r-boton:14px; --r-mini:16px; --r-hoja:24px;
+  --sombra-tarjeta:0 10px 30px rgba(20,33,28,.07);
+  --sombra-hoja:0 30px 80px rgba(20,33,28,.22);
+  --peso-tit:650; --ls-tit:-.015em;
+  --grosor:0px;  /* sin bordes: la sombra suave ya separa */
+}
+
+/* ESPACIO. Azul de noche cerrada y el naranja de un traje. Redondo pero
+   sobrio, como el tablero de una nave. */
+[data-piel="espacio"]{
+  --textura:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='210' height='210'%3E%3Cg fill='%23E6EDFB' opacity='.22'%3E%3Ccircle cx='24' cy='36' r='1.4'/%3E%3Ccircle cx='88' cy='18' r='1'/%3E%3Ccircle cx='158' cy='62' r='1.6'/%3E%3Ccircle cx='40' cy='124' r='1'/%3E%3Ccircle cx='186' cy='158' r='1.2'/%3E%3Ccircle cx='112' cy='176' r='1'/%3E%3Ccircle cx='66' cy='80' r='.9'/%3E%3Ccircle cx='140' cy='108' r='.8'/%3E%3C/g%3E%3Cg fill='none' stroke='%23FF7A29' opacity='.12'%3E%3Cellipse cx='156' cy='124' rx='44' ry='17' transform='rotate(-20 156 124)'/%3E%3C/g%3E%3C/svg%3E");
+  --textura-tam:210px 210px;
+  --noche:#04070F;
+  --panel:#0B111F;
+  --alto:#131B2D;
+  --tinta:#E6EDFB;
+  --gris:#8494B2;
+  --linea:rgba(255,255,255,.08);
+  --linea-viva:rgba(255,122,41,.28);
+  --acento:#FF7A29;
+  --vivo:#59D6FF;
+  --corazon:#FF7A29;
+  --barra-fondo:rgba(4,7,15,.86);
+  --velo-fondo:rgba(1,3,8,.76);
+  --chip-fondo:rgba(4,7,15,.66);
+  --arte:
+    radial-gradient(820px 480px at 76% -10%, rgba(89,214,255,.14), transparent 64%),
+    radial-gradient(560px 360px at 10% 16%, rgba(255,122,41,.12), transparent 62%);
+  --g-tuyo:linear-gradient(135deg,#59D6FF,#FF7A29);
+  --r-tarjeta:14px; --r-panel:12px; --r-boton:10px; --r-mini:10px; --r-hoja:16px;
+  --sombra-tarjeta:none;
+  --peso-tit:700; --ls-tit:-.02em;
+}
+
+/* ACADEMIA. Verde botella, papel viejo y serif. Es la piel de quien lee
+   clasicos, y la unica donde el texto largo se lee con letra de libro. */
+[data-piel="academia"]{
+  --textura:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='130'%3E%3Cg stroke='%23C6A45C' opacity='.10'%3E%3Cpath d='M0 32h130M0 65h130M0 98h130'/%3E%3C/g%3E%3Cg fill='%238FBF7A' opacity='.14'%3E%3Cpath d='M104 100c-9-2-15-9-17-18 9 2 15 9 17 18z'/%3E%3Cpath d='M26 44c9-2 15-9 17-18-9 2-15 9-17 18z'/%3E%3C/g%3E%3C/svg%3E");
+  --textura-tam:130px 130px;
+  --noche:#0E120E;
+  --panel:#171D17;
+  --alto:#212921;
+  --tinta:#EFE7D6;
+  --gris:#9A9484;
+  --linea:rgba(239,231,214,.1);
+  --linea-viva:rgba(198,164,92,.32);
+  --acento:#C6A45C;
+  --sobre-acento:#14180F;
+  --vivo:#8FBF7A;
+  --corazon:#B4543F;
+  --barra-fondo:rgba(14,18,14,.88);
+  --velo-fondo:rgba(6,8,6,.78);
+  --chip-fondo:rgba(14,18,14,.7);
+  --arte:radial-gradient(760px 460px at 24% -8%, rgba(198,164,92,.13), transparent 66%);
+  --g-tuyo:linear-gradient(135deg,#C6A45C,#8FBF7A);
+  --r-tarjeta:6px; --r-panel:6px; --r-boton:6px; --r-mini:4px; --r-hoja:8px; --r-aro:10px;
+  --sombra-tarjeta:none;
+  --fuente:Georgia,'Times New Roman',serif;
+  --fuente-tit:Georgia,'Times New Roman',serif;
+  --peso-tit:700; --ls-tit:-.01em;
+  --forma:2/3;
+}
+
+/* SELVA. Realismo magico: terracota, selva y noche calida de aqui. */
+[data-piel="selva"]{
+  --textura:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cg fill='%234FBF8B' opacity='.13'%3E%3Cpath d='M20 44c15-7 28-2 32 11-15 7-28 2-32-11z'/%3E%3Cpath d='M118 108c-15 7-28 2-32-11 15-7 28-2 32 11z'/%3E%3C/g%3E%3Cg fill='%23E07A4A' opacity='.10'%3E%3Ccircle cx='134' cy='32' r='6'/%3E%3Ccircle cx='44' cy='128' r='5'/%3E%3C/g%3E%3C/svg%3E");
+  --textura-tam:160px 160px;
+  --noche:#0C1210;
+  --panel:#141E1A;
+  --alto:#1D2A24;
+  --tinta:#F4EDE2;
+  --gris:#9AAA9C;
+  --linea:rgba(244,237,226,.1);
+  --linea-viva:rgba(224,122,74,.3);
+  --acento:#E07A4A;
+  --vivo:#4FBF8B;
+  --corazon:#E0574A;
+  --barra-fondo:rgba(12,18,16,.88);
+  --velo-fondo:rgba(5,8,7,.78);
+  --chip-fondo:rgba(12,18,16,.68);
+  --arte:
+    radial-gradient(700px 440px at 84% -8%, rgba(224,122,74,.18), transparent 64%),
+    radial-gradient(640px 400px at 8% 12%, rgba(79,191,139,.12), transparent 62%);
+  --g-tuyo:linear-gradient(135deg,#4FBF8B,#E07A4A);
+  --r-tarjeta:20px; --r-panel:18px; --r-boton:12px; --r-mini:14px; --r-hoja:22px;
+  --sombra-tarjeta:none;
+  --peso-tit:700; --ls-tit:-.02em;
+}
+
+
+/* ARCADE. Videojuegos y ochentas. Es la piel que mas lejos se va: todo
+   cuadrado, letra de terminal, botones con sombra dura de dos pixeles y una
+   rejilla de recreativa de fondo. Si la app puede verse asi y seguir siendo
+   la misma app, el sistema de pieles esta bien hecho. */
+[data-piel="arcade"]{
+  --textura:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' shape-rendering='crispEdges'%3E%3Cg fill='%2300E5FF' opacity='.16'%3E%3Crect x='8' y='8' width='4' height='4'/%3E%3Crect x='44' y='24' width='4' height='4'/%3E%3C/g%3E%3Cg fill='%23FFE14D' opacity='.16'%3E%3Crect x='26' y='48' width='4' height='4'/%3E%3Crect x='60' y='60' width='4' height='4'/%3E%3C/g%3E%3Cg fill='%23FF3DAE' opacity='.16'%3E%3Crect x='16' y='34' width='4' height='4'/%3E%3Crect x='56' y='6' width='4' height='4'/%3E%3C/g%3E%3C/svg%3E");
+  --textura-tam:72px 72px;
+  --noche:#0B0620;
+  --panel:#160C34;
+  --alto:#21134C;
+  --tinta:#F3EAFF;
+  --gris:#A692D8;
+  --linea:rgba(0,229,255,.2);
+  --linea-viva:rgba(255,225,77,.45);
+  --acento:#FFE14D;
+  --sobre-acento:#1A0F35;
+  --vivo:#00E5FF;
+  --corazon:#FF3DAE;
+  --barra-fondo:rgba(11,6,32,.9);
+  --velo-fondo:rgba(5,2,16,.8);
+  --chip-fondo:rgba(11,6,32,.76);
+  --arte:
+    linear-gradient(rgba(0,229,255,.05) 1px, transparent 1px) 0 0/100% 24px,
+    linear-gradient(90deg, rgba(0,229,255,.05) 1px, transparent 1px) 0 0/24px 100%,
+    radial-gradient(700px 420px at 50% -8%, rgba(255,61,174,.2), transparent 62%);
+  --g-tuyo:linear-gradient(135deg,#00E5FF,#FF3DAE 55%,#FFE14D);
+  --r-tarjeta:0px; --r-panel:0px; --r-boton:0px; --r-mini:0px; --r-hoja:0px; --r-aro:0px;
+  --grosor:2px;
+  --sombra-tarjeta:6px 6px 0 rgba(0,229,255,.14);
+  --sombra-boton:4px 4px 0 rgba(0,0,0,.55);
+  --fuente:'Consolas','Courier New',ui-monospace,monospace;
+  --fuente-tit:'Consolas','Courier New',ui-monospace,monospace;
+  --peso-tit:700; --ls-tit:.04em; --tt-tit:uppercase;
+  --forma:1/1;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   LAS VARIANTES DEL FONDO
+
+   Cada rearme trae un fondo distinto, aunque tu gusto sea identico. Y no es
+   el mismo dibujo girado: son cuatro composiciones que no se parecen entre
+   ellas. Lunares, rayas y confeti, manchas de pintura, y rombos.
+
+   EL COLOR NO ESTA ESCRITO AQUI. Cada variante se pinta con los colores de la
+   piel que este puesta, con color-mix sobre --acento, --vivo y --corazon. Por
+   eso cuatro variantes por ocho pieles son treinta y dos fondos distintos sin
+   escribir treinta y dos veces lo mismo, y por eso los lunares de Romantasy
+   salen rosa y oro y los de Arcade salen cian y amarillo.
+
+   Va en su propia capa, encima de las luces de la piel y debajo de su motivo.
+   Ninguna variante toca el contenido: lo que se lee sigue igual de legible. */
+html::before{
+  content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:var(--variacion,none);
+  background-size:var(--variacion-tam,auto);
+  background-position:var(--variacion-pos,0 0);
+  background-repeat:repeat;
+  transition:opacity .5s ease;
+}
+
+/* LUNARES. Dos tamanos de circulo, dos colores, en rejillas que no encajan
+   entre ellas para que no se lea el patron. */
+[data-variante="0"]{
+  --variacion:
+    radial-gradient(circle at 24% 28%, color-mix(in srgb, var(--acento) 34%, transparent) 0 10px, transparent 11px),
+    radial-gradient(circle at 72% 68%, color-mix(in srgb, var(--vivo) 30%, transparent) 0 16px, transparent 17px),
+    radial-gradient(circle at 50% 90%, color-mix(in srgb, var(--corazon) 26%, transparent) 0 6px, transparent 7px);
+  --variacion-tam:220px 220px, 310px 310px, 140px 140px;
+}
+
+/* RAYAS Y CONFETI. Diagonales anchas en un sentido, finas en el otro, y
+   cuadritos sueltos encima. */
+[data-variante="1"]{
+  --variacion:
+    repeating-linear-gradient(46deg,
+      color-mix(in srgb, var(--acento) 20%, transparent) 0 16px, transparent 16px 46px),
+    repeating-linear-gradient(-46deg,
+      color-mix(in srgb, var(--corazon) 16%, transparent) 0 5px, transparent 5px 38px),
+    conic-gradient(from 45deg at 50% 50%,
+      color-mix(in srgb, var(--vivo) 34%, transparent) 0 25%, transparent 0 100%);
+  --variacion-tam:auto, auto, 120px 120px;
+}
+
+/* MANCHAS DE PINTURA. Borrones grandes y blandos, de tres colores, cada uno
+   en su sitio. Es la que mas se aleja de una rejilla. */
+[data-variante="2"]{
+  --variacion:
+    radial-gradient(52% 44% at 18% 22%, color-mix(in srgb, var(--corazon) 44%, transparent), transparent 70%),
+    radial-gradient(46% 52% at 82% 34%, color-mix(in srgb, var(--vivo) 40%, transparent), transparent 72%),
+    radial-gradient(60% 40% at 46% 88%, color-mix(in srgb, var(--acento) 42%, transparent), transparent 74%),
+    radial-gradient(28% 30% at 66% 62%, color-mix(in srgb, var(--acento) 30%, transparent), transparent 68%);
+  --variacion-tam:760px 620px, 680px 700px, 900px 560px, 420px 400px;
+  --variacion-pos:0 0, 100% 0, 30% 100%, 70% 40%;
+}
+
+/* ROMBOS. Rejilla girada de cuadros llenos y vacios, con una raya de color
+   cruzando. La mas grafica de las cuatro. */
+[data-variante="3"]{
+  --variacion:
+    conic-gradient(from 0deg at 50% 50%,
+      color-mix(in srgb, var(--acento) 26%, transparent) 0 25%, transparent 0 50%,
+      color-mix(in srgb, var(--vivo) 26%, transparent) 0 75%, transparent 0 100%),
+    repeating-linear-gradient(90deg,
+      color-mix(in srgb, var(--corazon) 14%, transparent) 0 2px, transparent 2px 64px);
+  --variacion-tam:96px 96px, auto;
+}
+
+/* El motivo de la piel se aparta un poco cuando la variante ya trae mucho,
+   para que no se peleen los dos dibujos. */
+[data-variante="1"] body::after,
+[data-variante="3"] body::after{opacity:calc(var(--textura-opacidad) * .5)}
+[data-variante="2"] body::after{transform:scale(1.4) rotate(12deg)}
+body::after{transform-origin:center}
+
+/* ── pantallas chicas ───────────────────────────────────────────────────── */
+@media (max-width:1049px){
+  .lateral{display:none}
+  .columna{max-width:520px}
+}
+@media (max-width:735px){
+  .buscador{display:none}
+
+  /* EN EL TELEFONO, LA VISTA DE BUSCAR TRAE SU PROPIO CAMPO. Sin esto, tocar
+     la lupa de abajo abria una pantalla sin ningun lugar donde escribir: la
+     barra de busqueda solo existia en pantalla grande. Es la misma solucion
+     de cualquier red social, el campo sube a la barra mientras se busca. */
+  body.buscando .buscador{display:flex;max-width:none}
+  body.buscando .marca{display:none}
+
+  .solo-movil{display:grid}
+  .atajos .ico-btn[data-ir="feed"]{display:none}
+  .pestanas{display:flex}
+  .lienzo{padding:calc(var(--barra) + 16px) 12px 80px}
+  .pub{border-left:0;border-right:0;border-radius:0;margin-left:-12px;margin-right:-12px}
+  .hoja{max-width:none;align-self:flex-end;border-radius:var(--r-hoja) var(--r-hoja) 0 0;
+        max-height:90vh;border-left:0;border-right:0;border-bottom:0}
+  .velo{padding:0;align-items:flex-end}
+  @keyframes entra{from{opacity:0;transform:translateY(40px)}}
+}
+@media (min-width:736px){
+  .solo-movil{display:none}
+}
+
+/* Quien pidio menos movimiento, menos movimiento. */
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;animation-iteration-count:1 !important;
+    transition-duration:.01ms !important}
+}

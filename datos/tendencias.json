@@ -1,0 +1,359 @@
+[
+  {
+    "id": "romantasy",
+    "titulo": "Romantasy",
+    "etiqueta": "#BookTok",
+    "fuente": "tiktok",
+    "resumen": "Fantasía con el romance al centro. Dragones, cortes de hadas y enemigos que terminan juntos.",
+    "temas": [
+      "romantasy",
+      "fantasia",
+      "romance",
+      "dragones",
+      "hadas"
+    ],
+    "claves": [
+      "romantasy",
+      "booktok",
+      "fourth wing",
+      "acotar",
+      "dragon",
+      "fantasy romance"
+    ],
+    "vistas": 4200000,
+    "subida": 38
+  },
+  {
+    "id": "mitologia",
+    "titulo": "Mitología griega",
+    "etiqueta": "#GreekTok",
+    "fuente": "tiktok",
+    "resumen": "Dioses, profecías y finales que ya sabíamos. Aquiles y Circe se leen como tragedia moderna.",
+    "temas": [
+      "mitologia",
+      "tragedia",
+      "romance",
+      "magia",
+      "clasico"
+    ],
+    "claves": [
+      "mitologia",
+      "greek myth",
+      "aquiles",
+      "achilles",
+      "circe",
+      "percy jackson",
+      "dioses"
+    ],
+    "vistas": 2600000,
+    "subida": 24
+  },
+  {
+    "id": "terror-latino",
+    "titulo": "Terror latinoamericano",
+    "etiqueta": "#MiedoLatino",
+    "fuente": "youtube",
+    "resumen": "Casas que respiran, dictaduras y desaparecidos. El terror del barrio, no el del castillo.",
+    "temas": [
+      "terror",
+      "gotico",
+      "latinoamerica",
+      "cuentos"
+    ],
+    "claves": [
+      "terror",
+      "horror",
+      "creepypasta",
+      "miedo",
+      "gotico",
+      "mariana enriquez"
+    ],
+    "vistas": 1900000,
+    "subida": 31
+  },
+  {
+    "id": "distopia-ia",
+    "titulo": "Distopías y vigilancia",
+    "etiqueta": "#FuturoRoto",
+    "fuente": "youtube",
+    "resumen": "Todo el mundo hablando de cámaras, algoritmos y máquinas que sienten. Los libros llegaron antes.",
+    "temas": [
+      "distopia",
+      "tecnologia",
+      "ciencia ficcion",
+      "vigilancia",
+      "inteligencia artificial"
+    ],
+    "claves": [
+      "distopia",
+      "dystopia",
+      "vigilancia",
+      "inteligencia artificial",
+      "ia",
+      "1984",
+      "robot"
+    ],
+    "vistas": 3100000,
+    "subida": 19
+  },
+  {
+    "id": "salud-mental",
+    "titulo": "Ansiedad y calma",
+    "etiqueta": "#ModoCalma",
+    "fuente": "instagram",
+    "resumen": "Rutinas, terapia y noches sin dormir. Lectura para bajar el ruido, no para sumarle.",
+    "temas": [
+      "salud mental",
+      "sentido",
+      "superacion",
+      "habitos"
+    ],
+    "claves": [
+      "ansiedad",
+      "salud mental",
+      "terapia",
+      "calma",
+      "habitos",
+      "mindfulness"
+    ],
+    "vistas": 5400000,
+    "subida": 27
+  },
+  {
+    "id": "espacio",
+    "titulo": "Volver a la Luna",
+    "etiqueta": "#Artemis",
+    "fuente": "youtube",
+    "resumen": "Lanzamientos en vivo y sondas nuevas. La ciencia ficción dura vuelve a tener público.",
+    "temas": [
+      "espacio",
+      "ciencia",
+      "supervivencia",
+      "ciencia ficcion"
+    ],
+    "claves": [
+      "espacio",
+      "nasa",
+      "luna",
+      "marte",
+      "cohete",
+      "space",
+      "astronauta"
+    ],
+    "vistas": 2200000,
+    "subida": 15
+  },
+  {
+    "id": "nostalgia-gamer",
+    "titulo": "Nostalgia de consola",
+    "etiqueta": "#Retro",
+    "fuente": "tiktok",
+    "resumen": "Arcades, cassettes y remakes. Todo lo que se jugaba antes de que existiera el celular.",
+    "temas": [
+      "videojuegos",
+      "aventura",
+      "ochentas",
+      "tecnologia"
+    ],
+    "claves": [
+      "retro",
+      "videojuego",
+      "gamer",
+      "arcade",
+      "consola",
+      "nostalgia",
+      "ochentas"
+    ],
+    "vistas": 3800000,
+    "subida": 12
+  },
+  {
+    "id": "dark-academia",
+    "titulo": "Dark academia",
+    "etiqueta": "#DarkAcademia",
+    "fuente": "instagram",
+    "resumen": "Bibliotecas, suéter de lana y un secreto que se les fue de las manos.",
+    "temas": [
+      "academia",
+      "misterio",
+      "clasico",
+      "amistad"
+    ],
+    "claves": [
+      "dark academia",
+      "biblioteca",
+      "universidad",
+      "misterio",
+      "libros viejos"
+    ],
+    "vistas": 1400000,
+    "subida": 22
+  },
+  {
+    "id": "realismo-magico",
+    "titulo": "Realismo mágico",
+    "etiqueta": "#LeoLatino",
+    "fuente": "tiktok",
+    "resumen": "Pueblos con fantasmas y familias enteras cargando la misma maldición.",
+    "temas": [
+      "realismo magico",
+      "familia",
+      "latinoamerica",
+      "clasico"
+    ],
+    "claves": [
+      "realismo magico",
+      "macondo",
+      "garcia marquez",
+      "rulfo",
+      "allende",
+      "latinoamerica"
+    ],
+    "vistas": 1700000,
+    "subida": 18
+  },
+  {
+    "id": "atracos",
+    "titulo": "Bandas y atracos",
+    "etiqueta": "#UnUltimoGolpe",
+    "fuente": "youtube",
+    "resumen": "Series de robos por todos lados. En papel el plan sale mejor y el equipo cae peor.",
+    "temas": [
+      "atraco",
+      "intriga",
+      "amistad",
+      "fantasia"
+    ],
+    "claves": [
+      "atraco",
+      "heist",
+      "robo",
+      "banda",
+      "estafa",
+      "plan perfecto"
+    ],
+    "vistas": 2900000,
+    "subida": 21
+  },
+  {
+    "id": "monstruos",
+    "titulo": "Monstruos clásicos",
+    "etiqueta": "#Halloween",
+    "fuente": "youtube",
+    "resumen": "Octubre trae de vuelta a los monstruos de siempre, y casi todos salieron de un libro.",
+    "temas": [
+      "terror",
+      "gotico",
+      "clasico",
+      "ciencia"
+    ],
+    "claves": [
+      "halloween",
+      "dracula",
+      "frankenstein",
+      "monstruo"
+    ],
+    "vistas": 5600000,
+    "subida": 44
+  },
+  {
+    "id": "venganza",
+    "titulo": "Venganzas épicas",
+    "etiqueta": "#Revenge",
+    "fuente": "tiktok",
+    "resumen": "Edits de gente que lo perdió todo y volvió por todo. La historia original es de 1844.",
+    "temas": [
+      "venganza",
+      "intriga",
+      "aventura",
+      "atraco"
+    ],
+    "claves": [
+      "revenge",
+      "venganza",
+      "edit"
+    ],
+    "vistas": 3100000,
+    "subida": 34
+  },
+  {
+    "id": "una-tarde",
+    "titulo": "Libros de una tarde",
+    "etiqueta": "#LeoEnUnaTarde",
+    "fuente": "instagram",
+    "resumen": "Libros que se terminan en lo que dura una serie. Para empezar sin miedo.",
+    "temas": [
+      "corto",
+      "cuentos",
+      "clasico",
+      "superacion"
+    ],
+    "claves": [
+      "corto",
+      "one sitting",
+      "tarde"
+    ],
+    "vistas": 1900000,
+    "subida": 31
+  },
+  {
+    "id": "llorar",
+    "titulo": "Para llorar a gusto",
+    "etiqueta": "#BookTokLlore",
+    "fuente": "tiktok",
+    "resumen": "Las reacciones de la gente terminando un libro con los ojos rojos.",
+    "temas": [
+      "tragedia",
+      "romance",
+      "salud mental",
+      "amistad"
+    ],
+    "claves": [
+      "llore",
+      "crying",
+      "sad book"
+    ],
+    "vistas": 2700000,
+    "subida": 28
+  },
+  {
+    "id": "juicios",
+    "titulo": "Juicios y verdad",
+    "etiqueta": "#TrueCrime",
+    "fuente": "youtube",
+    "resumen": "Casos reales, juicios y la pregunta de siempre, quién dice la verdad.",
+    "temas": [
+      "justicia",
+      "misterio",
+      "intriga",
+      "familia"
+    ],
+    "claves": [
+      "true crime",
+      "juicio",
+      "caso"
+    ],
+    "vistas": 2300000,
+    "subida": 25
+  },
+  {
+    "id": "secundaria",
+    "titulo": "POV en la secundaria",
+    "etiqueta": "#POV",
+    "fuente": "tiktok",
+    "resumen": "Sketches del primer día de clases, del grupo y del que siempre la riega.",
+    "temas": [
+      "humor",
+      "amistad",
+      "academia",
+      "superacion"
+    ],
+    "claves": [
+      "pov",
+      "secundaria",
+      "colegio"
+    ],
+    "vistas": 4800000,
+    "subida": 30
+  }
+]
