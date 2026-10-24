@@ -21,8 +21,9 @@ el 4322.
 - **La entrada.** Quien entra elige qué ve en redes y cuánto lee. Con eso se arma su ruta.
 - **Inicio.** Las tendencias son las historias de arriba y cada publicación es un libro que
   sale de una tendencia, con el motivo escrito. Arriba va el libro que toca leer y la racha.
-- **Deslizar.** El mismo gesto de TikTok, pero cada video termina en un libro. Cada seis
-  deslizones aparece la invitación a leer cinco minutos.
+- **Deslizar.** El mismo gesto de TikTok, pero cada video termina en un libro. Cada cinco
+  deslizones sale una pausa con los cinco libros que acabas de pasar; tocas el que se te quedó
+  y lees cinco minutos de ese.
 - **Ruta.** Siete libros por niveles. Arriba siempre espera El conde de Montecristo.
 - **Sesión de lectura.** Un reloj con meta de cinco minutos. Al terminar se anotan las páginas,
   se prende la racha y se sube en el ranking. El patito feo, La metamorfosis y El conde de
@@ -52,6 +53,17 @@ por Supabase, en tiempo real. El esquema está en `supabase/esquema.sql` y la co
 que se puede hacer con ella lo limitan las reglas del esquema. Sin conexión la app sigue igual
 con su comunidad simulada.
 
+La página puede leer las tablas pero no escribir en ellas. Todo lo que se escribe pasa por
+tres funciones de la base, `soy` (la fila propia del ranking), `contar` (lo que va pasando) y
+`comentar`. Cada teléfono guarda una clave al azar la primera vez y solo esa clave cambia su
+fila, así nadie puede tocar el puntaje de otro. Las funciones rechazan las palabras feas y los
+enlaces, y frenan a quien manda demasiado por minuto. La misma lista de palabras vive en
+`js/red.js` para avisar antes de enviar; si se cambia una, hay que cambiar la otra.
+
+El esquema se puede correr entero las veces que haga falta y no borra datos. Si se cambia,
+primero se corre en el editor SQL de Supabase y después se sube la página, porque la página
+nueva llama funciones que la base vieja no tiene.
+
 La cuenta es opcional. Quien quiera guardar su avance crea una con correo y contraseña desde
 Comunidad, y su racha, páginas, medallas y ruta se guardan en la nube.
 
@@ -64,9 +76,11 @@ tendencia. Si el motivo no se puede escribir, la recomendación no sale.
 
 ## Lo que es demo
 
-Es un prototipo sin cuentas. Lo de cada persona se guarda en su navegador. Los demás lectores,
-sus comentarios y el ranking se arman en la página con números que salen de la fecha, para que
-no cambien en cada recarga. Las tendencias viven en `datos/tendencias.json`. De las tres redes
+Lo de cada persona se guarda en su navegador, y en la nube solo si crea la cuenta opcional.
+Mientras hay pocos lectores de verdad, el ranking y lo que pasa se completan con lectores
+simulados, armados con números que salen de la fecha para que no cambien en cada recarga; los
+de verdad llegan por Supabase y se mezclan con ellos. Las tendencias viven en
+`datos/tendencias.json`. De las tres redes
 solo YouTube da datos con una llave que uno saca solo, TikTok e Instagram no entregan
 tendencias del país.
 
@@ -83,6 +97,7 @@ tendencias del país.
     js/libres.js          los cuentos completos
     js/musica.js          la música de Deslizar
     js/red.js             Supabase, la red y la cuenta opcional
+    js/red-config.js      la direccion y la llave publica de Supabase
     css/juego.css         campana, medallas, podio, fondo que se pinta
     musica/generar.py     sintetiza las veinte canciones
     supabase/esquema.sql  tablas y reglas de la base
