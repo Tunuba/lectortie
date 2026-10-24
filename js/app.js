@@ -5,8 +5,9 @@
    otras, como en cualquier red social.
 
    El motor, el gusto y la comunidad viven en el navegador (motor.js y
-   comunidad.js). No hay servidor ni base de datos, asi que la app se abre
-   igual desde una computadora, un Android o un iPhone. */
+   comunidad.js). No hay servidor propio, es una pagina estatica, asi que la
+   app se abre igual desde una computadora, un Android o un iPhone. Lo que se
+   comparte entre telefonos va por Supabase (red.js). */
 
 (function () {
 
@@ -747,6 +748,7 @@
       ev.preventDefault();
       const texto = campo.value.trim();
       if (!texto) return;
+      if (!Red.limpio(texto)) { avisar('Ese comentario no se puede publicar'); vibrar(30); return; }
       const c = Comunidad.comentar(l.id, texto);
       rotC.textContent = Comunidad.cuantosComentarios(l.id) + ' comentarios'; salto(rotC);
       contarDeNuevo(l.id);
@@ -1646,6 +1648,7 @@
     caja.hidden = false;
     document.body.classList.add('con-entrada');
     $('#ent-leyendo').textContent = Comunidad.leyendoAhora();
+    $('#ent-armando-txt').textContent = 'Cruzando lo que ves con ' + Motor.libros().length + ' libros';
 
     /* portadas flotando detras del logo */
     const fondo = $('#ent-fondo');
@@ -1696,7 +1699,8 @@
 
   function armando(elegidas, nivel) {
     const yo = Comunidad.yo;
-    yo.alias = ($('#ent-alias').value || '').trim().replace(/\s+/g, '.').toLowerCase().slice(0, 18) || 'lector' + Math.floor(100 + Math.random() * 900);
+    const alias = ($('#ent-alias').value || '').trim().replace(/\s+/g, '.').toLowerCase().slice(0, 18);
+    yo.alias = alias && Red.limpio(alias) ? alias : 'lector' + Math.floor(100 + Math.random() * 900);
     yo.nivelInicio = nivel || 1;
     yo.elegidas = elegidas;
     for (const id of elegidas) {

@@ -4,7 +4,12 @@
    Si no hay conexion o falta la configuracion, no pasa nada. La app sigue
    con la comunidad que arma ella misma y nadie nota el corte. La llave que
    va en red-config.js es la publica de Supabase, hecha para ir en la pagina,
-   y lo que se puede hacer con ella lo limitan las reglas de la base. */
+   y lo que se puede hacer con ella lo limitan las reglas de la base.
+
+   Desde la pagina no se escribe directo en ninguna tabla. Todo pasa por tres
+   funciones de la base (soy, contar y comentar, en supabase/esquema.sql) que
+   revisan las palabras, frenan a quien manda demasiado y no dejan tocar la
+   fila de otro. Cada telefono guarda una clave suya que solo el conoce. */
 
 window.Red = (function () {
 
@@ -28,6 +33,28 @@ window.Red = (function () {
       }
       return id;
     } catch (e) { return null; }
+  }
+
+  /* La clave de este telefono. Prueba que su fila del ranking es suya. */
+  function miClave() {
+    try {
+      let c = localStorage.getItem('lectortie.clave');
+      if (!c) {
+        const r = new Uint8Array(24); crypto.getRandomValues(r);
+        c = [...r].map(x => x.toString(16).padStart(2, '0')).join('');
+        localStorage.setItem('lectortie.clave', c);
+      }
+      return c;
+    } catch (e) { return ''; }
+  }
+
+  /* Las palabras que no salen en pantalla. La misma lista vive en la funcion
+     limpio de la base; si se cambia aqui, hay que cambiarla alla. */
+  const CAMBIO = { 'á': 'a', 'é': 'e', 'í': 'i', 'ó': 'o', 'ú': 'u', 'ü': 'u', '0': 'o', '1': 'i', '3': 'e', '4': 'a', '5': 's', '7': 't', '@': 'a', '$': 's' };
+  const MALAS = /(^|[^a-zñ])(put[ao]|mierd|verga|pendej|cerot|culer|hijueput|hijodeput|malparid|chingad|chingar|mamad|maric|imbecil|estupid|cabron|follar|porno|nazi|hitler|idiota|zorra|cagad|jodid|coño|sexo|vrg|culos?([^a-zñ]|$)|pija([^a-zñ]|$)|hdp([^a-zñ]|$)|ptm([^a-zñ]|$)|penes?([^a-zñ]|$)|jotos?([^a-zñ]|$))/;
+  function limpio(texto) {
+    const t = String(texto || '').toLowerCase().replace(/[áéíóúü013457@$]/g, c => CAMBIO[c]);
+    return !MALAS.test(t);
   }
 
   function semana() {
@@ -56,6 +83,7 @@ window.Red = (function () {
 
   function avisar(tipo, fila) {
     if (fila && fila.quien === miId()) return;
+    if (!fila || !limpio(fila.alias) || !limpio(fila.texto)) return;
     for (const f of oyentes[tipo]) { try { f(fila); } catch (e) { /* un oyente roto no tumba a los demas */ } }
   }
   function al(tipo, f) { oyentes[tipo].push(f); }
@@ -65,7 +93,7 @@ window.Red = (function () {
     const desde = new Date(Date.now() - 864e5 * 8).toISOString();
     const { data } = await db.from('lectores').select('*').eq('semana', semana()).gte('actualizado', desde)
       .order('paginas', { ascending: false }).limit(40);
-    if (data) lectores = data.filter(x => x.id !== miId());
+    if (data) lectores = data.filter(x => x.id !== miId() && limpio(x.alias));
     return lectores;
   }
 
@@ -74,32 +102,33 @@ window.Red = (function () {
     if (!db) return;
     const id = miId(); if (!id) return;
     try {
-      await db.from('lectores').upsert(Object.assign({ id, semana: semana(), actualizado: new Date().toISOString() }, datos));
+      await db.rpc('soy', { p_id: id, p_clave: miClave(), p_alias: datos.alias, p_color: datos.color || null,
+        p_paginas: datos.paginas || 0, p_racha: datos.racha || 0, p_libro: datos.libro || null });
     } catch (e) { /* sin red, ya se mandara en el siguiente gesto */ }
   }
 
   async function contar(alias, color, texto, libro) {
     if (!db) return;
-    try { await db.from('sucesos').insert({ quien: miId(), alias, color, texto: String(texto).slice(0, 120), libro: libro || null }); }
+    try { await db.rpc('contar', { p_quien: miId(), p_alias: alias, p_color: color, p_texto: String(texto).slice(0, 120), p_libro: libro || null }); }
     catch (e) { /* sin red no se cuenta, la app sigue */ }
   }
 
   async function sucesos(n) {
     if (!db) return [];
     const { data } = await db.from('sucesos').select('*').order('creado', { ascending: false }).limit(n || 8);
-    return data || [];
+    return (data || []).filter(x => limpio(x.alias) && limpio(x.texto));
   }
 
   async function comentar(libro, alias, color, texto) {
     if (!db) return;
-    try { await db.from('comentarios').insert({ quien: miId(), libro, alias, color, texto: String(texto).slice(0, 140) }); }
+    try { await db.rpc('comentar', { p_quien: miId(), p_libro: libro, p_alias: alias, p_color: color, p_texto: String(texto).slice(0, 140) }); }
     catch (e) { /* queda guardado en este navegador igual */ }
   }
 
   async function comentarios(libro) {
     if (!db) return [];
     const { data } = await db.from('comentarios').select('*').eq('libro', libro).order('creado', { ascending: true }).limit(30);
-    return (data || []).filter(x => x.quien !== miId());
+    return (data || []).filter(x => x.quien !== miId() && limpio(x.alias) && limpio(x.texto));
   }
 
   function activos() {
@@ -175,6 +204,6 @@ window.Red = (function () {
   }
   function cuenta() { return sesion && sesion.user ? { correo: sesion.user.email } : null; }
 
-  return { arrancar, lista, al, soy, contar, sucesos, comentar, comentarios, lectores: () => lectores, activos, miId,
+  return { arrancar, lista, al, soy, contar, sucesos, comentar, comentarios, lectores: () => lectores, activos, miId, limpio,
            crearCuenta, entrar, salir, cuenta, subir };
 })();

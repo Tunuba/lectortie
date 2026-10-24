@@ -4,9 +4,10 @@
    paginas de la semana, el ranking con los amigos, los comentarios y la ruta
    que va de lo facil a los grandes clasicos.
 
-   Es un prototipo sin base de datos. Lo tuyo se guarda en este navegador y
-   los demas lectores se arman aqui mismo, con numeros que salen de la fecha
-   para que no cambien con cada recarga. */
+   Lo tuyo se guarda en este navegador, y en la nube si abres cuenta. Los
+   lectores de ejemplo se arman aqui mismo, con numeros que salen de la fecha
+   para que no cambien con cada recarga, y los de verdad llegan por red.js y
+   entran a la misma tabla. */
 
 window.Comunidad = (function () {
 

@@ -3,7 +3,7 @@
    Antes vivia en servidor/ y la pagina le preguntaba por /api. Para que la
    app se pueda abrir desde cualquier telefono sin levantar nada, el mismo
    motor corre aqui: cruza tendencias con libros, aprende de lo que tocas y
-   guarda todo en el navegador de cada quien. Sin base de datos y sin cuentas.
+   guarda todo en el navegador de cada quien. Para esto no hace falta servidor.
 
    La regla para recomendar sigue siendo una sola. Cada tendencia trae sus
    temas en orden, cada libro trae los suyos, y el puntaje es cuanto se cruzan
