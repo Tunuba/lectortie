@@ -11,3 +11,11 @@ emprendimiento/
 presentacion/
 pruebas/
 plan-negocios/
+
+# la app real
+plataforma/servidor.log
+plataforma/servidor/*.exe
+plataforma/web/node_modules/
+plataforma/web/dist/
+plataforma/servidor/*.exe~
+plataforma/web/dist-antes-*/

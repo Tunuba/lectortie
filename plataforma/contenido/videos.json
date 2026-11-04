@@ -1,0 +1,2788 @@
+[
+ {
+  "fuente": "tiktok",
+  "ref": "7691886326454455573",
+  "autor": "@frutitaenlatada",
+  "texto": "El sabor de tus secretos, parte 1",
+  "tema": "misterio",
+  "clase": "general",
+  "etiqueta": "Frutinovela",
+  "vector": {
+   "terror": 0.0,
+   "romantasy": 0.0008,
+   "fantasia": 0.0006,
+   "misterio": 0.9945,
+   "distopia": 0.0001,
+   "espacio": 0.0003,
+   "clasicos": 0.0032,
+   "latinoamerica": 0.0004
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7690388659975064864",
+  "autor": "@frutasalocadao",
+  "texto": "Cocardo, la frutinovela que todos siguen",
+  "tema": "clasicos",
+  "clase": "general",
+  "etiqueta": "Frutinovela",
+  "vector": {
+   "terror": 0.0,
+   "romantasy": 0.0,
+   "fantasia": 0.0,
+   "misterio": 0.0,
+   "distopia": 0.0,
+   "espacio": 0.0,
+   "clasicos": 0.9999,
+   "latinoamerica": 0.0
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7690416646548245791",
+  "autor": "@bm_fruitstories",
+  "texto": "La historia completa de Cocardo",
+  "tema": "clasicos",
+  "clase": "general",
+  "etiqueta": "Frutinovela",
+  "vector": {
+   "terror": 0.0,
+   "romantasy": 0.0,
+   "fantasia": 0.0001,
+   "misterio": 0.0,
+   "distopia": 0.0001,
+   "espacio": 0.0,
+   "clasicos": 0.9997,
+   "latinoamerica": 0.0001
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7650663580588674326",
+  "autor": "@relatosen1minuto_",
+  "texto": "Una calabaza que vive por los likes",
+  "tema": "distopia",
+  "clase": "general",
+  "etiqueta": "Frutinovela",
+  "vector": {
+   "terror": 0.0005,
+   "romantasy": 0.0007,
+   "fantasia": 0.0003,
+   "misterio": 0.0001,
+   "distopia": 0.5001,
+   "espacio": 0.0,
+   "clasicos": 0.4983,
+   "latinoamerica": 0.0001
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7700621346342014241",
+  "autor": "@frutitaenlatasda",
+  "texto": "Cocardo sale de la cárcel",
+  "tema": "clasicos",
+  "clase": "general",
+  "etiqueta": "Frutinovela",
+  "vector": {
+   "terror": 0.0005,
+   "romantasy": 0.0,
+   "fantasia": 0.0007,
+   "misterio": 0.0,
+   "distopia": 0.0001,
+   "espacio": 0.0001,
+   "clasicos": 0.9984,
+   "latinoamerica": 0.0003
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7696655432714095905",
+  "autor": "@frutinovela2900",
+  "texto": "El coco del millón de dólares",
+  "tema": "misterio",
+  "clase": "general",
+  "etiqueta": "Frutinovela",
+  "vector": {
+   "terror": 0.0001,
+   "romantasy": 0.0004,
+   "fantasia": 0.0,
+   "misterio": 0.5,
+   "distopia": 0.0002,
+   "espacio": 0.0,
+   "clasicos": 0.4993,
+   "latinoamerica": 0.0
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7692907211411950866",
+  "autor": "@frotinovela.m",
+  "texto": "La heladería de Cocardo",
+  "tema": "romantasy",
+  "clase": "general",
+  "etiqueta": "Frutinovela",
+  "vector": {
+   "terror": 0.0001,
+   "romantasy": 0.5,
+   "fantasia": 0.0003,
+   "misterio": 0.0,
+   "distopia": 0.0,
+   "espacio": 0.0,
+   "clasicos": 0.4993,
+   "latinoamerica": 0.0003
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7585060292665560327",
+  "autor": "@misaka450",
+  "texto": "El loro que no deja en paz al gato",
+  "tema": "fantasia",
+  "clase": "general",
+  "etiqueta": "Risa",
+  "vector": {
+   "terror": 0.0002,
+   "romantasy": 0.0,
+   "fantasia": 0.9985,
+   "misterio": 0.0003,
+   "distopia": 0.0001,
+   "espacio": 0.0004,
+   "clasicos": 0.0001,
+   "latinoamerica": 0.0002
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7609655258226232598",
+  "autor": "@littlemonkey.ia",
+  "texto": "El mono más tierno de TikTok",
+  "tema": "fantasia",
+  "clase": "general",
+  "etiqueta": "Risa",
+  "vector": {
+   "terror": 0.0006,
+   "romantasy": 0.0,
+   "fantasia": 0.9964,
+   "misterio": 0.0004,
+   "distopia": 0.0002,
+   "espacio": 0.0011,
+   "clasicos": 0.0005,
+   "latinoamerica": 0.0008
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7563384046034685198",
+  "autor": "@samaritanosenaccion",
+  "texto": "El gallo que no se deja detener",
+  "tema": "latinoamerica",
+  "clase": "general",
+  "etiqueta": "Risa",
+  "vector": {
+   "terror": 0.0002,
+   "romantasy": 0.0,
+   "fantasia": 0.4974,
+   "misterio": 0.0002,
+   "distopia": 0.0001,
+   "espacio": 0.0005,
+   "clasicos": 0.0007,
+   "latinoamerica": 0.5007
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7649169234920017174",
+  "autor": "@toby_elvaliente",
+  "texto": "La capibara y la maceta gigante",
+  "tema": "fantasia",
+  "clase": "general",
+  "etiqueta": "Risa",
+  "vector": {
+   "terror": 0.0002,
+   "romantasy": 0.0,
+   "fantasia": 0.9988,
+   "misterio": 0.0002,
+   "distopia": 0.0,
+   "espacio": 0.0004,
+   "clasicos": 0.0002,
+   "latinoamerica": 0.0002
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7613487355558694162",
+  "autor": "@nikileytor8",
+  "texto": "El gato que creyó que podía volar",
+  "tema": "espacio",
+  "clase": "general",
+  "etiqueta": "Risa",
+  "vector": {
+   "terror": 0.0011,
+   "romantasy": 0.0,
+   "fantasia": 0.4973,
+   "misterio": 0.0002,
+   "distopia": 0.0001,
+   "espacio": 0.501,
+   "clasicos": 0.0001,
+   "latinoamerica": 0.0001
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7317474820940123425",
+  "autor": "@diy__sha",
+  "texto": "Una caja de papel con una sola hoja",
+  "tema": "espacio",
+  "clase": "general",
+  "etiqueta": "Para armar",
+  "vector": {
+   "terror": 0.0001,
+   "romantasy": 0.0002,
+   "fantasia": 0.0012,
+   "misterio": 0.0001,
+   "distopia": 0.0007,
+   "espacio": 0.9975,
+   "clasicos": 0.0,
+   "latinoamerica": 0.0002
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7486620796035616005",
+  "autor": "@dave.fdz",
+  "texto": "Stickers caseros con tus dibujos",
+  "tema": "fantasia",
+  "clase": "general",
+  "etiqueta": "Para armar",
+  "vector": {
+   "terror": 0.0001,
+   "romantasy": 0.0001,
+   "fantasia": 0.5039,
+   "misterio": 0.0001,
+   "distopia": 0.0006,
+   "espacio": 0.4951,
+   "clasicos": 0.0,
+   "latinoamerica": 0.0001
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7421715658666282273",
+  "autor": "@laberiwis",
+  "texto": "Una caja de regalo con forma de libro",
+  "tema": "clasicos",
+  "clase": "general",
+  "etiqueta": "Para armar",
+  "vector": {
+   "terror": 0.0009,
+   "romantasy": 0.0005,
+   "fantasia": 0.0007,
+   "misterio": 0.0005,
+   "distopia": 0.0006,
+   "espacio": 0.4959,
+   "clasicos": 0.5001,
+   "latinoamerica": 0.0007
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7593947411949571349",
+  "autor": "@ross_manuali",
+  "texto": "Estrellitas de papel",
+  "tema": "espacio",
+  "clase": "general",
+  "etiqueta": "Para armar",
+  "vector": {
+   "terror": 0.0002,
+   "romantasy": 0.0,
+   "fantasia": 0.0009,
+   "misterio": 0.0,
+   "distopia": 0.0001,
+   "espacio": 0.9987,
+   "clasicos": 0.0,
+   "latinoamerica": 0.0001
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7684748359931890966",
+  "autor": "@8304.hoffmann",
+  "texto": "Un separador de libros para el dedo",
+  "tema": "clasicos",
+  "clase": "general",
+  "etiqueta": "Para armar",
+  "vector": {
+   "terror": 0.0004,
+   "romantasy": 0.0002,
+   "fantasia": 0.0004,
+   "misterio": 0.0001,
+   "distopia": 0.0003,
+   "espacio": 0.4983,
+   "clasicos": 0.5001,
+   "latinoamerica": 0.0003
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7545994707508235527",
+  "autor": "@fer.jalil",
+  "texto": "Cómo armar el cubo Rubik paso a paso",
+  "tema": "misterio",
+  "clase": "general",
+  "etiqueta": "Cubo Rubik",
+  "vector": {
+   "terror": 0.0,
+   "romantasy": 0.0,
+   "fantasia": 0.0005,
+   "misterio": 0.9989,
+   "distopia": 0.0001,
+   "espacio": 0.0002,
+   "clasicos": 0.0,
+   "latinoamerica": 0.0002
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7522989781387709727",
+  "autor": "@alan.cubos2",
+  "texto": "Un método para el cubo Rubik",
+  "tema": "misterio",
+  "clase": "general",
+  "etiqueta": "Cubo Rubik",
+  "vector": {
+   "terror": 0.0002,
+   "romantasy": 0.0006,
+   "fantasia": 0.0006,
+   "misterio": 0.9975,
+   "distopia": 0.0003,
+   "espacio": 0.0002,
+   "clasicos": 0.0002,
+   "latinoamerica": 0.0004
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7542299526548278584",
+  "autor": "@moyo.cro4",
+  "texto": "Armar el cubo Rubik, parte 1",
+  "tema": "misterio",
+  "clase": "general",
+  "etiqueta": "Cubo Rubik",
+  "vector": {
+   "terror": 0.0002,
+   "romantasy": 0.0003,
+   "fantasia": 0.0006,
+   "misterio": 0.9979,
+   "distopia": 0.0004,
+   "espacio": 0.0003,
+   "clasicos": 0.0001,
+   "latinoamerica": 0.0003
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7493745368417504554",
+  "autor": "@unique.cuber",
+  "texto": "El cubo Rubik en cuatro pasos",
+  "tema": "misterio",
+  "clase": "general",
+  "etiqueta": "Cubo Rubik",
+  "vector": {
+   "terror": 0.0,
+   "romantasy": 0.0002,
+   "fantasia": 0.0006,
+   "misterio": 0.9983,
+   "distopia": 0.0005,
+   "espacio": 0.0001,
+   "clasicos": 0.0001,
+   "latinoamerica": 0.0001
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7258649894318083354",
+  "autor": "@miricraft.oficial",
+  "texto": "Spiderman en pixel art de papel",
+  "tema": "distopia",
+  "clase": "general",
+  "etiqueta": "Pixel art",
+  "vector": {
+   "terror": 0.0004,
+   "romantasy": 0.0001,
+   "fantasia": 0.0002,
+   "misterio": 0.0001,
+   "distopia": 0.9985,
+   "espacio": 0.0004,
+   "clasicos": 0.0002,
+   "latinoamerica": 0.0002
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7252711949706824986",
+  "autor": "@miricraft.oficial",
+  "texto": "Among Us en pixel art",
+  "tema": "espacio",
+  "clase": "general",
+  "etiqueta": "Pixel art",
+  "vector": {
+   "terror": 0.0001,
+   "romantasy": 0.0,
+   "fantasia": 0.0,
+   "misterio": 0.0,
+   "distopia": 0.4996,
+   "espacio": 0.5001,
+   "clasicos": 0.0001,
+   "latinoamerica": 0.0
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7540364317175139640",
+  "autor": "@vivi_v_1",
+  "texto": "Rumi de las Guerreras K-pop en pixel art",
+  "tema": "distopia",
+  "clase": "general",
+  "etiqueta": "Pixel art",
+  "vector": {
+   "terror": 0.0003,
+   "romantasy": 0.0,
+   "fantasia": 0.001,
+   "misterio": 0.0001,
+   "distopia": 0.9983,
+   "espacio": 0.0001,
+   "clasicos": 0.0001,
+   "latinoamerica": 0.0
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7442460331584097592",
+  "autor": "@jasmine_s_art",
+  "texto": "Ideas de pixel art en cuadritos",
+  "tema": "espacio",
+  "clase": "general",
+  "etiqueta": "Pixel art",
+  "vector": {
+   "terror": 0.0001,
+   "romantasy": 0.0,
+   "fantasia": 0.0002,
+   "misterio": 0.0,
+   "distopia": 0.4986,
+   "espacio": 0.5001,
+   "clasicos": 0.0009,
+   "latinoamerica": 0.0001
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7382214937977965829",
+  "autor": "@lapdibujos",
+  "texto": "Snoopy en pixel art",
+  "tema": "fantasia",
+  "clase": "general",
+  "etiqueta": "Pixel art",
+  "vector": {
+   "terror": 0.0002,
+   "romantasy": 0.0002,
+   "fantasia": 0.5001,
+   "misterio": 0.0001,
+   "distopia": 0.4992,
+   "espacio": 0.0001,
+   "clasicos": 0.0001,
+   "latinoamerica": 0.0
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7504141455565262135",
+  "autor": "@johnmv127",
+  "texto": "Tom y Jerry, el clásico de siempre",
+  "tema": "fantasia",
+  "clase": "general",
+  "etiqueta": "Caricatura",
+  "vector": {
+   "terror": 0.0001,
+   "romantasy": 0.0,
+   "fantasia": 0.9984,
+   "misterio": 0.0001,
+   "distopia": 0.0001,
+   "espacio": 0.0003,
+   "clasicos": 0.0007,
+   "latinoamerica": 0.0002
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7455812621917359402",
+  "autor": "@kids.cartoon.clips",
+  "texto": "El buen dinosaurio",
+  "tema": "fantasia",
+  "clase": "general",
+  "etiqueta": "Caricatura",
+  "vector": {
+   "terror": 0.0008,
+   "romantasy": 0.0,
+   "fantasia": 0.9973,
+   "misterio": 0.0002,
+   "distopia": 0.0001,
+   "espacio": 0.0007,
+   "clasicos": 0.0003,
+   "latinoamerica": 0.0006
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7583636374989851925",
+  "autor": "@fideosverdes",
+  "texto": "Los tres cerditos de 1933",
+  "tema": "clasicos",
+  "clase": "general",
+  "etiqueta": "Caricatura",
+  "vector": {
+   "terror": 0.0016,
+   "romantasy": 0.0007,
+   "fantasia": 0.0012,
+   "misterio": 0.0001,
+   "distopia": 0.0001,
+   "espacio": 0.0,
+   "clasicos": 0.9957,
+   "latinoamerica": 0.0006
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7288044901474880774",
+  "autor": "@animadascomiquitas",
+  "texto": "Silvestre y Piolín, parte 1",
+  "tema": "fantasia",
+  "clase": "general",
+  "etiqueta": "Caricatura",
+  "vector": {
+   "terror": 0.0,
+   "romantasy": 0.0,
+   "fantasia": 0.9988,
+   "misterio": 0.0,
+   "distopia": 0.0,
+   "espacio": 0.0001,
+   "clasicos": 0.0008,
+   "latinoamerica": 0.0001
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7269892570883443973",
+  "autor": "@initpelis",
+  "texto": "Rapunzel, deja caer tu cabello",
+  "tema": "romantasy",
+  "clase": "general",
+  "etiqueta": "Caricatura",
+  "vector": {
+   "terror": 0.0007,
+   "romantasy": 0.9929,
+   "fantasia": 0.0017,
+   "misterio": 0.0005,
+   "distopia": 0.0009,
+   "espacio": 0.0016,
+   "clasicos": 0.0015,
+   "latinoamerica": 0.0002
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7688813566991879442",
+  "autor": "@pelis.free.en.esp",
+  "texto": "Ferdinand, el toro que no quería pelear",
+  "tema": "clasicos",
+  "clase": "general",
+  "etiqueta": "Caricatura",
+  "vector": {
+   "terror": 0.0006,
+   "romantasy": 0.0032,
+   "fantasia": 0.0005,
+   "misterio": 0.0001,
+   "distopia": 0.0002,
+   "espacio": 0.0004,
+   "clasicos": 0.994,
+   "latinoamerica": 0.0009
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7166418142330129670",
+  "autor": "@guatefornication",
+  "texto": "El monstruo del lago de Atitlán",
+  "tema": "misterio",
+  "clase": "general",
+  "etiqueta": "Leyenda",
+  "vector": {
+   "terror": 0.0004,
+   "romantasy": 0.0007,
+   "fantasia": 0.0003,
+   "misterio": 0.9962,
+   "distopia": 0.0002,
+   "espacio": 0.0004,
+   "clasicos": 0.0001,
+   "latinoamerica": 0.0018
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7517528725156613381",
+  "autor": "@aguacateclick",
+  "texto": "Noche de leyendas en La Antigua",
+  "tema": "terror",
+  "clase": "general",
+  "etiqueta": "Leyenda",
+  "vector": {
+   "terror": 0.9996,
+   "romantasy": 0.0,
+   "fantasia": 0.0,
+   "misterio": 0.0,
+   "distopia": 0.0,
+   "espacio": 0.0,
+   "clasicos": 0.0001,
+   "latinoamerica": 0.0002
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7567540897697565974",
+  "autor": "@themisteriio",
+  "texto": "La leyenda del quetzal",
+  "tema": "latinoamerica",
+  "clase": "general",
+  "etiqueta": "Leyenda",
+  "vector": {
+   "terror": 0.0014,
+   "romantasy": 0.0001,
+   "fantasia": 0.0003,
+   "misterio": 0.0007,
+   "distopia": 0.0001,
+   "espacio": 0.0008,
+   "clasicos": 0.0003,
+   "latinoamerica": 0.9964
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7567117418179333387",
+  "autor": "@un.usuario356",
+  "texto": "Los cadejos, leyenda de Guatemala",
+  "tema": "terror",
+  "clase": "general",
+  "etiqueta": "Leyenda",
+  "vector": {
+   "terror": 0.9977,
+   "romantasy": 0.0001,
+   "fantasia": 0.0001,
+   "misterio": 0.0001,
+   "distopia": 0.0002,
+   "espacio": 0.0001,
+   "clasicos": 0.0002,
+   "latinoamerica": 0.0015
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7538148120471915832",
+  "autor": "@s.p.l.l",
+  "texto": "¿El Sombrerón es real?",
+  "tema": "terror",
+  "clase": "general",
+  "etiqueta": "Leyenda",
+  "vector": {
+   "terror": 0.9993,
+   "romantasy": 0.0,
+   "fantasia": 0.0,
+   "misterio": 0.0,
+   "distopia": 0.0001,
+   "espacio": 0.0001,
+   "clasicos": 0.0,
+   "latinoamerica": 0.0005
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7660238930847042832",
+  "autor": "@oscarlopezmt",
+  "texto": "Lo que cuentan las abuelas de Latinoamérica",
+  "tema": "latinoamerica",
+  "clase": "general",
+  "etiqueta": "Leyenda",
+  "vector": {
+   "terror": 0.0014,
+   "romantasy": 0.0,
+   "fantasia": 0.0019,
+   "misterio": 0.0006,
+   "distopia": 0.0001,
+   "espacio": 0.0002,
+   "clasicos": 0.0014,
+   "latinoamerica": 0.9943
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7292221993791835398",
+  "autor": "@carlos._.diaz_505",
+  "texto": "Cinco leyendas de Guatemala",
+  "tema": "terror",
+  "clase": "general",
+  "etiqueta": "Leyenda",
+  "vector": {
+   "terror": 0.5034,
+   "romantasy": 0.0,
+   "fantasia": 0.0001,
+   "misterio": 0.0001,
+   "distopia": 0.0,
+   "espacio": 0.0001,
+   "clasicos": 0.0002,
+   "latinoamerica": 0.496
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7616107959457811743",
+  "autor": "@orvionfilms",
+  "texto": "Galaxias que chocan en silencio",
+  "tema": "espacio",
+  "clase": "general",
+  "etiqueta": "Espacio",
+  "vector": {
+   "terror": 0.0005,
+   "romantasy": 0.0001,
+   "fantasia": 0.0004,
+   "misterio": 0.0,
+   "distopia": 0.0005,
+   "espacio": 0.9983,
+   "clasicos": 0.0,
+   "latinoamerica": 0.0002
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7511564863471226128",
+  "autor": "@drevmc",
+  "texto": "Lo que hay más allá de lo conocido",
+  "tema": "espacio",
+  "clase": "general",
+  "etiqueta": "Espacio",
+  "vector": {
+   "terror": 0.0002,
+   "romantasy": 0.0003,
+   "fantasia": 0.0011,
+   "misterio": 0.0015,
+   "distopia": 0.0002,
+   "espacio": 0.9959,
+   "clasicos": 0.0001,
+   "latinoamerica": 0.0007
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7704044833140165910",
+  "autor": "@xataka",
+  "texto": "Las manchas oscuras del Sol",
+  "tema": "espacio",
+  "clase": "general",
+  "etiqueta": "Espacio",
+  "vector": {
+   "terror": 0.0014,
+   "romantasy": 0.0002,
+   "fantasia": 0.0006,
+   "misterio": 0.0001,
+   "distopia": 0.0002,
+   "espacio": 0.9969,
+   "clasicos": 0.0,
+   "latinoamerica": 0.0006
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7550531706810387730",
+  "autor": "@oem2810",
+  "texto": "Interstellar y el amor que cruza el tiempo",
+  "tema": "espacio",
+  "clase": "general",
+  "etiqueta": "Espacio",
+  "vector": {
+   "terror": 0.0035,
+   "romantasy": 0.0338,
+   "fantasia": 0.0014,
+   "misterio": 0.0008,
+   "distopia": 0.0011,
+   "espacio": 0.9262,
+   "clasicos": 0.0008,
+   "latinoamerica": 0.0324
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7475188738880982278",
+  "autor": "@lucianaboooksss",
+  "texto": "Romances que te hacen llorar y reír",
+  "tema": "romantasy",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "bajo-misma-estrella",
+  "vector": {
+   "terror": 0.0004,
+   "romantasy": 0.9977,
+   "fantasia": 0.0,
+   "misterio": 0.0002,
+   "distopia": 0.001,
+   "espacio": 0.0002,
+   "clasicos": 0.0004,
+   "latinoamerica": 0.0001
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7597951471111507212",
+  "autor": "@marleybooks",
+  "texto": "Libros para 13 y 14 años",
+  "tema": "fantasia",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "percy-jackson",
+  "vector": {
+   "terror": 0.1318,
+   "romantasy": 0.3095,
+   "fantasia": 0.501,
+   "misterio": 0.0078,
+   "distopia": 0.0158,
+   "espacio": 0.0021,
+   "clasicos": 0.0276,
+   "latinoamerica": 0.0044
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7498861306502515973",
+  "autor": "@marleybooks",
+  "texto": "Ana Paula tiene 14 años y es booktoker",
+  "tema": "romantasy",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "wonder",
+  "vector": {
+   "terror": 0.0561,
+   "romantasy": 0.6416,
+   "fantasia": 0.0031,
+   "misterio": 0.0054,
+   "distopia": 0.0028,
+   "espacio": 0.0061,
+   "clasicos": 0.0747,
+   "latinoamerica": 0.2102
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7442108020303154488",
+  "autor": "@booktokcorner21",
+  "texto": "Si tienes entre 13 y 19 años, estos libros",
+  "tema": "misterio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "el-secreto",
+  "vector": {
+   "terror": 0.0132,
+   "romantasy": 0.2107,
+   "fantasia": 0.0054,
+   "misterio": 0.6109,
+   "distopia": 0.0118,
+   "espacio": 0.0444,
+   "clasicos": 0.0087,
+   "latinoamerica": 0.0948
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7630860337536896278",
+  "autor": "@irenes_book",
+  "texto": "Libros para 11 y 12 años",
+  "tema": "fantasia",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "momo",
+  "vector": {
+   "terror": 0.0289,
+   "romantasy": 0.3981,
+   "fantasia": 0.5017,
+   "misterio": 0.0074,
+   "distopia": 0.0054,
+   "espacio": 0.0158,
+   "clasicos": 0.0167,
+   "latinoamerica": 0.026
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7573761779860278550",
+  "autor": "@readwith.carla",
+  "texto": "Romance juvenil para 13 a 15 años",
+  "tema": "romantasy",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "bajo-misma-estrella",
+  "vector": {
+   "terror": 0.0011,
+   "romantasy": 0.9958,
+   "fantasia": 0.0,
+   "misterio": 0.0008,
+   "distopia": 0.0008,
+   "espacio": 0.0007,
+   "clasicos": 0.0005,
+   "latinoamerica": 0.0003
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7328396666917227809",
+  "autor": "@nereabosch_",
+  "texto": "Tres libros muy perturbadores",
+  "tema": "terror",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "frankenstein",
+  "vector": {
+   "terror": 0.8306,
+   "romantasy": 0.1434,
+   "fantasia": 0.0003,
+   "misterio": 0.0012,
+   "distopia": 0.0036,
+   "espacio": 0.0012,
+   "clasicos": 0.0187,
+   "latinoamerica": 0.0011
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7275319561119993120",
+  "autor": "@nereabosch_",
+  "texto": "Cinco libros cortos de terror para llegar a tu meta del año",
+  "tema": "terror",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "coraline",
+  "vector": {
+   "terror": 0.8577,
+   "romantasy": 0.0688,
+   "fantasia": 0.0005,
+   "misterio": 0.0007,
+   "distopia": 0.0043,
+   "espacio": 0.002,
+   "clasicos": 0.0628,
+   "latinoamerica": 0.0032
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7293591262609837344",
+  "autor": "@lalibreriadeinigo",
+  "texto": "Tres novelas de terror que no te puedes perder",
+  "tema": "terror",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "mexican-gothic",
+  "vector": {
+   "terror": 0.7196,
+   "romantasy": 0.2032,
+   "fantasia": 0.0031,
+   "misterio": 0.0057,
+   "distopia": 0.012,
+   "espacio": 0.0387,
+   "clasicos": 0.0172,
+   "latinoamerica": 0.0005
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7512777284559080727",
+  "autor": "@alba_writes",
+  "texto": "Diez romantasy poco conocidos que merecen más hype",
+  "tema": "romantasy",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "sombra-y-hueso",
+  "vector": {
+   "terror": 0.0012,
+   "romantasy": 0.9735,
+   "fantasia": 0.0002,
+   "misterio": 0.0008,
+   "distopia": 0.0007,
+   "espacio": 0.0167,
+   "clasicos": 0.0033,
+   "latinoamerica": 0.0037
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7396267942683446561",
+  "autor": "@alba_writes",
+  "texto": "Mi top diez de romantasy",
+  "tema": "romantasy",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "corte-rosas-espinas",
+  "vector": {
+   "terror": 0.0004,
+   "romantasy": 0.9986,
+   "fantasia": 0.0,
+   "misterio": 0.0,
+   "distopia": 0.0001,
+   "espacio": 0.0003,
+   "clasicos": 0.0005,
+   "latinoamerica": 0.0002
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7493519070659087638",
+  "autor": "@alba_writes",
+  "texto": "Romantasy con verdaderos enemies to lovers",
+  "tema": "romantasy",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "principe-cruel",
+  "vector": {
+   "terror": 0.0031,
+   "romantasy": 0.9925,
+   "fantasia": 0.0001,
+   "misterio": 0.0006,
+   "distopia": 0.0003,
+   "espacio": 0.001,
+   "clasicos": 0.0018,
+   "latinoamerica": 0.0006
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7491670593524403458",
+  "autor": "@alba_writes",
+  "texto": "Romantasy que no son Acotar y merecen más hype",
+  "tema": "romantasy",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "alas-de-sangre",
+  "vector": {
+   "terror": 0.0003,
+   "romantasy": 0.9988,
+   "fantasia": 0.0,
+   "misterio": 0.0,
+   "distopia": 0.0001,
+   "espacio": 0.0001,
+   "clasicos": 0.0006,
+   "latinoamerica": 0.0001
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7311216509873949957",
+  "autor": "@entre_letrasea",
+  "texto": "¿Qué es una distopía?",
+  "tema": "distopia",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "1984",
+  "vector": {
+   "terror": 0.0005,
+   "romantasy": 0.0019,
+   "fantasia": 0.0,
+   "misterio": 0.0,
+   "distopia": 0.9961,
+   "espacio": 0.0001,
+   "clasicos": 0.0013,
+   "latinoamerica": 0.0001
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7623348117567524118",
+  "autor": "@raluskness",
+  "texto": "Los thrillers que me quiero leer este mes",
+  "tema": "misterio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "el-secreto",
+  "vector": {
+   "terror": 0.0819,
+   "romantasy": 0.0097,
+   "fantasia": 0.0042,
+   "misterio": 0.8551,
+   "distopia": 0.0049,
+   "espacio": 0.0015,
+   "clasicos": 0.038,
+   "latinoamerica": 0.0046
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7590707745444121878",
+  "autor": "@raluskness",
+  "texto": "Los diez mejores thrillers que leí este año",
+  "tema": "misterio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "kafka-en-la-orilla",
+  "vector": {
+   "terror": 0.0239,
+   "romantasy": 0.0076,
+   "fantasia": 0.0273,
+   "misterio": 0.9022,
+   "distopia": 0.0225,
+   "espacio": 0.008,
+   "clasicos": 0.0059,
+   "latinoamerica": 0.0026
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7530999925715340546",
+  "autor": "@e.g.martinez",
+  "texto": "El mejor libro de ciencia ficción que existe",
+  "tema": "espacio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "dune",
+  "vector": {
+   "terror": 0.0032,
+   "romantasy": 0.0147,
+   "fantasia": 0.0029,
+   "misterio": 0.019,
+   "distopia": 0.095,
+   "espacio": 0.8575,
+   "clasicos": 0.0015,
+   "latinoamerica": 0.0063
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7246110689339641114",
+  "autor": "@patriciafedz",
+  "texto": "El realismo mágico y el Boom latinoamericano",
+  "tema": "latinoamerica",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "cien-anios",
+  "vector": {
+   "terror": 0.0003,
+   "romantasy": 0.0002,
+   "fantasia": 0.0001,
+   "misterio": 0.0001,
+   "distopia": 0.0,
+   "espacio": 0.0001,
+   "clasicos": 0.002,
+   "latinoamerica": 0.9972
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7539682383830814008",
+  "autor": "@flashliterario",
+  "texto": "La ciudad y los perros en tres minutos",
+  "tema": "latinoamerica",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.199,
+   "romantasy": 0.1623,
+   "fantasia": 0.0048,
+   "misterio": 0.0086,
+   "distopia": 0.0063,
+   "espacio": 0.0083,
+   "clasicos": 0.1049,
+   "latinoamerica": 0.5058
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7554890826204105995",
+  "autor": "@flashliterario",
+  "texto": "El mago de Oz en tres minutos",
+  "tema": "fantasia",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0229,
+   "romantasy": 0.1964,
+   "fantasia": 0.5022,
+   "misterio": 0.0033,
+   "distopia": 0.0028,
+   "espacio": 0.004,
+   "clasicos": 0.2647,
+   "latinoamerica": 0.0038
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7289397236507741473",
+  "autor": "@alba_writes",
+  "texto": "Fantasía juvenil para empezar a leer",
+  "tema": "fantasia",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "percy-jackson",
+  "vector": {
+   "terror": 0.0211,
+   "romantasy": 0.0344,
+   "fantasia": 0.5011,
+   "misterio": 0.0019,
+   "distopia": 0.0182,
+   "espacio": 0.0014,
+   "clasicos": 0.4201,
+   "latinoamerica": 0.0018
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7348042272010767649",
+  "autor": "@alba_writes",
+  "texto": "Recomendación de fantasía juvenil",
+  "tema": "fantasia",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "harry-potter-1",
+  "vector": {
+   "terror": 0.1083,
+   "romantasy": 0.3704,
+   "fantasia": 0.5007,
+   "misterio": 0.0008,
+   "distopia": 0.0085,
+   "espacio": 0.0059,
+   "clasicos": 0.0049,
+   "latinoamerica": 0.0004
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7628586557615787286",
+  "autor": "@fantacci.books",
+  "texto": "Cinco libros de fantasía para adolescentes, por edad",
+  "tema": "fantasia",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "momo",
+  "vector": {
+   "terror": 0.0095,
+   "romantasy": 0.4649,
+   "fantasia": 0.5004,
+   "misterio": 0.0068,
+   "distopia": 0.0048,
+   "espacio": 0.0054,
+   "clasicos": 0.0025,
+   "latinoamerica": 0.0056
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7589656239618166039",
+  "autor": "@fantacci.books",
+  "texto": "Diez libros de fantasía que debes leer sí o sí",
+  "tema": "fantasia",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "seis-de-cuervos",
+  "vector": {
+   "terror": 0.0899,
+   "romantasy": 0.1845,
+   "fantasia": 0.5023,
+   "misterio": 0.0034,
+   "distopia": 0.0287,
+   "espacio": 0.0221,
+   "clasicos": 0.1617,
+   "latinoamerica": 0.0074
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7567472911842299154",
+  "autor": "@g_vanille",
+  "texto": "Tres libros de terror que sí dan miedo",
+  "tema": "terror",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.9976,
+   "romantasy": 0.0014,
+   "fantasia": 0.0,
+   "misterio": 0.0,
+   "distopia": 0.0002,
+   "espacio": 0.0001,
+   "clasicos": 0.0007,
+   "latinoamerica": 0.0
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7420966190975110406",
+  "autor": "@kris.end.chapter",
+  "texto": "En qué orden leer los cuentos de terror de Kristopher Rodas",
+  "tema": "terror",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.992,
+   "romantasy": 0.0004,
+   "fantasia": 0.0,
+   "misterio": 0.0,
+   "distopia": 0.0004,
+   "espacio": 0.0001,
+   "clasicos": 0.007,
+   "latinoamerica": 0.0
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7698842759347588373",
+  "autor": "@melybee.books",
+  "texto": "Miedos reales, más libros de terror",
+  "tema": "terror",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.9985,
+   "romantasy": 0.0003,
+   "fantasia": 0.0,
+   "misterio": 0.0,
+   "distopia": 0.0006,
+   "espacio": 0.0001,
+   "clasicos": 0.0004,
+   "latinoamerica": 0.0
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7693912112980069654",
+  "autor": "@merr_books",
+  "texto": "Libros para leer en Halloween",
+  "tema": "terror",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.8031,
+   "romantasy": 0.0237,
+   "fantasia": 0.0051,
+   "misterio": 0.0035,
+   "distopia": 0.0129,
+   "espacio": 0.0051,
+   "clasicos": 0.0897,
+   "latinoamerica": 0.057
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7698080633465212182",
+  "autor": "@alaskaleelibros",
+  "texto": "Seis libros ideales para Halloween",
+  "tema": "terror",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.9674,
+   "romantasy": 0.0075,
+   "fantasia": 0.0045,
+   "misterio": 0.001,
+   "distopia": 0.0047,
+   "espacio": 0.005,
+   "clasicos": 0.0036,
+   "latinoamerica": 0.0062
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7571120276067470614",
+  "autor": "@nereabosch_",
+  "texto": "Seis libros de terror por género",
+  "tema": "terror",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.9943,
+   "romantasy": 0.0014,
+   "fantasia": 0.0001,
+   "misterio": 0.0,
+   "distopia": 0.0017,
+   "espacio": 0.0004,
+   "clasicos": 0.002,
+   "latinoamerica": 0.0001
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7563013583718583570",
+  "autor": "@anayloslibros",
+  "texto": "Cinco libros de terror que no te dejan dormir",
+  "tema": "terror",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.9438,
+   "romantasy": 0.0424,
+   "fantasia": 0.0004,
+   "misterio": 0.0003,
+   "distopia": 0.0032,
+   "espacio": 0.0036,
+   "clasicos": 0.0041,
+   "latinoamerica": 0.0022
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7695375044733652246",
+  "autor": "@litwithlaura",
+  "texto": "Tres libros de terror que de verdad asustan",
+  "tema": "terror",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.9962,
+   "romantasy": 0.002,
+   "fantasia": 0.0001,
+   "misterio": 0.0001,
+   "distopia": 0.0004,
+   "espacio": 0.0003,
+   "clasicos": 0.001,
+   "latinoamerica": 0.0
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7702924646487723270",
+  "autor": "@alexjsnr",
+  "texto": "Novelas de terror por tipo de monstruo",
+  "tema": "terror",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.9404,
+   "romantasy": 0.0116,
+   "fantasia": 0.0013,
+   "misterio": 0.0002,
+   "distopia": 0.0019,
+   "espacio": 0.0022,
+   "clasicos": 0.0421,
+   "latinoamerica": 0.0003
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7697909259597630742",
+  "autor": "@labibliofila",
+  "texto": "Si te gusta el terror, estos libros",
+  "tema": "terror",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.9917,
+   "romantasy": 0.0033,
+   "fantasia": 0.0,
+   "misterio": 0.0,
+   "distopia": 0.0003,
+   "espacio": 0.0001,
+   "clasicos": 0.0045,
+   "latinoamerica": 0.0
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7699502432300076309",
+  "autor": "@librosquelei",
+  "texto": "Leyendo It de Stephen King",
+  "tema": "terror",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.7349,
+   "romantasy": 0.0275,
+   "fantasia": 0.012,
+   "misterio": 0.0146,
+   "distopia": 0.0988,
+   "espacio": 0.0117,
+   "clasicos": 0.0382,
+   "latinoamerica": 0.0623
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7699249197802917126",
+  "autor": "@melybee.books",
+  "texto": "La Sociedad de las Pesadillas, el libro del que todos hablan",
+  "tema": "terror",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.8491,
+   "romantasy": 0.0177,
+   "fantasia": 0.0211,
+   "misterio": 0.0668,
+   "distopia": 0.0063,
+   "espacio": 0.0143,
+   "clasicos": 0.0183,
+   "latinoamerica": 0.0064
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7610064483569945878",
+  "autor": "@merr_books",
+  "texto": "Cinco libros de misterio con los giros más sorprendentes",
+  "tema": "misterio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0118,
+   "romantasy": 0.2897,
+   "fantasia": 0.002,
+   "misterio": 0.6491,
+   "distopia": 0.0116,
+   "espacio": 0.0137,
+   "clasicos": 0.0024,
+   "latinoamerica": 0.0196
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7268394103925198085",
+  "autor": "@te.conlibros",
+  "texto": "Tres libros de misterio adictivos",
+  "tema": "misterio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0112,
+   "romantasy": 0.3927,
+   "fantasia": 0.0005,
+   "misterio": 0.5646,
+   "distopia": 0.0036,
+   "espacio": 0.0021,
+   "clasicos": 0.0237,
+   "latinoamerica": 0.0016
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7643489846262123798",
+  "autor": "@patibarcena_",
+  "texto": "Thrillers que se llevan un diez",
+  "tema": "misterio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.002,
+   "romantasy": 0.0073,
+   "fantasia": 0.0017,
+   "misterio": 0.9817,
+   "distopia": 0.0014,
+   "espacio": 0.0008,
+   "clasicos": 0.0042,
+   "latinoamerica": 0.0009
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7694463132751711496",
+  "autor": "@elbookclub.podcast",
+  "texto": "Cómo empezar a leer a Agatha Christie",
+  "tema": "misterio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0003,
+   "romantasy": 0.0035,
+   "fantasia": 0.0005,
+   "misterio": 0.9815,
+   "distopia": 0.0024,
+   "espacio": 0.0001,
+   "clasicos": 0.0113,
+   "latinoamerica": 0.0004
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7700327959919447317",
+  "autor": "@satchareads",
+  "texto": "Thrillers de cinco estrellas",
+  "tema": "misterio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0045,
+   "romantasy": 0.1136,
+   "fantasia": 0.0065,
+   "misterio": 0.7515,
+   "distopia": 0.0054,
+   "espacio": 0.0918,
+   "clasicos": 0.0032,
+   "latinoamerica": 0.0233
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7704054010554158357",
+  "autor": "@nayamzreads",
+  "texto": "Y no quedó ninguno, de Agatha Christie",
+  "tema": "misterio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0001,
+   "romantasy": 0.0006,
+   "fantasia": 0.0003,
+   "misterio": 0.9982,
+   "distopia": 0.0002,
+   "espacio": 0.0003,
+   "clasicos": 0.0001,
+   "latinoamerica": 0.0001
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7586867476529581333",
+  "autor": "@wickedsophie",
+  "texto": "Agatha Christie, una de mis autoras favoritas",
+  "tema": "misterio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0,
+   "romantasy": 0.0001,
+   "fantasia": 0.0001,
+   "misterio": 0.9994,
+   "distopia": 0.0001,
+   "espacio": 0.0,
+   "clasicos": 0.0,
+   "latinoamerica": 0.0001
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7686700546329267476",
+  "autor": "@cartasdeunlector",
+  "texto": "Cuál es el mejor libro de Agatha Christie",
+  "tema": "misterio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0,
+   "romantasy": 0.0004,
+   "fantasia": 0.0001,
+   "misterio": 0.9992,
+   "distopia": 0.0002,
+   "espacio": 0.0,
+   "clasicos": 0.0,
+   "latinoamerica": 0.0
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7649458752390761750",
+  "autor": "@misteriosylibros_",
+  "texto": "El asesino no es Sofía, un libro que se resuelve",
+  "tema": "misterio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0005,
+   "romantasy": 0.0011,
+   "fantasia": 0.0007,
+   "misterio": 0.9963,
+   "distopia": 0.0003,
+   "espacio": 0.0002,
+   "clasicos": 0.0006,
+   "latinoamerica": 0.0003
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7673694689685540116",
+  "autor": "@luisxmaldo",
+  "texto": "Busca al asesino, un libro para jugar al detective",
+  "tema": "misterio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.001,
+   "romantasy": 0.0051,
+   "fantasia": 0.0009,
+   "misterio": 0.9872,
+   "distopia": 0.0005,
+   "espacio": 0.0005,
+   "clasicos": 0.0043,
+   "latinoamerica": 0.0004
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7703668133080354080",
+  "autor": "@lasmovidasdeross",
+  "texto": "Crímenes ilustrados, para jugar a los detectives",
+  "tema": "misterio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0005,
+   "romantasy": 0.0034,
+   "fantasia": 0.0006,
+   "misterio": 0.9933,
+   "distopia": 0.0007,
+   "espacio": 0.0007,
+   "clasicos": 0.0005,
+   "latinoamerica": 0.0003
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7702832388346334486",
+  "autor": "@devoraotv",
+  "texto": "Los once días en que desapareció Agatha Christie",
+  "tema": "misterio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0,
+   "romantasy": 0.0007,
+   "fantasia": 0.0001,
+   "misterio": 0.9989,
+   "distopia": 0.0001,
+   "espacio": 0.0001,
+   "clasicos": 0.0001,
+   "latinoamerica": 0.0001
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7390943429544447237",
+  "autor": "@entre_letrasea",
+  "texto": "Clásicos para empezar a leer",
+  "tema": "clasicos",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0001,
+   "romantasy": 0.0001,
+   "fantasia": 0.0,
+   "misterio": 0.0,
+   "distopia": 0.0002,
+   "espacio": 0.0,
+   "clasicos": 0.9996,
+   "latinoamerica": 0.0
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7464376973180095750",
+  "autor": "@bookscamander",
+  "texto": "Diez clásicos cortos para empezar",
+  "tema": "clasicos",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0,
+   "romantasy": 0.0001,
+   "fantasia": 0.0,
+   "misterio": 0.0,
+   "distopia": 0.0,
+   "espacio": 0.0,
+   "clasicos": 0.9998,
+   "latinoamerica": 0.0
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7415039044368993542",
+  "autor": "@the_bolivian_bookaholic",
+  "texto": "Diez clásicos adictivos",
+  "tema": "clasicos",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0003,
+   "romantasy": 0.0026,
+   "fantasia": 0.0001,
+   "misterio": 0.0001,
+   "distopia": 0.0002,
+   "espacio": 0.0,
+   "clasicos": 0.9965,
+   "latinoamerica": 0.0001
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7530636277511736582",
+  "autor": "@minutosdeliteratura",
+  "texto": "Don Quijote, la primera parte en resumen",
+  "tema": "clasicos",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0,
+   "romantasy": 0.0,
+   "fantasia": 0.0,
+   "misterio": 0.0,
+   "distopia": 0.0,
+   "espacio": 0.0,
+   "clasicos": 0.9999,
+   "latinoamerica": 0.0
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7575235053941198102",
+  "autor": "@alaskaleelibros",
+  "texto": "Clásicos de menos de 120 páginas",
+  "tema": "clasicos",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0007,
+   "romantasy": 0.0015,
+   "fantasia": 0.0003,
+   "misterio": 0.0003,
+   "distopia": 0.0013,
+   "espacio": 0.0001,
+   "clasicos": 0.9955,
+   "latinoamerica": 0.0002
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7680214690022149398",
+  "autor": "@marinaamorillo",
+  "texto": "Clásicos cortos y fáciles para empezar",
+  "tema": "clasicos",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0001,
+   "romantasy": 0.0001,
+   "fantasia": 0.0001,
+   "misterio": 0.0001,
+   "distopia": 0.0002,
+   "espacio": 0.0,
+   "clasicos": 0.9993,
+   "latinoamerica": 0.0001
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7399720425376501038",
+  "autor": "@loleoenespanol",
+  "texto": "Clásicos que te van a encantar",
+  "tema": "clasicos",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0027,
+   "romantasy": 0.0026,
+   "fantasia": 0.0003,
+   "misterio": 0.0001,
+   "distopia": 0.0026,
+   "espacio": 0.0001,
+   "clasicos": 0.9914,
+   "latinoamerica": 0.0002
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7652487835047562517",
+  "autor": "@genio.literario",
+  "texto": "Cuatro clásicos para empezar, de Rebelión en la granja a Frankenstein",
+  "tema": "clasicos",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "rebelion-granja",
+  "vector": {
+   "terror": 0.0003,
+   "romantasy": 0.0004,
+   "fantasia": 0.0006,
+   "misterio": 0.0002,
+   "distopia": 0.0003,
+   "espacio": 0.0,
+   "clasicos": 0.9978,
+   "latinoamerica": 0.0004
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7659566580040338695",
+  "autor": "@josefa.delabarra",
+  "texto": "Jane Austen y Sentido y sensibilidad",
+  "tema": "clasicos",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0004,
+   "romantasy": 0.0001,
+   "fantasia": 0.0001,
+   "misterio": 0.0,
+   "distopia": 0.0,
+   "espacio": 0.0,
+   "clasicos": 0.9993,
+   "latinoamerica": 0.0001
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7391859691585801477",
+  "autor": "@fvz_00",
+  "texto": "Ser o no ser, el monólogo de Hamlet",
+  "tema": "clasicos",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0692,
+   "romantasy": 0.2973,
+   "fantasia": 0.0016,
+   "misterio": 0.0048,
+   "distopia": 0.0048,
+   "espacio": 0.0037,
+   "clasicos": 0.6168,
+   "latinoamerica": 0.0018
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7526552018736008470",
+  "autor": "@literatura727",
+  "texto": "Don Quijote contra los molinos",
+  "tema": "clasicos",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0002,
+   "romantasy": 0.0001,
+   "fantasia": 0.0001,
+   "misterio": 0.0,
+   "distopia": 0.0,
+   "espacio": 0.0,
+   "clasicos": 0.9995,
+   "latinoamerica": 0.0001
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7702915077879500084",
+  "autor": "@kxlpa.sn",
+  "texto": "Noches blancas de Dostoievski",
+  "tema": "clasicos",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0011,
+   "romantasy": 0.0025,
+   "fantasia": 0.0005,
+   "misterio": 0.0005,
+   "distopia": 0.0005,
+   "espacio": 0.0002,
+   "clasicos": 0.9899,
+   "latinoamerica": 0.0047
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7621318804680822036",
+  "autor": "@alexjsnr",
+  "texto": "Distopías esenciales, de 1984 a El cuento de la criada",
+  "tema": "distopia",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "1984",
+  "vector": {
+   "terror": 0.0208,
+   "romantasy": 0.0041,
+   "fantasia": 0.0001,
+   "misterio": 0.0001,
+   "distopia": 0.9702,
+   "espacio": 0.0003,
+   "clasicos": 0.0043,
+   "latinoamerica": 0.0001
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7109622115770404101",
+  "autor": "@alibrate.ok",
+  "texto": "Qué es una distopía y cuáles leer",
+  "tema": "distopia",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0007,
+   "romantasy": 0.0018,
+   "fantasia": 0.0,
+   "misterio": 0.0001,
+   "distopia": 0.9909,
+   "espacio": 0.0,
+   "clasicos": 0.0063,
+   "latinoamerica": 0.0001
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7377544347304168709",
+  "autor": "@eduglez__",
+  "texto": "1984 de George Orwell",
+  "tema": "distopia",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "1984",
+  "vector": {
+   "terror": 0.1281,
+   "romantasy": 0.095,
+   "fantasia": 0.0171,
+   "misterio": 0.0168,
+   "distopia": 0.6171,
+   "espacio": 0.0172,
+   "clasicos": 0.0974,
+   "latinoamerica": 0.0113
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7202407980145495301",
+  "autor": "@adrianavc32",
+  "texto": "Un mundo feliz de Aldous Huxley",
+  "tema": "distopia",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "un-mundo-feliz",
+  "vector": {
+   "terror": 0.0152,
+   "romantasy": 0.042,
+   "fantasia": 0.0024,
+   "misterio": 0.012,
+   "distopia": 0.8983,
+   "espacio": 0.005,
+   "clasicos": 0.0153,
+   "latinoamerica": 0.0099
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7683652273569828116",
+  "autor": "@johanreads",
+  "texto": "Once libros para empezar con las distopías",
+  "tema": "distopia",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.001,
+   "romantasy": 0.0029,
+   "fantasia": 0.0,
+   "misterio": 0.0003,
+   "distopia": 0.9854,
+   "espacio": 0.0001,
+   "clasicos": 0.01,
+   "latinoamerica": 0.0003
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7672861507985673494",
+  "autor": "@myfantasyreadings",
+  "texto": "Distopías para fans de Los juegos del hambre",
+  "tema": "distopia",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "juegos-del-hambre",
+  "vector": {
+   "terror": 0.0004,
+   "romantasy": 0.0003,
+   "fantasia": 0.0001,
+   "misterio": 0.0001,
+   "distopia": 0.9983,
+   "espacio": 0.0001,
+   "clasicos": 0.0005,
+   "latinoamerica": 0.0001
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7485850948200303894",
+  "autor": "@lgsobrado",
+  "texto": "Distopías juveniles como Legend",
+  "tema": "distopia",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0048,
+   "romantasy": 0.001,
+   "fantasia": 0.0,
+   "misterio": 0.0001,
+   "distopia": 0.9932,
+   "espacio": 0.0001,
+   "clasicos": 0.0007,
+   "latinoamerica": 0.0001
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7536156856331373846",
+  "autor": "@thereaderwithin",
+  "texto": "Distopías imprescindibles",
+  "tema": "distopia",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0005,
+   "romantasy": 0.0018,
+   "fantasia": 0.0001,
+   "misterio": 0.0002,
+   "distopia": 0.9949,
+   "espacio": 0.0003,
+   "clasicos": 0.0016,
+   "latinoamerica": 0.0006
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7455726553918410017",
+  "autor": "@booksbylusi",
+  "texto": "Qué distopía leer después de Fahrenheit 451",
+  "tema": "distopia",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0244,
+   "romantasy": 0.0063,
+   "fantasia": 0.0001,
+   "misterio": 0.0002,
+   "distopia": 0.9597,
+   "espacio": 0.001,
+   "clasicos": 0.008,
+   "latinoamerica": 0.0003
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7443626109519826231",
+  "autor": "@mamador_literario",
+  "texto": "Metro 2033, la distopía nuclear",
+  "tema": "distopia",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0005,
+   "romantasy": 0.0019,
+   "fantasia": 0.0,
+   "misterio": 0.0,
+   "distopia": 0.9961,
+   "espacio": 0.0001,
+   "clasicos": 0.0013,
+   "latinoamerica": 0.0001
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7701439571971558688",
+  "autor": "@cristofruits",
+  "texto": "Cien años de soledad en resumen",
+  "tema": "latinoamerica",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "cien-anios",
+  "vector": {
+   "terror": 0.0025,
+   "romantasy": 0.1004,
+   "fantasia": 0.0008,
+   "misterio": 0.002,
+   "distopia": 0.0009,
+   "espacio": 0.0041,
+   "clasicos": 0.0271,
+   "latinoamerica": 0.8623
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7658791230301572359",
+  "autor": "@lunayotrossatelites",
+  "texto": "Pedro Páramo, Cien años de soledad y La casa de los espíritus",
+  "tema": "latinoamerica",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "pedro-paramo",
+  "vector": {
+   "terror": 0.0377,
+   "romantasy": 0.0285,
+   "fantasia": 0.0158,
+   "misterio": 0.0121,
+   "distopia": 0.0024,
+   "espacio": 0.0195,
+   "clasicos": 0.009,
+   "latinoamerica": 0.8751
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7501517839514258743",
+  "autor": "@minutosdeliteratura",
+  "texto": "Por qué Cien años de soledad es único",
+  "tema": "latinoamerica",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "cien-anios",
+  "vector": {
+   "terror": 0.0012,
+   "romantasy": 0.0489,
+   "fantasia": 0.0009,
+   "misterio": 0.0015,
+   "distopia": 0.0006,
+   "espacio": 0.007,
+   "clasicos": 0.0089,
+   "latinoamerica": 0.9311
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7590940968862469383",
+  "autor": "@ad.leteo",
+  "texto": "El mundo del realismo mágico",
+  "tema": "latinoamerica",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0001,
+   "romantasy": 0.0001,
+   "fantasia": 0.0001,
+   "misterio": 0.0001,
+   "distopia": 0.0002,
+   "espacio": 0.0001,
+   "clasicos": 0.0009,
+   "latinoamerica": 0.9984
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7501408266266692886",
+  "autor": "@raquel.poveda.bronchalo",
+  "texto": "Qué es el realismo mágico",
+  "tema": "latinoamerica",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0001,
+   "romantasy": 0.0001,
+   "fantasia": 0.0001,
+   "misterio": 0.0001,
+   "distopia": 0.0,
+   "espacio": 0.0001,
+   "clasicos": 0.0005,
+   "latinoamerica": 0.9991
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7359404638270934278",
+  "autor": "@leeporgusto",
+  "texto": "Anécdotas de Cien años de soledad",
+  "tema": "latinoamerica",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "cien-anios",
+  "vector": {
+   "terror": 0.0012,
+   "romantasy": 0.0489,
+   "fantasia": 0.0009,
+   "misterio": 0.0015,
+   "distopia": 0.0006,
+   "espacio": 0.007,
+   "clasicos": 0.0089,
+   "latinoamerica": 0.9311
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7285022231577627910",
+  "autor": "@historiaen01minuto",
+  "texto": "García Márquez en un minuto",
+  "tema": "latinoamerica",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0063,
+   "romantasy": 0.0104,
+   "fantasia": 0.0047,
+   "misterio": 0.005,
+   "distopia": 0.002,
+   "espacio": 0.0042,
+   "clasicos": 0.0752,
+   "latinoamerica": 0.8922
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7674426899015208199",
+  "autor": "@stefydcss",
+  "texto": "Remedios la Bella sube al cielo",
+  "tema": "latinoamerica",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "cien-anios",
+  "vector": {
+   "terror": 0.1877,
+   "romantasy": 0.0589,
+   "fantasia": 0.0069,
+   "misterio": 0.003,
+   "distopia": 0.0225,
+   "espacio": 0.1973,
+   "clasicos": 0.0164,
+   "latinoamerica": 0.5073
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7699502959201226005",
+  "autor": "@alma_literaria27",
+  "texto": "El realismo mágico, explicado",
+  "tema": "latinoamerica",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0001,
+   "romantasy": 0.0002,
+   "fantasia": 0.0003,
+   "misterio": 0.0003,
+   "distopia": 0.0,
+   "espacio": 0.002,
+   "clasicos": 0.0002,
+   "latinoamerica": 0.9968
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7622385732325313823",
+  "autor": "@paola.bookclub",
+  "texto": "La verdadera precursora del realismo mágico",
+  "tema": "latinoamerica",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0003,
+   "romantasy": 0.0003,
+   "fantasia": 0.0003,
+   "misterio": 0.0007,
+   "distopia": 0.0,
+   "espacio": 0.0004,
+   "clasicos": 0.0007,
+   "latinoamerica": 0.9973
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7689770866707582222",
+  "autor": "@mariaelentiya",
+  "texto": "Tres fantasías con romance",
+  "tema": "romantasy",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0004,
+   "romantasy": 0.9987,
+   "fantasia": 0.0,
+   "misterio": 0.0,
+   "distopia": 0.0001,
+   "espacio": 0.0002,
+   "clasicos": 0.0006,
+   "latinoamerica": 0.0
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7439701893288430881",
+  "autor": "@ir_zu",
+  "texto": "La magia de las casualidades imposibles",
+  "tema": "romantasy",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.011,
+   "romantasy": 0.9807,
+   "fantasia": 0.0008,
+   "misterio": 0.001,
+   "distopia": 0.0008,
+   "espacio": 0.0016,
+   "clasicos": 0.0032,
+   "latinoamerica": 0.001
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7659556833752911111",
+  "autor": "@maia.alessandraa",
+  "texto": "La saga de Lyna, aventura y misterio",
+  "tema": "fantasia",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "vector": {
+   "terror": 0.0074,
+   "romantasy": 0.0032,
+   "fantasia": 0.9119,
+   "misterio": 0.057,
+   "distopia": 0.0022,
+   "espacio": 0.0064,
+   "clasicos": 0.0098,
+   "latinoamerica": 0.0022
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7612755038137535764",
+  "autor": "@te.conlibros",
+  "texto": "Cuatro razones para leer Proyecto Hail Mary",
+  "tema": "espacio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "proyecto-hail-mary",
+  "vector": {
+   "terror": 0.0237,
+   "romantasy": 0.0291,
+   "fantasia": 0.0011,
+   "misterio": 0.0079,
+   "distopia": 0.0084,
+   "espacio": 0.5014,
+   "clasicos": 0.4156,
+   "latinoamerica": 0.0128
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7589337520274427158",
+  "autor": "@lagatadeschrodinger",
+  "texto": "Proyecto Hail Mary, de Andy Weir",
+  "tema": "espacio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "proyecto-hail-mary",
+  "vector": {
+   "terror": 0.0692,
+   "romantasy": 0.2973,
+   "fantasia": 0.0016,
+   "misterio": 0.0048,
+   "distopia": 0.0048,
+   "espacio": 0.5037,
+   "clasicos": 0.1168,
+   "latinoamerica": 0.0018
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7628725354810641684",
+  "autor": "@juanpalv_",
+  "texto": "Por qué todos hablan de Proyecto Hail Mary",
+  "tema": "espacio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "proyecto-hail-mary",
+  "vector": {
+   "terror": 0.0692,
+   "romantasy": 0.2973,
+   "fantasia": 0.0016,
+   "misterio": 0.0048,
+   "distopia": 0.0048,
+   "espacio": 0.5037,
+   "clasicos": 0.1168,
+   "latinoamerica": 0.0018
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7620601186760101140",
+  "autor": "@libreandoconfelipe",
+  "texto": "Proyecto Hail Mary en un video",
+  "tema": "espacio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "proyecto-hail-mary",
+  "vector": {
+   "terror": 0.0692,
+   "romantasy": 0.2973,
+   "fantasia": 0.0016,
+   "misterio": 0.0048,
+   "distopia": 0.0048,
+   "espacio": 0.5037,
+   "clasicos": 0.1168,
+   "latinoamerica": 0.0018
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7633432118605057282",
+  "autor": "@lisalioz",
+  "texto": "Mi opinión de Proyecto Hail Mary",
+  "tema": "espacio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "proyecto-hail-mary",
+  "vector": {
+   "terror": 0.0692,
+   "romantasy": 0.2973,
+   "fantasia": 0.0016,
+   "misterio": 0.0048,
+   "distopia": 0.0048,
+   "espacio": 0.5037,
+   "clasicos": 0.1168,
+   "latinoamerica": 0.0018
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7685415281325264161",
+  "autor": "@dragonesydrama",
+  "texto": "Hablemos de Proyecto Hail Mary",
+  "tema": "espacio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "proyecto-hail-mary",
+  "vector": {
+   "terror": 0.0692,
+   "romantasy": 0.2973,
+   "fantasia": 0.0016,
+   "misterio": 0.0048,
+   "distopia": 0.0048,
+   "espacio": 0.5037,
+   "clasicos": 0.1168,
+   "latinoamerica": 0.0018
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7340896687868628230",
+  "autor": "@charlajo_thg",
+  "texto": "Yo leyendo Dune",
+  "tema": "espacio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "dune",
+  "vector": {
+   "terror": 0.3532,
+   "romantasy": 0.0504,
+   "fantasia": 0.0013,
+   "misterio": 0.0042,
+   "distopia": 0.0021,
+   "espacio": 0.502,
+   "clasicos": 0.0431,
+   "latinoamerica": 0.0437
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7689926325229948182",
+  "autor": "@alaskaleelibros",
+  "texto": "Dune de Frank Herbert",
+  "tema": "espacio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "dune",
+  "vector": {
+   "terror": 0.0692,
+   "romantasy": 0.2973,
+   "fantasia": 0.0016,
+   "misterio": 0.0048,
+   "distopia": 0.0048,
+   "espacio": 0.5037,
+   "clasicos": 0.1168,
+   "latinoamerica": 0.0018
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7342330398145318149",
+  "autor": "@entre_letrasea",
+  "texto": "Qué tal es leer Dune",
+  "tema": "espacio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "dune",
+  "vector": {
+   "terror": 0.0412,
+   "romantasy": 0.0386,
+   "fantasia": 0.0008,
+   "misterio": 0.0029,
+   "distopia": 0.0134,
+   "espacio": 0.5008,
+   "clasicos": 0.3995,
+   "latinoamerica": 0.0027
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7691395913134263565",
+  "autor": "@samdcote",
+  "texto": "Dune, el clásico de la ciencia ficción",
+  "tema": "espacio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "dune",
+  "vector": {
+   "terror": 0.0067,
+   "romantasy": 0.0068,
+   "fantasia": 0.0049,
+   "misterio": 0.0004,
+   "distopia": 0.0264,
+   "espacio": 0.8435,
+   "clasicos": 0.1098,
+   "latinoamerica": 0.0015
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7340461138116676870",
+  "autor": "@mr.cactus_avt",
+  "texto": "Por qué leer Dune",
+  "tema": "espacio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "dune",
+  "vector": {
+   "terror": 0.0412,
+   "romantasy": 0.0386,
+   "fantasia": 0.0008,
+   "misterio": 0.0029,
+   "distopia": 0.0134,
+   "espacio": 0.5008,
+   "clasicos": 0.3995,
+   "latinoamerica": 0.0027
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7579322453969882371",
+  "autor": "@a.malaver",
+  "texto": "Dune, de mis favoritos de toda la historia",
+  "tema": "espacio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "dune",
+  "vector": {
+   "terror": 0.2478,
+   "romantasy": 0.1266,
+   "fantasia": 0.0023,
+   "misterio": 0.0415,
+   "distopia": 0.0251,
+   "espacio": 0.5069,
+   "clasicos": 0.0362,
+   "latinoamerica": 0.0135
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7609459964582628616",
+  "autor": "@the_ritzer_club",
+  "texto": "Ready Player One, el libro",
+  "tema": "espacio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "ready-player-one",
+  "vector": {
+   "terror": 0.0377,
+   "romantasy": 0.0358,
+   "fantasia": 0.0125,
+   "misterio": 0.346,
+   "distopia": 0.0035,
+   "espacio": 0.5031,
+   "clasicos": 0.0531,
+   "latinoamerica": 0.0083
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7508258905634491655",
+  "autor": "@lu.urcelay",
+  "texto": "Qué tal Ready Player One",
+  "tema": "espacio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "ready-player-one",
+  "vector": {
+   "terror": 0.0692,
+   "romantasy": 0.2973,
+   "fantasia": 0.0016,
+   "misterio": 0.0048,
+   "distopia": 0.0048,
+   "espacio": 0.5037,
+   "clasicos": 0.1168,
+   "latinoamerica": 0.0018
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7117388083187715334",
+  "autor": "@pla_neto08",
+  "texto": "Ready Player One de Ernest Cline",
+  "tema": "espacio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "ready-player-one",
+  "vector": {
+   "terror": 0.0692,
+   "romantasy": 0.2973,
+   "fantasia": 0.0016,
+   "misterio": 0.0048,
+   "distopia": 0.0048,
+   "espacio": 0.5037,
+   "clasicos": 0.1168,
+   "latinoamerica": 0.0018
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7458826876924988678",
+  "autor": "@mister.naranjo",
+  "texto": "Hablemos de Ready Player One",
+  "tema": "espacio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "ready-player-one",
+  "vector": {
+   "terror": 0.0692,
+   "romantasy": 0.2973,
+   "fantasia": 0.0016,
+   "misterio": 0.0048,
+   "distopia": 0.0048,
+   "espacio": 0.5037,
+   "clasicos": 0.1168,
+   "latinoamerica": 0.0018
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7415784860448558341",
+  "autor": "@leyendoconmanuel",
+  "texto": "Ready Player One, un libro muy adictivo",
+  "tema": "espacio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "ready-player-one",
+  "vector": {
+   "terror": 0.0164,
+   "romantasy": 0.0797,
+   "fantasia": 0.0078,
+   "misterio": 0.2163,
+   "distopia": 0.0036,
+   "espacio": 0.5037,
+   "clasicos": 0.1624,
+   "latinoamerica": 0.0102
+  }
+ },
+ {
+  "fuente": "tiktok",
+  "ref": "7670694250203401492",
+  "autor": "@vangsura7_7",
+  "texto": "Ready Player One y los videojuegos",
+  "tema": "espacio",
+  "clase": "libros",
+  "etiqueta": "BookTok",
+  "libro": "ready-player-one",
+  "vector": {
+   "terror": 0.0692,
+   "romantasy": 0.2973,
+   "fantasia": 0.0016,
+   "misterio": 0.0048,
+   "distopia": 0.0048,
+   "espacio": 0.5037,
+   "clasicos": 0.1168,
+   "latinoamerica": 0.0018
+  }
+ }
+]

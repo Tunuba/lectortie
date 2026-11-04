@@ -1,0 +1,58 @@
+[
+ {
+  "clave": "terror",
+  "nombre": "Terror",
+  "piel": "terror",
+  "color": "#FF4D5E",
+  "orden": 1
+ },
+ {
+  "clave": "romantasy",
+  "nombre": "Romantasy",
+  "piel": "romantasy",
+  "color": "#FF6FB1",
+  "orden": 2
+ },
+ {
+  "clave": "fantasia",
+  "nombre": "Fantasía",
+  "piel": "fantasia",
+  "color": "#A77BFF",
+  "orden": 3
+ },
+ {
+  "clave": "misterio",
+  "nombre": "Misterio",
+  "piel": "misterio",
+  "color": "#F2C14E",
+  "orden": 4
+ },
+ {
+  "clave": "distopia",
+  "nombre": "Distopía",
+  "piel": "distopia",
+  "color": "#35E0FF",
+  "orden": 5
+ },
+ {
+  "clave": "espacio",
+  "nombre": "Ciencia ficción",
+  "piel": "espacio",
+  "color": "#FF8A3D",
+  "orden": 6
+ },
+ {
+  "clave": "clasicos",
+  "nombre": "Clásicos",
+  "piel": "clasicos",
+  "color": "#E2C08D",
+  "orden": 7
+ },
+ {
+  "clave": "latinoamerica",
+  "nombre": "Latinoamérica",
+  "piel": "selva",
+  "color": "#2AE58C",
+  "orden": 8
+ }
+]
