@@ -139,7 +139,7 @@ Una copia de `plataforma` en otra carpeta, con el `.env` cambiado a `PUERTO=8098
 
 - Conectar GLPI con sus tokens.
 - Un convenio con una librería para que Conseguir deje comisión.
-- Commit de `plataforma`. El repo es público y no se puede subir sin antes correr el SQL de Supabase de la app vieja, ver `plan-negocios/LEEME.md`.
+- Correr el SQL de Supabase de la app vieja (`supabase/esquema.sql`). El 04-11 se subió todo al repo por pedido de Meme sin correrlo, así que la app vieja de GitHub Pages no guarda hasta que se corra.
 - En iPhone, Safari puede seguir sin sonido al pasar de video, porque exige tocar dentro del mismo video. En Android y en la computadora ya funciona.
 - Que el equipo revise las etiquetas de `contenido/red/dataset.json`. Las puso Claude a mano, leyendo cada texto con las reglas del catálogo.
 
